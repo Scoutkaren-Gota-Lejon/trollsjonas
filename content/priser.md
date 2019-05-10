@@ -1,6 +1,8 @@
 ---
 title: 'Priser'
-order: 5
+order: 6
+keywords:
+  - hyra scoutstuga
 ---
 
 # Priser

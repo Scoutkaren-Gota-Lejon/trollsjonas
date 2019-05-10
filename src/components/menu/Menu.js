@@ -45,6 +45,12 @@ const sortFunc = (a, b) => {
         </Link>
         </li>
       ))}
+
+        <li>
+          <a href="https://gotalejon.org">
+            Scoutkåren Göta Lejon
+          </a>
+        </li>
     </ul>
   </nav>
 )

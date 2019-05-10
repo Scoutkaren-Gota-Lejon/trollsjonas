@@ -1,6 +1,8 @@
 ---
 title: Vägbeskrivning
-order: 6
+order: 7
+keywords:
+  - hyra scoutstuga
 ---
 
 # Vägbeskrivning

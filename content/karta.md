@@ -1,6 +1,8 @@
 ---
 title: 'Karta över området'
 order: 2
+keywords:
+  - karta
 ---
 
 # Karta över området

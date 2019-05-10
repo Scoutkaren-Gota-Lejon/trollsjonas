@@ -1,6 +1,8 @@
 ---
 title: 'Stugor'
 order: 1
+keywords:
+  - hyra scoutstuga
 ---
 
 # Stugor

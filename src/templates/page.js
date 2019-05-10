@@ -5,9 +5,10 @@ import SEO from "../components/seo"
 
 export default ({ data }) => {
   const post = data.markdownRemark
+  const keywords = post.frontmatter.keywords ? post.frontmatter.keywords : [];
   return (
     <Layout>
-      <SEO title={post.frontmatter.title} />
+      <SEO title={post.frontmatter.title} keywords={keywords} />
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
@@ -18,7 +19,8 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        title
+        title,
+        keywords
       }
     }
   }

@@ -1,6 +1,8 @@
 ---
 title: 'Historia'
-order: 4
+order: 5
+keywords: 
+  - historia
 ---
 # Historia
 Scoutkåren Göta Lejon startade 1945 i Kålltorps Ungdomsgård.
