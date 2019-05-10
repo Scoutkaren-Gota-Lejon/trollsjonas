@@ -1,5 +1,6 @@
 ---
 title: 'Priser'
+order: 5
 ---
 
 # Priser

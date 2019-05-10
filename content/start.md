@@ -1,5 +1,6 @@
 ---
 title: "Start"
+order: 0
 ---
 # Välkommen 
 Trollsjönäs är Scoutkåren Göta Lejons friluftsgård som ligger i Vättlefjälls naturreservat vid sjön Trollsjön, 25 kilometer norr om Göteborg. Med bil tar det 40 minuter från Göteborgs centrala delar, riksväg 45 till Bohus, därifrån 5 kilometer till Rördalen. Bussförbindelser finns till Jennylunds ridhus därifrån är det 4 kilometers vandring.
@@ -37,7 +38,7 @@ Om du vill hyra Trollsjönäs är du välkommen att kontakta vår uthyrningssamo
 
 Info om anläggningen lämnas också av stugfogden Lennart Sjöberg 0303-966 20 mobil 0707-513740. e-postadress [len.sjoberg@telia.com](mailto:len.sjoberg@telia.com), eller av Lars Gabrielsson mobil 0705-151786.
 
-Priser och hyresavtal se under fliken ”[Priser](/priser)”
+Priser och hyresavtal se under fliken ”[Priser](/priser/)”
 
 ### Vättlefjäll.
 Hela Vättlefjälls naturreservat bjuder på en vacker, nära på trolsk natur.

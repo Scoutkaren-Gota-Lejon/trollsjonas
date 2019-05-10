@@ -40,12 +40,18 @@ template {
   display: none;
 }
 a {
+  color: #bc360a;
+  text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 a:active,
 a:hover {
   outline-width: 0;
+}
+a:hover {
+  text-decoration: underline;
+  color: #ea9629;
 }
 abbr[title] {
   border-bottom: none;

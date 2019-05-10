@@ -2,8 +2,8 @@ module.exports = {
   siteMetadata: {
     maxWidth: 960,
     title: `Trollsjönäs`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: ``,
+    author: `Stiftelsen Göta Lejons Friluftsgård`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,7 +24,18 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: ["gatsby-remark-copy-linked-files"],
+        plugins: [
+          "gatsby-remark-copy-linked-files",
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 600,
+            },
+          },
+        ],
       },
     },
     `gatsby-transformer-sharp`,

@@ -1,5 +1,6 @@
 ---
 title: 'Karta över området'
+order: 2
 ---
 
 # Karta över området

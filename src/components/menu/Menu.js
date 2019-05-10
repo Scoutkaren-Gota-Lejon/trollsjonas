@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import "./menu.css"
 
 const Menu = ({maxWidth}) => {
   const data = useStaticQuery(
@@ -10,7 +11,8 @@ const Menu = ({maxWidth}) => {
       edges {
         node {
           frontmatter {
-            title
+            title,
+            order
           },
           fields {
             slug
@@ -21,29 +23,29 @@ const Menu = ({maxWidth}) => {
   }
 `)
 
+const sortFunc = (a, b) => {
+  return a.node.frontmatter.order - b.node.frontmatter.order;
+}
+
   return (
   <nav
-    style={{
-      backgroundColor: '#00ff00'
-    }}>
-    <div
+    className="site-menu">
+    <ul
       style={{
-        margin: `0 auto`,
         maxWidth: maxWidth,
       }}
     >
-      {data && data.allMarkdownRemark.edges.map(menu => (
+      {data && data.allMarkdownRemark.edges.sort(sortFunc).map(menu => (
+        <li key={menu.node.fields.slug}>
         <Link
           to={menu.node.fields.slug}
-          style={{
-          textDecoration: `none`,
-          padding: `1.0875rem`
-          }}
+          activeClassName="active"
         >
           {menu.node.frontmatter.title}
         </Link>
+        </li>
       ))}
-    </div>
+    </ul>
   </nav>
 )
 }

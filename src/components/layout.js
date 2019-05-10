@@ -10,7 +10,8 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import Menu from "./menu"
+import Menu from "./menu/Menu"
+import Sidebar from "./sidebar/Sidebar"
 import "./layout.css"
 
 const Layout = ({ children }) => (
@@ -37,7 +38,13 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <main>{children}</main>
+          <main style={{
+            width: 600,
+            float: 'left'
+          }}>
+            {children}
+          </main>
+          <Sidebar />
           <footer>
 
           </footer>
