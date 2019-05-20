@@ -38,10 +38,7 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <main style={{
-            width: 600,
-            float: 'left'
-          }}>
+          <main className="main-container">
             {children}
           </main>
           <Sidebar />

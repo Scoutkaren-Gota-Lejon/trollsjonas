@@ -5,11 +5,7 @@ import informationsfolder from './informationsfolder.pdf'
 
 const SideBar = () => (
   <aside
-    style={{
-      marginLeft: 20,
-      float: 'right',
-      width: 300
-    }}
+    className="sidebar-container"
   >
       <section
         style={{
