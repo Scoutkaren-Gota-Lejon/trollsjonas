@@ -4,6 +4,7 @@ module.exports = {
     title: `Trollsjönäs`,
     description: ``,
     author: `Stiftelsen Göta Lejons Friluftsgård`,
+    siteUrl: `https://trollsjonas.gotalejon.org`
   },
   plugins: [
     {
@@ -49,6 +50,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -59,6 +61,18 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-25532932-2",
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
