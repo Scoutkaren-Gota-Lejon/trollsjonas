@@ -620,6 +620,10 @@ pre tt:after {
   content: "";
 }
 
+h1 a {
+  color: hsla(0, 0%, 0%, 0.8);
+}
+
 .main-container {
   max-width: 600px;
   width: 100%;

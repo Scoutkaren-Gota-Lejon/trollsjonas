@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import React from "react"
 
 import informationsfolder from './informationsfolder.pdf'
@@ -29,16 +28,11 @@ const SideBar = () => (
         }}
         >
         <h3>Här finns vi</h3>
-        <iframe title="karta till oss" width="100%" height="390" scrolling="no" src="https://maps.google.com/maps/ms?msa=0&amp;msid=215786389003830185070.0004f02fd98c8a8a72978&amp;ie=UTF8&amp;t=m&amp;ll=57.814041,12.028656&amp;spn=0.285289,0.369415&amp;z=10&amp;output=embed"></iframe>
+        <iframe title="karta till oss" frameBorder="0" width="100%" height="390" scrolling="no" src="https://maps.google.com/maps/ms?msa=0&amp;msid=215786389003830185070.0004f02fd98c8a8a72978&amp;ie=UTF8&amp;t=m&amp;ll=57.814041,12.028656&amp;spn=0.285289,0.369415&amp;z=10&amp;output=embed"></iframe>
         <br />
         <small><a href="https://www.google.com/maps/d/edit?mid=zMXAajihALcI.kU_EyCTSzIV4">Visa på en större karta</a></small>
       </section>
   </aside>
 )
-
-SideBar.propTypes = {
-  siteTitle: PropTypes.string,
-  maxWidth: PropTypes.number
-}
 
 export default SideBar
