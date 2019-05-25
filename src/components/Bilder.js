@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import Layout from "./layout"
 import SEO from "./seo"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import './bilder.css'
 
@@ -35,4 +35,14 @@ Bilder.propTypes = {
 
 export default Bilder
 
+export const galleryImage = graphql`
+  fragment galleryImage on File {
+    id,
+    childImageSharp {
+      fluid(maxWidth: 700) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+`
 

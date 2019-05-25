@@ -1,6 +1,7 @@
 import React from "react"
 import '../../components/stugor.css'
 import Bilder from "../../components/Bilder";
+import { graphql } from "gatsby"
 
 export default ({ data }) => {
   return (<Bilder name="Timmerhusen" bilder={data.bilder.edges} />);
@@ -11,12 +12,7 @@ export const query = graphql`
     bilder: allFile(filter: {relativePath: {glob:"stugor/timmerhusen/*" }}) {
       edges {
         node {
-          id,
-          childImageSharp {
-            fluid(maxWidth: 700) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+          ...galleryImage
         }
       }
     }
