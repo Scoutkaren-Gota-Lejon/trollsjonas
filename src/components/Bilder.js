@@ -8,7 +8,7 @@ import './bilder.css'
 
 const Bilder = ({name, ingress, bilder, caption}) => {
   const title = `Bilder - ${name}`
-  const keywords = [];
+  const keywords = ['stugor', 'bilder', 'hyra scoutstuga'];
 
   const captions = caption.reduce((obj, item) => {
     obj[item.node.fileName.id] = item.node.caption
