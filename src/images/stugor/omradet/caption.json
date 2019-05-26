@@ -9,15 +9,15 @@
   },
   {
     "fileName": "3.jpg",
-    "caption": "Översikft från storstugan"
+    "caption": "Översikt från storstugan"
   },
   {
     "fileName": "4.jpg",
-    "caption": "Översikft från parkeringen"
+    "caption": "Översikt från parkeringen"
   },
   {
     "fileName": "5.jpg",
-    "caption": "Sjön"
+    "caption": "Sjön från kanotbryggan"
   },
   {
     "fileName": "6.jpg",
@@ -42,5 +42,9 @@
   {
     "fileName": "11.jpg",
     "caption": "Kanotbryggan"
+  },
+  {
+    "fileName": "12.jpeg",
+    "caption": "Flaggstången"
   }
 ]

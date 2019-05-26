@@ -13,14 +13,14 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query {
+  query($galleryPath: String = "stugor/storstugan/*") {
     bilder: allFile(filter: {
-      relativePath: {glob: "stugor/storstugan/*" },
+      relativePath: {glob: $galleryPath },
       extension: {eq:"jpg"}
     }) {
       ...galleryImage
     },
-    caption: allCaptionJson(filter:{fileName: {relativePath: {glob: "stugor/storstugan/*" }}}) {
+    caption: allCaptionJson(filter:{fileName: {relativePath: {glob: $galleryPath }}}) {
       ...galleryCaption
     }
   }

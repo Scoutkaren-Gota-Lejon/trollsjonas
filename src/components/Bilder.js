@@ -6,7 +6,7 @@ import { graphql, Link } from "gatsby"
 import Gallery from 'react-grid-gallery';
 import './bilder.css'
 
-const Bilder = ({name, bilder, caption}) => {
+const Bilder = ({name, ingress, bilder, caption}) => {
   const title = `Bilder - ${name}`
   const keywords = [];
 
@@ -40,6 +40,8 @@ const Bilder = ({name, bilder, caption}) => {
 
       <h1><Link to="/bilder/">Bilder</Link> / {name}</h1>
 
+      {ingress && (<p>{ingress}</p>)}
+
       <Gallery
         images={images}
         margin={5}
@@ -53,7 +55,10 @@ const Bilder = ({name, bilder, caption}) => {
 }
 
 Bilder.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string.isRequired,
+  ingress: PropTypes.string,
+  bilder: PropTypes.array,
+  caption: PropTypes.array
 }
 
 export default Bilder
