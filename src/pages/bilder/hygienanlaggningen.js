@@ -5,18 +5,23 @@ import { graphql } from "gatsby"
 
 export default ({ data }) => {
   return (
-    <Bilder name="Hygienanläggningen" bilder={data.bilder.edges} />
-  )
+    <Bilder
+      name="Hygienanläggningen"
+      bilder={data.bilder.edges}
+      caption={data.caption.edges} />
+  );
 }
 
 export const query = graphql`
   query {
-    bilder: allFile(filter: {relativePath: {glob:"stugor/hygienanlaggning/*" }}) {
-      edges {
-        node {
-          ...galleryImage
-        }
-      }
+    bilder: allFile(filter: {
+      relativePath: {glob: "stugor/hygienanlaggning/*" },
+      extension: {eq:"jpg"}
+    }) {
+      ...galleryImage
+    },
+    caption: allCaptionJson(filter:{fileName: {relativePath: {glob: "stugor/hygienanlaggning/*" }}}) {
+      ...galleryCaption
     }
   }
 `

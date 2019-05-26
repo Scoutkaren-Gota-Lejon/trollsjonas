@@ -3,12 +3,36 @@ import React from "react"
 import Layout from "./layout"
 import SEO from "./seo"
 import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import Gallery from 'react-grid-gallery';
 import './bilder.css'
 
-const Bilder = ({name, bilder}) => {
+const Bilder = ({name, bilder, caption}) => {
   const title = `Bilder - ${name}`
   const keywords = [];
+
+  const captions = caption.reduce((obj, item) => {
+    obj[item.node.fileName.id] = item.node.caption
+    return obj
+  }, {})
+
+  const images = bilder.map(bild => {
+    const thumbnail = bild.node.childImageSharp.fixed;
+    const image = bild.node.childImageSharp.fluid;
+
+    const caption = captions.hasOwnProperty(bild.node.id) ? captions[bild.node.id] : undefined;
+
+    return {
+      src: image.src,
+      srcSet: image.srcSet,
+      nano: thumbnail.base64,
+      thumbnail: thumbnail.src,
+      thumbnailWidth: thumbnail.width,
+      thumbnailHeight: thumbnail.height,
+      caption: caption,
+      thumbnailCaption: caption,
+      alt: caption
+    }
+  });
 
   return (
     <Layout>
@@ -16,15 +40,14 @@ const Bilder = ({name, bilder}) => {
 
       <h1><Link to="/bilder/">Bilder</Link> / {name}</h1>
 
-      {bilder && bilder.map(bild => {
-        const node = bild.node;
+      <Gallery
+        images={images}
+        margin={5}
+        enableImageSelection={false}
+        backdropClosesModal={true}
+        imageCountSeparator=" av "
+        />
 
-        return (
-          <div key={node.id} className="gallery-image-container">
-            <Img className="gallery-image" fluid={node.childImageSharp.fluid} />
-          </div>
-        );
-      })}
     </Layout>
   )
 }
@@ -36,13 +59,32 @@ Bilder.propTypes = {
 export default Bilder
 
 export const galleryImage = graphql`
-  fragment galleryImage on File {
-    id,
-    childImageSharp {
-      fluid(maxWidth: 700) {
-        ...GatsbyImageSharpFluid
+  fragment galleryImage on FileConnection {
+    edges {
+      node {
+        id,
+        childImageSharp {
+          fluid(maxWidth: 1024) {
+            ...GatsbyImageSharpFluid_noBase64
+          },
+          fixed(height: 180, width: 190) {
+            ...GatsbyImageSharpFixed
+          }
+        }
       }
     }
   }
 `
 
+export const galleryCaption = graphql`
+  fragment galleryCaption on CaptionJsonConnection {
+    edges {
+      node {
+        fileName {
+          id
+        },
+        caption
+      }
+    }
+  }
+`

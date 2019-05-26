@@ -4,17 +4,24 @@ import Bilder from "../../components/Bilder";
 import { graphql } from "gatsby"
 
 export default ({ data }) => {
-  return (<Bilder name="Patrullstugorna" bilder={data.bilder.edges} />);
+  return (
+    <Bilder
+      name="Patrullstugorna"
+      bilder={data.bilder.edges}
+      caption={data.caption.edges} />
+  );
 }
 
 export const query = graphql`
   query {
-    bilder: allFile(filter: {relativePath: {glob:"stugor/patrullstugorna/*" }}) {
-      edges {
-        node {
-          ...galleryImage
-        }
-      }
+    bilder: allFile(filter: {
+      relativePath: {glob: "stugor/patrullstugorna/*" },
+      extension: {eq:"jpg"}
+    }) {
+      ...galleryImage
+    },
+    caption: allCaptionJson(filter:{fileName: {relativePath: {glob: "stugor/patrullstugorna/*" }}}) {
+      ...galleryCaption
     }
   }
 `

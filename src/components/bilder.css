@@ -15,3 +15,7 @@
 .gallery-image {
   max-width: 100%;
 }
+
+.ReactGridGallery_tile-description {
+  text-align: center
+}
