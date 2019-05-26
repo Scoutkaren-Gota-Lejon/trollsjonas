@@ -32,11 +32,15 @@ const galleries = [
 ]
 
 export default ({ data }) => {
-  const title = 'Bilder'
-  const keywords = [];
+  const seo = data.seo.frontmatter;
+
+  const title = seo.title
+  const keywords = seo.keywords ? seo.keywords : [];
+  const description = seo.description ? seo.description : '';
+
   return (
     <Layout>
-      <SEO title={title} keywords={keywords} />
+      <SEO title={title} keywords={keywords} description={description} />
       <h1>Bilder</h1>
 
       {galleries.map(page => {
@@ -73,6 +77,14 @@ export const query = graphql`
 
     omradet: file(relativePath: { eq: "stugor/omradet.jpg" }) {
       ...stugImage
+    }
+
+    seo: markdownRemark(fields: { slug: { eq: "/bilder/" } }) {
+      frontmatter {
+        title,
+        keywords,
+        description
+      }
     }
   }
 `

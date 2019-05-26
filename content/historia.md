@@ -1,8 +1,11 @@
 ---
 title: 'Historia'
 order: 5
+description: Historian om Trollsjönäs
 keywords: 
   - historia
+  - hyra stuga
+  - Scoutkåren Göta Lejon
 ---
 # Historia
 Scoutkåren Göta Lejon startade 1945 i Kålltorps Ungdomsgård.

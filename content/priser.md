@@ -1,6 +1,7 @@
 ---
 title: 'Priser'
 order: 6
+description: Vad det kostar att hyra Trollsjönäs
 keywords:
   - hyra scoutstuga
 ---

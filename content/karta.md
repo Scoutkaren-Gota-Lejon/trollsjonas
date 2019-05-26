@@ -1,6 +1,7 @@
 ---
 title: 'Karta över området'
 order: 2
+description: 'Karta med bilder på det olika platserna på Trollsjönäs'
 keywords:
   - karta
 ---

@@ -6,14 +6,18 @@ import Img from "gatsby-image"
 import '../components/stugor.css'
 
 export default ({ data }) => {
-  const title = 'Stugor'
-  const keywords = [];
+  const seo = data.seo.frontmatter;
+
+  const title = seo.title
+  const keywords = seo.keywords ? seo.keywords : [];
+  const description = seo.description ? seo.description : '';
+
   return (
     <Layout>
-      <SEO title={title} keywords={keywords} />
+      <SEO title={title} keywords={keywords} description={description} />
       <h1>Stugorna</h1>
 
-      <div class="stuga-section">
+      <div className="stuga-section">
         <h3>Storstugan</h3>
         <Img className="stuga-image" alt="Storstugan" fixed={data.storstugan.childImageSharp.fixed} />
         <p>
@@ -28,7 +32,7 @@ export default ({ data }) => {
         </p>
       </div>
 
-      <div class="stuga-section">
+      <div className="stuga-section">
         <h3>Timmerstugorna</h3>
         <Img className="stuga-image" alt="Timmerstugorna" fixed={data.timmerhus.childImageSharp.fixed} />
         <p>
@@ -41,7 +45,7 @@ export default ({ data }) => {
         </p>
       </div>
 
-      <div class="stuga-section">
+      <div className="stuga-section">
         <h3>Patrullstugorna</h3>
         <Img className="stuga-image" alt="Röda stugan" fixed={data.patrullstuga.childImageSharp.fixed} />
         <p>
@@ -53,7 +57,7 @@ export default ({ data }) => {
         </p>
       </div>
 
-      <div class="stuga-section">
+      <div className="stuga-section">
         <h3>Hygienanläggningen</h3>
         <Img className="stuga-image" alt="Hygienanläggningen" fixed={data.hygienanlaggning.childImageSharp.fixed} />
         <p>
@@ -95,6 +99,14 @@ export const query = graphql`
 
     hygienanlaggning: file(relativePath: { eq: "stugor/hygienanlaggning.jpg" }) {
       ...stugImage
+    }
+
+    seo: markdownRemark(fields: { slug: { eq: "/stugor/" } }) {
+      frontmatter {
+        title,
+        keywords,
+        description
+      }
     }
   }
 `

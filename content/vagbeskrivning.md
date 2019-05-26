@@ -1,8 +1,12 @@
 ---
 title: Vägbeskrivning
 order: 7
+description: Vägbeskrivning till Trollsjönäs, Göta Lejons friluftsgård
 keywords:
   - hyra scoutstuga
+  - vättlefjäll
+  - trollsjön
+  - scouterna
 ---
 
 # Vägbeskrivning
