@@ -1,0 +1,33 @@
+.site-menu {
+  background-color: #EBF5E4;
+}
+
+.site-menu ul {
+  margin: 0 auto;
+}
+
+.site-menu li {
+	display: inline-block;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.site-menu li a {
+	color: #141412;
+	display: block;
+	font-size: 15px;
+	line-height: 1;
+	padding: 15px 20px;
+	text-decoration: none;
+}
+
+.site-menu li:hover > a,
+.site-menu li a:hover {
+	background-color: #220e10;
+	color: #fff;
+}
+
+.site-menu li .active {
+  color: #bc360a;
+  font-style: italic;
+}

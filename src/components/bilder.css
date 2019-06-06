@@ -1,0 +1,21 @@
+.gallery-list {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.gallery-image-container {
+  width: 25%;
+  float: left;
+  text-align: center;
+  padding: 5px;
+}
+
+.gallery-image {
+  max-width: 100%;
+}
+
+.ReactGridGallery_tile-description {
+  text-align: center
+}

@@ -1,38 +1,73 @@
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Img from "gatsby-image"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
+const Header = ({ siteTitle, maxWidth }) => {
+  const data = useStaticQuery(
+    graphql`
+  query {
+    header: file(relativePath: { eq: "header.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+  }
+`)
+
+  return (
+    <header
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        background: `#0b090b`
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
+      <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: maxWidth,
+          position: 'relative',
+          padding: `0 1.0875rem`,
+          height: '100px'
+        }}
+      >
+        <Img
+          alt="header"
+          fadeIn={false}
+          loading="eager"
+          fluid={data.header.childImageSharp.fluid}
           style={{
-            color: `white`,
-            textDecoration: `none`,
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100%"
           }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+          />
+        <h1 style={{
+          margin: 0,
+          position: 'absolute',
+          top: '30%'
+          }}>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </h1>
+      </div>
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  maxWidth: PropTypes.number
 }
 
 Header.defaultProps = {
