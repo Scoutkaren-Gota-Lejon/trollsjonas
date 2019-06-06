@@ -39,6 +39,7 @@ const sortFunc = (a, b) => {
         <li key={menu.node.fields.slug}>
         <Link
           to={menu.node.fields.slug}
+          partiallyActive={menu.node.fields.slug !== '/'}
           activeClassName="active"
         >
           {menu.node.frontmatter.title}

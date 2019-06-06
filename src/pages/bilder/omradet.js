@@ -14,7 +14,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query($galleryPath: String = "stugor/omradet/*") {
-    bilder: allFile(filter: {
+    bilder: allFile(sort: {fields: name}, filter: {
       relativePath: {glob: $galleryPath },
       extension: {eq:"jpg"}
     }) {

@@ -1,18 +1,22 @@
 [
   {
-    "fileName": "1.jpg",
+    "fileName": "01.jpg",
     "caption": "Utsidan"
   },
   {
-    "fileName": "2.jpg",
-    "caption": "Röda stugan"
+    "fileName": "02.jpg",
+    "caption": "Svarta stugan"
   },
   {
-    "fileName": "3.jpg",
+    "fileName": "03.jpg",
     "caption": "Övervåningen"
   },
   {
-    "fileName": "4.jpg",
+    "fileName": "04.jpg",
     "caption": "Övervåningen"
+  },
+  {
+    "fileName": "05.jpg",
+    "caption": "Undervåningen"
   }
 ]

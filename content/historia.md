@@ -18,9 +18,15 @@ På marken uppfördes 1954 en förrådsbarack och två patrullstugor. Ytterligar
 
 1969-1970 byggdes två timmerstugor av kårens ledarförening Old Trappers. Under 1980-talet revs två gamla patrullstugor. En ny ledarstuga uppfördes och var klar 1984.
 
-1995 byggdes en hygienanläggning med toaletter, handicaptoalett, bastu, duschar och  verkstadsförråd.
+1995 byggdes en hygienanläggning med toaletter, handicaptoalett, bastu, duschar och verkstadsförråd.
 
 Under 2000-talet uppfördes en förrådsbyggnad för kårens lägermaterial. I byggnaden finns också ett kanotförråd. Denna var helt klar 2009.
+
+2017 renoverades köket i Storstugan, samtidigt så lackades även golvet i matrumet/samlingsrumet om.
+
+2018 byggdes ett förråd för gasol och utköksmatlagning bakom blåförrådet.
+
+2019 färdigställdes nya nödutgångar på timmerhusen.
 
 Kåren har en aktiv seniorförening som heter Trappers. Den består av ett 30-tal scouter som  hållit ihop i över 45 år. Föreningen syfte är att stötta scoutkåren Göta Lejons ungdoms-verksamhet  genom att  utveckla och underhålla friluftsanläggningen Trollsjönäs. Löpande underhåll av byggnader och mark genomförs på arbetsdagar och arbetshelger. Sammanhållningen inom Trappers präglas av att de en gång själva levt friluftsliv och lägerliv på anläggningen.
 

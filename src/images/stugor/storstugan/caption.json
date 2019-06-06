@@ -1,38 +1,38 @@
 [
   {
-    "fileName": "1.jpg",
-    "caption": "Samlingsrum/matrum"
-  },
-  {
-    "fileName": "2.jpg",
-    "caption": "Köket - renoverat 2017"
-  },
-  {
-    "fileName": "3.jpg",
-    "caption": "Köket - renoverat 2017"
-  },
-  {
-    "fileName": "4.jpg",
+    "fileName": "01.jpg",
     "caption": "Utsidan - framifrån"
   },
   {
-    "fileName": "5.jpg",
+    "fileName": "02.jpg",
     "caption": "Utsidan - från sidan"
   },
   {
-    "fileName": "6.jpg",
+    "fileName": "03.jpg",
     "caption": "På vintern"
   },
   {
-    "fileName": "7.jpg",
+    "fileName": "04.jpg",
+    "caption": "Samlingsrum/matrum"
+  },
+  {
+    "fileName": "05.jpg",
+    "caption": "Köket - renoverat 2017"
+  },
+  {
+    "fileName": "06.jpg",
+    "caption": "Köket - renoverat 2017"
+  },
+  {
+    "fileName": "07.jpg",
     "caption": "Sovloftet"
   },
   {
-    "fileName": "8.jpg",
+    "fileName": "08.jpg",
     "caption": "Sovloftet"
   },
   {
-    "fileName": "9.jpg",
+    "fileName": "09.jpg",
     "caption": "Kaminen i ledarrummet"
   }
 ]

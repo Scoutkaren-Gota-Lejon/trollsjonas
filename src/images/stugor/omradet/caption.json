@@ -1,38 +1,38 @@
 [
   {
-    "fileName": "1.jpg",
+    "fileName": "01.jpg",
     "caption": "Eldplats på området"
   },
   {
-    "fileName": "2.jpg",
+    "fileName": "02.jpg",
     "caption": "Gräsplan vid patrullstugorna"
   },
   {
-    "fileName": "3.jpg",
+    "fileName": "03.jpg",
     "caption": "Översikt från storstugan"
   },
   {
-    "fileName": "4.jpg",
+    "fileName": "04.jpg",
     "caption": "Översikt från parkeringen"
   },
   {
-    "fileName": "5.jpg",
+    "fileName": "05.jpg",
     "caption": "Sjön från kanotbryggan"
   },
   {
-    "fileName": "6.jpg",
+    "fileName": "06.jpg",
     "caption": "Sjön"
   },
   {
-    "fileName": "7.jpg",
+    "fileName": "07.jpg",
     "caption": "Sjön på vintern"
   },
   {
-    "fileName": "8.jpg",
+    "fileName": "08.jpg",
     "caption": "Badplatsen"
   },
   {
-    "fileName": "9.jpg",
+    "fileName": "09.jpg",
     "caption": "Lågerbålsplatsen/eldplats"
   },
   {
@@ -46,5 +46,17 @@
   {
     "fileName": "12.jpg",
     "caption": "Flaggstången"
+  },
+  {
+    "fileName": "13.jpg",
+    "caption": "Tältplatsen"
+  },
+  {
+    "fileName": "14.jpg",
+    "caption": "Omrdådet från luften"
+  },
+  {
+    "fileName": "15.jpg",
+    "caption": "Sjön från luften"
   }
 ]
