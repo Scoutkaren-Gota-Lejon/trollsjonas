@@ -7,6 +7,7 @@ export default ({ data }) => {
   return (
     <Bilder
       name="Timmerhusen"
+      ingress="Stugorna har 8 sovplatser vardera"
       bilder={data.bilder.edges}
       caption={data.caption.edges} />
   );

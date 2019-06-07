@@ -7,6 +7,7 @@ export default ({ data }) => {
   return (
     <Bilder
       name="Området"
+      ingress="Bilder från området "
       bilder={data.bilder.edges}
       caption={data.caption.edges} />
   );
