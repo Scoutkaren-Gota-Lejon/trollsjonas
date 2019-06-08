@@ -3,40 +3,40 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
-import '../components/bilder.css'
+import "../components/bilder.css"
 
 const galleries = [
   {
-    'url': 'storstugan',
-    'name': 'Storstugan'
+    url: "storstugan",
+    name: "Storstugan",
   },
   {
-    'url': 'patrullstugorna',
-    'name': 'Patrullstugorna',
-    'pic': ''
+    url: "patrullstugorna",
+    name: "Patrullstugorna",
+    pic: "",
   },
   {
-    'url': 'timmerstugorna',
-    'name': 'Timmerhusen',
-    'pic': ''
+    url: "timmerstugorna",
+    name: "Timmerhusen",
+    pic: "",
   },
   {
-    'url': 'hygienanlaggningen',
-    'name': 'Hygienanläggningen',
-    'pic': ''
+    url: "hygienanlaggningen",
+    name: "Hygienanläggningen",
+    pic: "",
   },
   {
-    'url': 'omradet',
-    'name': 'Området'
-  }
+    url: "omradet",
+    name: "Området",
+  },
 ]
 
 export default ({ data }) => {
-  const seo = data.seo.frontmatter;
+  const seo = data.seo.frontmatter
 
   const title = seo.title
-  const keywords = seo.keywords ? seo.keywords : [];
-  const description = seo.description ? seo.description : '';
+  const keywords = seo.keywords ? seo.keywords : []
+  const description = seo.description ? seo.description : ""
 
   return (
     <Layout>
@@ -47,7 +47,11 @@ export default ({ data }) => {
         return (
           <div key={page.url} className="gallery-list">
             <Link className="gallery-link" to={`/bilder/${page.url}`}>
-              <Img fixed={data[page.url].childImageSharp.fixed} alt={page.name} /> <br />
+              <Img
+                fixed={data[page.url].childImageSharp.fixed}
+                alt={page.name}
+              />{" "}
+              <br />
               {page.name}
             </Link>
           </div>
@@ -71,7 +75,9 @@ export const query = graphql`
       ...stugImage
     }
 
-    hygienanlaggningen: file(relativePath: { eq: "stugor/hygienanlaggning.jpg" }) {
+    hygienanlaggningen: file(
+      relativePath: { eq: "stugor/hygienanlaggning.jpg" }
+    ) {
       ...stugImage
     }
 
@@ -81,8 +87,8 @@ export const query = graphql`
 
     seo: markdownRemark(fields: { slug: { eq: "/bilder/" } }) {
       frontmatter {
-        title,
-        keywords,
+        title
+        keywords
         description
       }
     }
