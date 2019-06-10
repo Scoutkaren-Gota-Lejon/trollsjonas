@@ -7,19 +7,21 @@ keywords:
 # Välkommen 
 Trollsjönäs är Scoutkåren Göta Lejons friluftsgård som ligger i Vättlefjälls naturreservat vid sjön Trollsjön, 25 kilometer norr om Göteborg. Med bil tar det 40 minuter från Göteborgs centrala delar, riksväg 45 till Bohus, därifrån 5 kilometer till Rördalen. Bussförbindelser finns till Jennylunds ridhus därifrån är det 4 kilometers vandring.
 
-På Trollsjönäs finns 8 hus, tomtmarken är 20 000 kvm.
+På Trollsjönäs finns 9 hus, tomtmarken är 20 000 kvm.
 
 **Storstugan** är huvudbyggnaden, 140 kvm med kök, samlingsrum, samt ledarrum med 2 sovplatser och sovloft för 12 personer.
 
 **Gula och Röda patrullstugan**, övernattningsstugor med 4 sovplatser i varje.
 
-**Svarta och Vita patrullstugan**, timmer hus i två våningar med 8 sovplatser i varje.
+**Svarta och Vita patrullstugan**, timmerhus i två våningar med 8 sovplatser i varje stuga.
 
 **Violetta huset**, här finns 3 vattentoaletter, fem handfat, varmt och kallt vatten. I huset finns också en toalett för rörelsehindrade.
 
 **Gröna stugan**, (uthyres ej) ledarstuga och utrymme där underhållspersonal håller till.
 
 **Blå stugan**, inrymmer kårens lägermaterial och kanoter.
+
+**Bruna stugan**, här finns anläggningens minireningsverk.
 
 **Kanotbrygga** vid sjön med säker i- och avstigning.
 
@@ -31,7 +33,7 @@ På Trollsjönäs finns 8 hus, tomtmarken är 20 000 kvm.
 
 **Sjöar**. Förutom Trollsjön finns flera sjöar i närområdet, Kroksjön med allmän lägerplats, Stora Björsjön, och Lysevattnet.
 
-Vid Rördalen finns parkeringsplats. Skogsvägen (ca 800 meter) som går fram till anläggningen är dock endast för transport av mat och utrustning. Max 2 bilar per läger.
+Vid Rördalen finns parkeringsplats. Skogsvägen (ca 800 meter) som går fram till anläggningen är dock endast för transport av mat och utrustning. Max 2 bilar per hyresgäst.
 
 ### Hyr Trollsjönäs
 Trollsjönäs hyrs ut under tider då kåren inte nyttjar anläggningen. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor.
@@ -44,4 +46,5 @@ Priser och hyresavtal se under fliken ”[Priser](/priser/)”
 
 ### Vättlefjäll.
 Hela Vättlefjälls naturreservat bjuder på en vacker, nära på trolsk natur.
-De många sjöarna och sjösystemen lämpar sig väl till bad, kanotpaddling och fiske (förutsatt att man har fiskekort)
+De många sjöarna och sjösystemen lämpar sig väl till bad, kanotpaddling och fiske (förutsatt att man har fiskekort).
+Spårkarta över området finns hos <a target="_blank" href="http://vastkuststiftelsen.se/wp-content/uploads/2016/07/vastkuststiftelsen_sparkarta_vattlefjall.pdf">Västkuststiftelsens</a>.

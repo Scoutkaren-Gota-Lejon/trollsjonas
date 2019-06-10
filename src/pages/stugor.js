@@ -23,8 +23,8 @@ const StugSection = ({ data, title, description, imageLink }) => {
 
 const storstuganDesc =
   "Anläggningens största hus inrymmer kök, sällskapsutrymmen och sovplatser." +
-  "Köket för självhushåll är utrustat med de vanligaste faciliteterna så som spis, diskbänk arbetsbänkar, kyl och frys, mikrovågsugn, arbetsredskap och porslin för 40 personer." +
-  "I det större samlingsrummet finns en öppen vedspis, soffor och plats för cirka 30 personer." +
+  "Köket för självhushåll är utrustat med de vanligaste faciliteterna så som spis, diskbänk, diskmaskin, arbetsbänkar, kyl och frys, mikrovågsugn, arbetsredskap och porslin för 40 personer." +
+  "I det större samlingsrummet finns en öppen vedspis, soffor och plats för cirka 40 personer." +
   "Det intilliggande rummet har även det kamin och inrymmer 8-10 personer, alternativ 4 sovplatser." +
   "På övervåningen finns ett sovloft där 12 personer får en god natts sömn i medhavd sovsäck på de befintliga madrasserna."
 
@@ -38,7 +38,7 @@ const patrullDesc =
   "Sängarna är av två-våningsmodell och har fasta madrasser att sova på."
 
 const hygienDesc =
-  "Denna byggnad inrymmer alla toaletter som finns på Trollsjönäs, förutom skogen utanför." +
+  "Denna byggnad inrymmer alla toaletter som finns på Trollsjönäs." +
   "Totalt finns det fyra vattentoaletter där en har ingång med ramp från utsidan." +
   "I anslutning till toaletterna finns det handfat med såväl varmt som kallt vatten."
 

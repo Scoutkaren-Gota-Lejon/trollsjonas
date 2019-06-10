@@ -21,7 +21,7 @@ I Storstugans finns förutom 12 platser på sovloftet 2-4 sovplatser för ledare
 
 I varje uthyrning ingår tillgång till toaletter och tvättställ i hygienanaläggningen.
 
-Kostnad för tältande lägerdeltagare tas ut efter överenskommelse.
+Kostnad för tältande hyresgäster tas ut efter överenskommelse.
 
 Scoutkårer erhåller rabatt med 20 % på ovanstående priser.
 
