@@ -51,4 +51,4 @@ Priser och hyresavtal se under fliken ”[Priser](/priser/)”
 ### Vättlefjäll.
 Hela Vättlefjälls naturreservat bjuder på en vacker, nära på trolsk natur.
 De många sjöarna och sjösystemen lämpar sig väl till bad, kanotpaddling och fiske (förutsatt att man har fiskekort).
-Spårkarta över området finns hos <a target="_blank" href="http://vastkuststiftelsen.se/wp-content/uploads/2016/07/vastkuststiftelsen_sparkarta_vattlefjall.pdf">Västkuststiftelsens</a>.
+Spårkarta över området finns hos <a target="_blank" href="http://vastkuststiftelsen.se/wp-content/uploads/2016/07/vastkuststiftelsen_sparkarta_vattlefjall.pdf">Västkuststiftelsen</a>.
