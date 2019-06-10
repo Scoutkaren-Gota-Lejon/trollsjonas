@@ -12,6 +12,7 @@ const Menu = ({maxWidth}) => {
         node {
           frontmatter {
             title,
+            menu,
             order
           },
           fields {
@@ -42,7 +43,7 @@ const sortFunc = (a, b) => {
           partiallyActive={menu.node.fields.slug !== '/'}
           activeClassName="active"
         >
-          {menu.node.frontmatter.title}
+          {menu.node.frontmatter.menu ? menu.node.frontmatter.menu : menu.node.frontmatter.title}
         </Link>
         </li>
       ))}
