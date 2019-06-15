@@ -20,7 +20,7 @@ const Layout = ({ children }) => (
       query SiteTitleQuery {
         site {
           siteMetadata {
-            title,
+            title
             maxWidth
           }
         }
@@ -28,8 +28,11 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} maxWidth={data.site.siteMetadata.maxWidth} />
-        <Menu  maxWidth={data.site.siteMetadata.maxWidth} />
+        <Header
+          siteTitle={data.site.siteMetadata.title}
+          maxWidth={data.site.siteMetadata.maxWidth}
+        />
+        <Menu maxWidth={data.site.siteMetadata.maxWidth} />
         <div
           style={{
             margin: `1.45rem auto 0`,
@@ -38,13 +41,9 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <main className="main-container">
-            {children}
-          </main>
+          <main className="main-container">{children}</main>
           <Sidebar />
-          <footer>
-
-          </footer>
+          <footer></footer>
         </div>
       </>
     )}

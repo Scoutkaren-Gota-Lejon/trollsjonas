@@ -11,7 +11,7 @@ keywords:
 
 # Vägbeskrivning
 
-**Adress:**  
+**Adress**  
 Trollsjövägen 30  
 445 34 Bohus  
 
