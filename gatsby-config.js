@@ -56,8 +56,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Trollsjönäs`,
+        short_name: `Trollsjönäs`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -107,6 +107,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
