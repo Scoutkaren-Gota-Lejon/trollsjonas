@@ -12,7 +12,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Menu from "./menu/Menu"
 import Sidebar from "./sidebar/Sidebar"
-import "./layout.css"
+import GlobalStyle from "./GlobalStyle"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -28,6 +28,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
+      <GlobalStyle/>
         <Header
           siteTitle={data.site.siteMetadata.title}
           maxWidth={data.site.siteMetadata.maxWidth}

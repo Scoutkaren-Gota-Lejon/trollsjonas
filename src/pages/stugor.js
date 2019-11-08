@@ -1,25 +1,8 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Img from "gatsby-image"
-import "../components/stugor.css"
-
-const StugSection = ({ data, title, description, imageLink }) => {
-  const picLink = `/bilder/${imageLink}`
-  const picSrc = data[imageLink].childImageSharp.fixed
-
-  return (
-    <div className="stuga-section">
-      <h3>{title}</h3>
-      <Img className="stuga-image" alt={title} fixed={picSrc} />
-      <p>{description}</p>
-      <p>
-        <Link to={picLink}>Fler bilder på stugan</Link>
-      </p>
-    </div>
-  )
-}
+import StugSection from "../components/StugSection"
 
 const storstuganDesc =
   "Anläggningens största hus inrymmer kök, sällskapsutrymmen och sovplatser." +

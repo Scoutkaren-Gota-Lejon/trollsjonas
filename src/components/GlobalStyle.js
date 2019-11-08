@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components"
+
+const GlobalStyle = createGlobalStyle`
 html {
   font-family: 'Roboto', sans-serif;
   -ms-text-size-adjust: 100%;
@@ -655,3 +658,7 @@ footer {
   clear: both;
   height: 50px;
 }
+
+`
+
+export default GlobalStyle;
