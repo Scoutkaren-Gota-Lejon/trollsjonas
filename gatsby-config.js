@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     maxWidth: 960,
     title: `Trollsjönäs`,
-    description: ``,
+    description: `Hyr stugor i vättlefjäll.`,
     author: `Stiftelsen Göta Lejons Friluftsgård`,
     siteUrl: `https://trollsjonas.gotalejon.org`
   },
@@ -54,6 +54,7 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-htaccess`,
+    `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

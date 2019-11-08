@@ -34,5 +34,4 @@ Trollsjönäs ligger nära Göteborg:
 * **Med bil**: 30 minuter från Centralstationen, kör 45:an norrut och ta av vid Bohus. För att minska på vägslitaget får enbart två bilar per sällskap köra de sista 800 metrarna fram till husen. 
 * **Med kollektivtrafik och till fots**: 30 minuter på spårvagn och buss från Göteborgs central till Kryddnejlikegatan och en knapp timmes (4,5 km) naturskön promenad. Det går också att promenera (4 km) från busshållplatsen Jennylund. 
 
-
 Här hittar du [vägbeskrivningar](vagbeskrivning).
