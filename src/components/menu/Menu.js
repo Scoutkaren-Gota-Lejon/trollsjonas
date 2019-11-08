@@ -47,7 +47,8 @@ const Menu = ({maxWidth}) => {
           frontmatter {
             title,
             menu,
-            order
+            order,
+            hidden
           },
           fields {
             slug
@@ -69,17 +70,24 @@ const sortFunc = (a, b) => {
         maxWidth: maxWidth,
       }}
     >
-      {data && data.allMarkdownRemark.edges.sort(sortFunc).map(menu => (
-        <li key={menu.node.fields.slug}>
-        <Link
-          to={menu.node.fields.slug}
-          partiallyActive={menu.node.fields.slug !== '/'}
-          activeClassName="active"
-        >
-          {menu.node.frontmatter.menu ? menu.node.frontmatter.menu : menu.node.frontmatter.title}
-        </Link>
-        </li>
-      ))}
+      {data && data.allMarkdownRemark.edges.sort(sortFunc).map(menu => {
+
+        if (menu.node.frontmatter.hidden) {
+          return '';
+        }
+
+        return (
+          <li key={menu.node.fields.slug}>
+          <Link
+            to={menu.node.fields.slug}
+            partiallyActive={menu.node.fields.slug !== '/'}
+            activeClassName="active"
+          >
+            {menu.node.frontmatter.menu ? menu.node.frontmatter.menu : menu.node.frontmatter.title}
+          </Link>
+          </li>
+        )
+      })}
 
         <li>
           <a href="https://gotalejon.org">
