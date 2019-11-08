@@ -1,5 +1,4 @@
 import React from "react"
-import '../../components/stugor.css'
 import Bilder from "../../components/Bilder";
 import { graphql } from "gatsby"
 

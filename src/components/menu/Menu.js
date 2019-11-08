@@ -1,7 +1,41 @@
 import { Link } from "gatsby"
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import "./menu.css"
+import styled from "styled-components"
+
+const Container = styled.div`
+  background-color: #EBF5E4;
+
+  ul {
+    margin: 0 auto;
+  }
+
+  li {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 0;
+
+    a {
+      color: #141412;
+      display: block;
+      font-size: 15px;
+      line-height: 1;
+      padding: 15px 20px;
+      text-decoration: none;
+    }
+
+    .active {
+      color: #bc360a;
+      font-style: italic;
+    }
+
+    &:hover > a,
+    a:hover {
+      background-color: #220e10;
+      color: #fff;
+    }
+  }
+`
 
 const Menu = ({maxWidth}) => {
   const data = useStaticQuery(
@@ -29,8 +63,7 @@ const sortFunc = (a, b) => {
 }
 
   return (
-  <nav
-    className="site-menu">
+  <Container>
     <ul
       style={{
         maxWidth: maxWidth,
@@ -54,7 +87,7 @@ const sortFunc = (a, b) => {
           </a>
         </li>
     </ul>
-  </nav>
+  </Container>
 )
 }
 
