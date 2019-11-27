@@ -1,5 +1,5 @@
 ---
-title: "Välkommen"
+title: "Scout- och lägergård nära Göteborg"
 menu: "Start"
 order: 0
 keywords:
@@ -8,21 +8,35 @@ keywords:
   - Vättlefjäll
   - Trollsjön
 ---
-# Välkommen 
-Trollsjönäs är Scoutkåren Göta Lejons friluftsgård som ligger i Vättlefjälls naturreservat vid sjön Trollsjön, 25 kilometer norr om Göteborg. Med bil tar det 40 minuter från Göteborgs centrala delar, riksväg 45 till Bohus, därifrån 5 kilometer till Rördalen. Bussförbindelser finns till Jennylunds ridhus därifrån är det 4 kilometers vandring.
 
-På Trollsjönäs finns 9 hus, tomtmarken är 20 000 kvm.
+# Scout- och lägergård nära Göteborg 
+Trollsjönäs är Scoutkåren Göta Lejons friluftsgård som ligger i Vättlefjälls naturreservat vid sjön Trollsjön, 25 kilometer norr om Göteborg. 
 
-**Storstugan** är huvudbyggnaden, 140 kvm med kök, samlingsrum, samt ledarrum med 2 sovplatser och sovloft för 12 personer.
+* Plats för 38 övernattande inomhus. 
+* Storstuga med stor samlingslokal och kök.
+* Kanoter, paddlar och flytvästar. 
+* Vindskydd med eldplats, 60 meter från Storstugan.
+* Badplats, vid bergsknalle. 
+* Toaletter och tvättställ.
+* Lägerbålsplats med sittplatser, vackert belägen på udden i Trollsjön.
+* Aktivitetsytor och natur för t.ex. matlagning, orientering, lekar o.s.v. 
+* 20 000 kvm tomtmark.
 
-**Gula och Röda patrullstugan**, övernattningsstugor med 4 sovplatser i varje.
+## Lägergården går att hyra
+Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte nyttjar anläggningen. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. 
 
-**Svarta och Vita patrullstugan**, timmerhus i två våningar med 8 sovplatser i varje stuga.
+Läs mer om att [hyra Trollsjönäs](hyra) eller gör en [bokningsförfrågan direkt](hyra#bokningsförfrågan). 
 
-**Violetta huset**, här finns 3 vattentoaletter, fem handfat, varmt och kallt vatten. I huset finns också en toalett för rörelsehindrade.
+Bland tidigare hyresgäster finns bland annat skolor, scoutkårer, syföreningar, ungdomsgårdar, företag, spelföreningar och yoga-retreats.
 
-**Gröna stugan**, (uthyres ej) ledarstuga och utrymme där underhållspersonal håller till.
+## Nära Göteborg
+Trollsjönäs ligger nära Göteborg: 
+* **Med bil**: 30 minuter från Centralstationen, kör 45:an norrut och ta av vid Bohus. För att minska på vägslitaget får enbart två bilar per sällskap köra de sista 800 metrarna fram till husen. 
+* **Med kollektivtrafik och till fots**: 30 minuter på spårvagn och buss från Göteborgs central till Kryddnejlikegatan och en knapp timmes (4,5 km) naturskön promenad. Det går också att promenera (4 km) från busshållplatsen Jennylund. 
 
+<<<<<<< HEAD
+Här hittar du [vägbeskrivningar](vagbeskrivning).
+=======
 **Blå stugan**, inrymmer kårens lägermaterial och kanoter.
 
 **Bruna stugan**, här finns anläggningens minireningsverk.
@@ -51,4 +65,5 @@ Priser och hyresavtal se under fliken ”[Priser](/priser/)”
 ### Vättlefjäll.
 Hela Vättlefjälls naturreservat bjuder på en vacker, nära på trolsk natur.
 De många sjöarna och sjösystemen lämpar sig väl till bad, kanotpaddling och fiske (förutsatt att man har fiskekort).
-Spårkarta över området finns hos <a target="_blank" href="http://vastkuststiftelsen.se/wp-content/uploads/2016/07/vastkuststiftelsen_sparkarta_vattlefjall.pdf">Västkuststiftelsen</a>.
+Spårkarta över området finns hos <a rel="noreferrer" target="_blank" href="http://vastkuststiftelsen.se/wp-content/uploads/2016/07/vastkuststiftelsen_sparkarta_vattlefjall.pdf">Västkuststiftelsen</a>.
+>>>>>>> refs/remotes/origin/master
