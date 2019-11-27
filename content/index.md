@@ -34,36 +34,5 @@ Trollsjönäs ligger nära Göteborg:
 * **Med bil**: 30 minuter från Centralstationen, kör 45:an norrut och ta av vid Bohus. För att minska på vägslitaget får enbart två bilar per sällskap köra de sista 800 metrarna fram till husen. 
 * **Med kollektivtrafik och till fots**: 30 minuter på spårvagn och buss från Göteborgs central till Kryddnejlikegatan och en knapp timmes (4,5 km) naturskön promenad. Det går också att promenera (4 km) från busshållplatsen Jennylund. 
 
-<<<<<<< HEAD
+
 Här hittar du [vägbeskrivningar](vagbeskrivning).
-=======
-**Blå stugan**, inrymmer kårens lägermaterial och kanoter.
-
-**Bruna stugan**, här finns anläggningens minireningsverk.
-
-**Kanotbrygga** vid sjön med säker i- och avstigning.
-
-**Lägerbålsplats**, vackert belägen på udden i Trollsjön.
-
-**Badplats**, naturbadplats vid bergknalle.
-
-**Vindskydd** för uteövernattning i skogen, 60 meter från Storstugan.
-
-**Sjöar**. Förutom Trollsjön finns flera sjöar i närområdet, Kroksjön med allmän lägerplats, Stora Björsjön, och Lysevattnet.
-
-Vid Rördalen finns parkeringsplats. Skogsvägen (ca 800 meter) som går fram till anläggningen är dock endast för transport av mat och utrustning. Max 2 bilar per hyresgäst.
-
-### Hyr Trollsjönäs
-Trollsjönäs hyrs ut under tider då kåren inte nyttjar anläggningen. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor.
-
-Om du vill hyra Trollsjönäs är du välkommen att kontakta vår uthyrningssamordnare Gert Andersson på telefon 0733-429732, e-postadress [boka@gotalejon.org](mailto:boka@gotalejon.org).
-
-Info om anläggningen lämnas också av stugfogden Lennart Sjöberg 0303-966 20 mobil 0707-513740. e-postadress [len.sjoberg@telia.com](mailto:len.sjoberg@telia.com), eller av Lars Gabrielsson mobil 0705-151786.
-
-Priser och hyresavtal se under fliken ”[Priser](/priser/)”
-
-### Vättlefjäll.
-Hela Vättlefjälls naturreservat bjuder på en vacker, nära på trolsk natur.
-De många sjöarna och sjösystemen lämpar sig väl till bad, kanotpaddling och fiske (förutsatt att man har fiskekort).
-Spårkarta över området finns hos <a rel="noreferrer" target="_blank" href="http://vastkuststiftelsen.se/wp-content/uploads/2016/07/vastkuststiftelsen_sparkarta_vattlefjall.pdf">Västkuststiftelsen</a>.
->>>>>>> refs/remotes/origin/master
