@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    maxWidth: 960,
+    maxWidth: 1100,
     title: `Trollsjönäs`,
     description: `Hyr stugor i vättlefjäll.`,
     author: `Stiftelsen Göta Lejons Friluftsgård`,
@@ -42,7 +42,7 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 600,
+              maxWidth: 650,
             },
           },
         ],
