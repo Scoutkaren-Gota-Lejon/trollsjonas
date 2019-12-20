@@ -32,7 +32,7 @@ const SideBar = () => {
         <h3>Hyra Trollsjönäs</h3>
         Om du vill hyra Trollsjönäs är du välkommen att kontakta vår uthyrningssamordnare<br />
         Gert Andersson på <br />
-        mobil: 0733-429732 <br />
+        mobil: 0707-52 40 81<br />
         e-postadress: <a href="mailto: boka@gotalejon.org">boka@gotalejon.org</a><br /><br />
         <a href={informationsfolder}>Informationsfolder</a>
       </section>

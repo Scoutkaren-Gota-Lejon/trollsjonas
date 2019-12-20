@@ -42,7 +42,7 @@ Vid Rördalen finns parkeringsplats. Skogsvägen (ca 800 meter) som går fram ti
 ### Hyr Trollsjönäs
 Trollsjönäs hyrs ut under tider då kåren inte nyttjar anläggningen. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor.
 
-Om du vill hyra Trollsjönäs är du välkommen att kontakta vår uthyrningssamordnare Gert Andersson på telefon 0733-429732, e-postadress [boka@gotalejon.org](mailto:boka@gotalejon.org).
+Om du vill hyra Trollsjönäs är du välkommen att kontakta vår uthyrningssamordnare Gert Andersson på telefon 0707-52 40 81, e-postadress [boka@gotalejon.org](mailto:boka@gotalejon.org).
 
 Info om anläggningen lämnas också av stugfogden Lennart Sjöberg 0303-966 20 mobil 0707-513740. e-postadress [len.sjoberg@telia.com](mailto:len.sjoberg@telia.com), eller av Lars Gabrielsson mobil 0705-151786.
 
