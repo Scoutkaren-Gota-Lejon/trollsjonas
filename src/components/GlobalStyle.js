@@ -542,7 +542,7 @@ h1 a {
 }
 
 .main-container {
-  max-width: 600px;
+  max-width: 650px;
   width: 100%;
   float: left;
 }

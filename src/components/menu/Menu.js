@@ -20,7 +20,7 @@ const Container = styled.div`
       display: block;
       font-size: 15px;
       line-height: 1;
-      padding: 15px 20px;
+      padding: 15px 15px;
       text-decoration: none;
     }
 
