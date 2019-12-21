@@ -35,9 +35,6 @@ Vid sjön finns kanotbrygga med säker i- och avstigning. Kanoter kan hyras som 
 Pris för fem kanoter med paddlar och flytvästar:
 * 1000 kr första dagen, efterföljande dagar 500 kr.
 
-## Bokningsförfrågan
-Formulär kommer snart!
-
 ## Hyresvillkor
 * [Hyresavtal lägergården Trollsjönäs](hyresavtal.pdf).
 * [Hyresavtal kanoter](hyresavtal-kanoter.pdf)

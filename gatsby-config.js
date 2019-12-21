@@ -53,7 +53,24 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-htaccess`,
+    {
+      resolve: 'gatsby-plugin-htaccess',
+      options: {
+        //RewriteBase: '/custom/',
+        //https: true,
+        //www: true,
+        //SymLinksIfOwnerMatch: true,
+        //host: 'www.mydomain.com', // if 'www' is set to 'false', be sure to also remove it here!
+        //ErrorDocument: `
+        //  ErrorDocument 401 /error_pages/401.html
+        //  ErrorDocument 404 /error_pages/404.html
+        //  ErrorDocument 500 /error_pages/500.html
+        //`,
+        redirect: [
+          'RewriteRule ^priser/?$ /hyra [R=301,L,NE]',
+        ],
+      },
+    },
     `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-plugin-manifest`,
