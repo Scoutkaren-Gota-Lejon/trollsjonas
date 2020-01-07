@@ -40,9 +40,9 @@ Pris för fem kanoter med paddlar och flytvästar:
 * [Hyresavtal kanoter](hyresavtal-kanoter.pdf)
 
 ## Mer information
-Kika gärna runt på sidan för att läsa på om t.ex. [stugorna](stugor) eller se [bilder på lägergården](bilder). 
+Kika gärna runt på sidan för att läsa på om t.ex. [stugorna](/stugor/) eller se [bilder på lägergården](/bilder/). 
 
-Tveka inte att [kontakta oss](kontakta) för mer information.
+Tveka inte att [kontakta oss](/kontakt/) för mer information.
 
 
 

@@ -25,7 +25,7 @@ Trollsjönäs är Scoutkåren Göta Lejons friluftsgård som ligger i Vättlefj�
 ## Lägergården går att hyra
 Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte nyttjar anläggningen. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. 
 
-Läs mer om att [hyra Trollsjönäs](hyra) eller gör en [bokningsförfrågan direkt](hyra#bokningsförfrågan). 
+Läs mer om att [hyra Trollsjönäs](/hyra/).
 
 Bland tidigare hyresgäster finns bland annat skolor, scoutkårer, syföreningar, ungdomsgårdar, företag, spelföreningar och yoga-retreats.
 
@@ -34,4 +34,4 @@ Trollsjönäs ligger nära Göteborg:
 * **Med bil**: 30 minuter från Centralstationen, kör 45:an norrut och ta av vid Bohus. För att minska på vägslitaget får enbart två bilar per sällskap köra de sista 800 metrarna fram till husen. 
 * **Med kollektivtrafik och till fots**: 30 minuter på spårvagn och buss från Göteborgs central till Kryddnejlikegatan och en knapp timmes (4,5 km) naturskön promenad. Det går också att promenera (4 km) från busshållplatsen Jennylund. 
 
-Här hittar du [vägbeskrivningar](vagbeskrivning).
+Här hittar du [vägbeskrivningar](/vagbeskrivning/).
