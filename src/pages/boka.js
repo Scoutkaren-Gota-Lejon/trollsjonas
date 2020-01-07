@@ -4,26 +4,37 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { makeServerPost } from "../api/utils"
 import styled from "styled-components"
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button';
 
 const ErrorContainer = styled.p`
   color: #ff0000;
 `
 
-const TextField = ({label, field, type = 'text'}) => {
-  return (
-    <div>
-      <label htmlFor={`input-${field}`}>{label}</label><br />
-      <input type={type} name={field} id={`input-${field}`} />
-    </div>
-  )
-}
+const FormContainer = styled.form`
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+`
 
-const TextArea = ({label, field}) => {
+const SwitchContainer = styled.div`
+  margin: 15px 0;
+`
+
+const TextFieldCust = ({label, field, type = 'text', fullWidth = true, margin = 'normal'}) => {
   return (
-    <div>
-      <label htmlFor={`input-${field}`}>{label}</label><br />
-      <textarea name={field} id={`input-${field}`}></textarea>
-    </div>
+    <>
+      <TextField
+        label={label}
+        placeholder={label}
+        name={field}
+        type={type}
+        fullWidth={fullWidth}
+        margin={margin} />
+    </>
   )
 }
 
@@ -36,24 +47,29 @@ const BokningForm = ({onSubmit}) => {
   }
 
   return (
-    <form method="post" onSubmit={(event) => onSubmit(event)}>
-      <TextField label="Namn" field="name" />
-      <TextField label="E-post" field="email" type="email" />
-      <TextField label="Telefon" field="phone" type="telephone" />
-      <TextField label="Organisation" field="organisation" />
-      <TextField label="Från" field="from" type="date" />
-      <TextField label="Till" field="to" type="date" />
-
-      <TextArea label="Övrig info/fråga" field="other" />
-
-      <div>
-        <input type="checkbox" name="gdpr" id={`input-gdpr`} onChange={setGdpr} />
-        <label htmlFor={`input-gdpr`}>Godkänner att Stiftelsen lagrar och använder mina personuppgifter.</label>
-
+    <FormContainer onSubmit={(event) => onSubmit(event)} noValidate autoComplete="off">
+      <TextFieldCust label="Förening/Organisation" field="organisation" margin="none" />
+      <TextFieldCust label="Namn" field="name" />
+      <TextFieldCust label="E-post" field="email" type="email" />
+      <TextFieldCust label="Telefon" field="phone" type="telephone" />
+      <div style={{verticalAlign: 'bottom'}}>
+        Datum:
+        <TextFieldCust label="Från" field="from" fullWidth={false} margin="none" /> -
+        <TextFieldCust label="Till" field="to" fullWidth={false} margin="none" />
       </div>
 
-      <button type="submit" disabled={disabled}>Skicka</button>
-    </form>
+      <TextField label="Övrig info/fråga" name="other" multiline  fullWidth={true} margin="normal" />
+
+      <SwitchContainer>
+        <FormControlLabel control={
+          <Switch value="gdpr" color="primary" onChange={setGdpr} />
+          } label="Jag godkänner att Stiftelsen Göta Lejons Friluftsgård lagrar och använder mina personuppgifter." />
+      </SwitchContainer>
+
+      <Button type="submit" variant="contained" color="primary" disabled={disabled}>
+        Skicka förfrågan
+      </Button>
+    </FormContainer>
   )
 }
 
