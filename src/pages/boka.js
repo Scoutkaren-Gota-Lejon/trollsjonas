@@ -8,6 +8,12 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
+import DateFnsUtils from '@date-io/date-fns';
+import svLocale from "date-fns/locale/sv";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 const ErrorContainer = styled.p`
   color: #ff0000;
@@ -22,6 +28,17 @@ const FormContainer = styled.form`
 
 const SwitchContainer = styled.div`
   margin: 15px 0;
+`
+
+const VerticalAlignSpan = styled.span`
+  vertical-align: bottom;
+  padding-bottom: 7px;
+  display: inline-block;
+`
+
+const DatePickerWrapper = styled.div`
+  width: 150px;
+  display: inline-block;
 `
 
 const TextFieldCust = ({label, field, type = 'text', fullWidth = true, margin = 'normal'}) => {
@@ -41,21 +58,59 @@ const TextFieldCust = ({label, field, type = 'text', fullWidth = true, margin = 
 const BokningForm = ({onSubmit}) => {
 
   const [disabled, setDisabled] = useState(true);
+  const [fromDate, handleFromDateChange] = useState(null);
+  const [toDate, handleToDateChange] = useState(null);
 
   const setGdpr = (event) => {
     setDisabled(!event.target.checked)
   }
 
+
   return (
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={svLocale}>
     <FormContainer onSubmit={(event) => onSubmit(event)} noValidate autoComplete="off">
       <TextFieldCust label="Förening/Organisation" field="organisation" margin="none" />
       <TextFieldCust label="Namn" field="name" />
       <TextFieldCust label="E-post" field="email" type="email" />
       <TextFieldCust label="Telefon" field="phone" type="telephone" />
-      <div style={{verticalAlign: 'bottom'}}>
-        Datum:
-        <TextFieldCust label="Från" field="from" fullWidth={false} margin="none" /> -
-        <TextFieldCust label="Till" field="to" fullWidth={false} margin="none" />
+      <div>
+        <VerticalAlignSpan>Datum:&nbsp;&nbsp;</VerticalAlignSpan>
+
+        <DatePickerWrapper>
+          <KeyboardDatePicker
+            autoOk
+            disablePast
+            disableToolbar
+            variant="inline"
+            format="yyyy-MM-dd"
+            margin="none"
+            label="Från"
+            value={fromDate}
+            onChange={handleFromDateChange}
+            KeyboardButtonProps={{
+              'aria-label': 'Välj från',
+            }}
+          />
+        </DatePickerWrapper>
+        <VerticalAlignSpan>&nbsp;&nbsp;--&nbsp;&nbsp;</VerticalAlignSpan>
+        <DatePickerWrapper>
+        <KeyboardDatePicker
+          autoOk
+          disablePast
+          disableToolbar
+          minDate={fromDate}
+          variant="inline"
+          format="yyyy-MM-dd"
+          margin="none"
+          label="Till"
+          value={toDate}
+          onChange={handleToDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'Välj till',
+          }}
+          minDateMessage="Till kan inte vara innan från"
+        />
+        </DatePickerWrapper>
       </div>
 
       <TextField label="Övrig info/fråga" name="other" multiline  fullWidth={true} margin="normal" />
@@ -70,6 +125,7 @@ const BokningForm = ({onSubmit}) => {
         Skicka förfrågan
       </Button>
     </FormContainer>
+    </MuiPickersUtilsProvider>
   )
 }
 
@@ -111,13 +167,12 @@ export default ({ data }) => {
       <SEO title={title} keywords={keywords} description={description} />
       <h1>Bokningsförfrågan</h1>
 
-      <p>Kul att du är intresserad av att hyra Trollsjönäs.</p>
       <p>Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så återkommer vi så snabbt som möjligt.</p>
-      <p>Det går även att boka genom att kontakta vår uthyrningssamordnare <br />Gert Andersson på <br />mobil: 0733-429732<br /> e-postadress: <a href="mailto:boka@gotalejon.org">boka@gotalejon.org</a></p>
-
       {formError && <ErrorContainer>Något gick fel, försök att skicka förfrågan igen.</ErrorContainer>}
 
       {formVisble ? <BokningForm onSubmit={onSubmit} /> : 'Tack för din förfrågan, vi återkommer så snart vi har kollat om de önskade datumet är ledigt.'}
+
+      <p>Det går även att boka genom att kontakta vår uthyrningssamordnare <br />Gert Andersson på <br />mobil: 0733-429732<br /> e-postadress: <a href="mailto:boka@gotalejon.org">boka@gotalejon.org</a></p>
     </Layout>
   )
 }
