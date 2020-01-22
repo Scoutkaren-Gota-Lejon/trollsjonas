@@ -29,20 +29,24 @@ Kostnad för tältande hyresgäster tas ut efter överenskommelse.
 Scoutkårer erhåller rabatt med 20 % på ovanstående priser.
 
 Under vintermånaderna kostar det 15% extra pga ökade värmekostnader och slitage.
+
 ### Kanoter
 Vid sjön finns kanotbrygga med säker i- och avstigning. Kanoter kan hyras som tillval.
 
 Pris för fem kanoter med paddlar och flytvästar:
 * 1000 kr första dagen, efterföljande dagar 500 kr.
 
+## Bokningsförfrågan
+Gör en bokningsförfrågan gernom att använda [bokningsformläret](/kontakt/#form).
+
 ## Hyresvillkor
 * [Hyresavtal lägergården Trollsjönäs](hyresavtal.pdf).
 * [Hyresavtal kanoter](hyresavtal-kanoter.pdf)
 
 ## Mer information
-Kika gärna runt på sidan för att läsa på om t.ex. [stugorna](stugor) eller se [bilder på lägergården](bilder). 
+Kika gärna runt på sidan för att läsa på om t.ex. [stugorna](/stugor/) eller se [bilder på lägergården](/bilder/). 
 
-Tveka inte att [kontakta oss](kontakta) för mer information.
+Tveka inte att [kontakta oss](/kontakt/) för mer information.
 
 
 
