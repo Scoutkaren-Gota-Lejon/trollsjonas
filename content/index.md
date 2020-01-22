@@ -25,7 +25,7 @@ Trollsjönäs är Scoutkåren Göta Lejons friluftsgård som ligger i Vättlefj�
 ## Lägergården går att hyra
 Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte nyttjar anläggningen. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. 
 
-Läs mer om att [hyra Trollsjönäs](/hyra/).
+Läs mer om att [hyra Trollsjönäs](/hyra/) eller gör en [bokningsförfrågan direkt](/kontakt/#form).
 
 Bland tidigare hyresgäster finns bland annat skolor, scoutkårer, syföreningar, ungdomsgårdar, företag, spelföreningar och yoga-retreats.
 

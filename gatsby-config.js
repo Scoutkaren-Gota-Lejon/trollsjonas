@@ -35,6 +35,11 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: "gatsby-remark-component",
+            options: { components: ["booking-form"] }
+          },
+          "gatsby-remark-component",
           "gatsby-remark-copy-linked-files",
           {
             resolve: `gatsby-remark-images`,
@@ -46,6 +51,14 @@ module.exports = {
             },
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
       },
     },
     `gatsby-plugin-styled-components`,
