@@ -2,6 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Boka from "../components/Boka"
+import rehypeReact from "rehype-react"
+
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: { "booking-form": Boka },
+}).Compiler
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -16,7 +23,9 @@ export default ({ data }) => {
         keywords={keywords}
         description={description}
       />
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      {
+        renderAst(post.htmlAst)
+      }
     </Layout>
   )
 }
@@ -24,7 +33,7 @@ export default ({ data }) => {
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+      htmlAst
       frontmatter {
         title
         keywords

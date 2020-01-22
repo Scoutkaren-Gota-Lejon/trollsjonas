@@ -1,12 +1,7 @@
 import React, { useState } from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
 import { makeServerPost } from "../api/utils"
 import styled from "styled-components"
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import DateFnsUtils from '@date-io/date-fns';
 import format from 'date-fns/format'
@@ -25,10 +20,6 @@ const FormContainer = styled.form`
   padding: 20px;
   border-radius: 10px;
   max-width: 500px;
-`
-
-const SwitchContainer = styled.div`
-  margin: 15px 0;
 `
 
 const VerticalAlignSpan = styled.span`
@@ -57,12 +48,6 @@ const TextFieldCust = ({label, field, type = 'text', fullWidth = true, margin = 
 }
 
 const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleToDateChange}) => {
-
-  const [disabled, setDisabled] = useState(true);
-
-  const setGdpr = (event) => {
-    setDisabled(!event.target.checked)
-  }
 
 
   return (
@@ -114,13 +99,8 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
 
       <TextField label="Övrig info/fråga" name="other" multiline  fullWidth={true} margin="normal" />
 
-      <SwitchContainer>
-        <FormControlLabel control={
-          <Switch value="gdpr" color="primary" onChange={setGdpr} />
-          } label="Jag godkänner att Stiftelsen Göta Lejons Friluftsgård lagrar och använder mina personuppgifter." />
-      </SwitchContainer>
-
-      <Button type="submit" variant="contained" color="primary" disabled={disabled}>
+      <br /><br />
+      <Button type="submit" variant="contained" color="primary">
         Skicka förfrågan
       </Button>
     </FormContainer>
@@ -128,12 +108,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
   )
 }
 
-export default ({ data }) => {
-  const seo = data.seo.frontmatter
-
-  const title = seo.title
-  const keywords = seo.keywords ? seo.keywords : []
-  const description = seo.description ? seo.description : ""
+export default () => {
   const [formVisble, setFormVisible] = useState(true);
   const [formError, setFormError] = useState(false);
 
@@ -165,9 +140,8 @@ export default ({ data }) => {
   };
 
   return (
-    <Layout>
-      <SEO title={title} keywords={keywords} description={description} />
-      <h1>Bokningsförfrågan</h1>
+    <div>
+      <h2><a name="form"></a>Bokningsförfrågan</h2>
 
       {formVisble && <p>Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så återkommer vi så snabbt som möjligt.</p>}
       {formError && <ErrorContainer>Något gick fel, försök att skicka förfrågan igen.</ErrorContainer>}
@@ -176,18 +150,6 @@ export default ({ data }) => {
       {!formVisble && <p>Tack för din förfrågan, vi återkommer så snart vi har kollat om de önskade datumet är ledigt.</p>}
 
       <p>Det går även att boka genom att kontakta vår uthyrningssamordnare <br />Gert Andersson på <br />mobil: 0733-429732<br /> e-postadress: <a href="mailto:boka@gotalejon.org">boka@gotalejon.org</a></p>
-    </Layout>
+    </div>
   )
 }
-
-export const query = graphql`
-  query {
-    seo: markdownRemark(fields: { slug: { eq: "/boka/" } }) {
-      frontmatter {
-        title
-        keywords
-        description
-      }
-    }
-  }
-`

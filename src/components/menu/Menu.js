@@ -47,8 +47,7 @@ const Menu = ({maxWidth}) => {
           frontmatter {
             title,
             menu,
-            order,
-            hidden
+            order
           },
           fields {
             slug
@@ -71,10 +70,6 @@ const sortFunc = (a, b) => {
       }}
     >
       {data && data.allMarkdownRemark.edges.sort(sortFunc).map(menu => {
-
-        if (menu.node.frontmatter.hidden) {
-          return '';
-        }
 
         return (
           <li key={menu.node.fields.slug}>
