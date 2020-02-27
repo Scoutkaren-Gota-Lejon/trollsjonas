@@ -13,3 +13,8 @@ keywords:
 * **Stiftelsens ordförande**: Lars Gabrielsson, 0705-151786.
 
 <booking-form />
+
+Det går även att boka genom att kontakta vår uthyrningssamordnare 
+Gert Andersson på 
+Mobil: 0733-429732
+E-postadress: [boka@gotalejon.org](mailto:boka@gotalejon.org?subject=Bokningsförfrågan)
