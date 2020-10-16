@@ -28,6 +28,7 @@ if (isset($_POST)) {
   "Telefon: " . $jsonData->phone . "\r\n" .
   "Datum: " . $jsonData->from . " - " . $jsonData->to . "\r\n" .
   "Antal personer: " . $jsonData->antal . "\r\n" .
+  "Hyra kanoter? " . ($jsonData->kanoter ? 'Ja' : '-') . "\r\n" .
   "Övrig info: \r\n " . $jsonData->other . "\r\n";
 
   $messageHtml = "Bokningsförfrågan från hemsidan. <br><br>" .
@@ -36,7 +37,8 @@ if (isset($_POST)) {
   "E-post: " . $jsonData->email . "<br>" .
   "Telefon: " . $jsonData->phone . "<br>" .
   "Datum: " . $jsonData->from . " - " . $jsonData->to . "<br>" .
-  "Antal personer: " . $jsonData->antal . "<br><br>" .
+  "Antal personer: " . $jsonData->antal . "<br>" .
+  "Hyra kanoter? " . ($jsonData->kanoter ? 'Ja' : '-') . "<br><br>" .
   "Övrig info: <br> " . $jsonData->other . "<br>";
 
   // Instantiation and passing `true` enables exceptions
@@ -57,7 +59,9 @@ if (isset($_POST)) {
     //Recipients
     $mail->setFrom('boka@gotalejon.org', 'Bokningsförfrågan');
     $mail->addAddress($mailTo);               // Name is optional
-    $mail->addReplyTo($jsonData->email);
+    if (!empty($jsonData->email)) {
+      $mail->addReplyTo($jsonData->email);
+    }
 
     // Content
     $mail->CharSet = 'UTF-8';
