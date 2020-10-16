@@ -26,7 +26,8 @@ if (isset($_POST)) {
   "Namn: " . $jsonData->name . "\r\n" .
   "E-post: " . $jsonData->email . "\r\n" .
   "Telefon: " . $jsonData->phone . "\r\n" .
-  "Datum: " . $jsonData->from . " - " . $jsonData->to . "\r\n\r\n" .
+  "Datum: " . $jsonData->from . " - " . $jsonData->to . "\r\n" .
+  "Antal personer: " . $jsonData->antal . "\r\n" .
   "Övrig info: \r\n " . $jsonData->other . "\r\n";
 
   $messageHtml = "Bokningsförfrågan från hemsidan. <br><br>" .
@@ -34,7 +35,8 @@ if (isset($_POST)) {
   "Namn: " . $jsonData->name . "<br>" .
   "E-post: " . $jsonData->email . "<br>" .
   "Telefon: " . $jsonData->phone . "<br>" .
-  "Datum: " . $jsonData->from . " - " . $jsonData->to . "<br><br>" .
+  "Datum: " . $jsonData->from . " - " . $jsonData->to . "<br>" .
+  "Antal personer: " . $jsonData->antal . "<br><br>" .
   "Övrig info: <br> " . $jsonData->other . "<br>";
 
   // Instantiation and passing `true` enables exceptions

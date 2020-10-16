@@ -10,6 +10,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import { Checkbox, FormControlLabel } from "@material-ui/core";
 
 const ErrorContainer = styled.p`
   color: #ff0000;
@@ -47,8 +48,11 @@ const TextFieldCust = ({label, field, type = 'text', fullWidth = true, margin = 
   )
 }
 
-const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleToDateChange}) => {
+const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleToDateChange, kanoter, setKanoter}) => {
 
+  const handleChangeKanoter = (event) => {
+    setKanoter(event.target.checked);
+  };
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={svLocale}>
@@ -57,6 +61,8 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
       <TextFieldCust label="Namn" field="name" />
       <TextFieldCust label="E-post" field="email" type="email" />
       <TextFieldCust label="Telefon" field="phone" type="telephone" />
+      <TextFieldCust label="Antal personer" field="antal" />
+      <br /><br />
       <div>
         <VerticalAlignSpan>Datum:&nbsp;&nbsp;</VerticalAlignSpan>
 
@@ -96,7 +102,20 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
           />
         </DatePickerWrapper>
       </div>
-
+      <br />
+      <div>
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={kanoter}
+            onChange={handleChangeKanoter}
+            name="kanoter"
+            color="primary"
+          />
+        }
+        label="Hyra kanoter"
+      />
+      </div>
       <TextField label="Övrig info/fråga" name="other" multiline  fullWidth={true} margin="normal" />
 
       <br /><br />
@@ -114,6 +133,7 @@ export default () => {
 
   const [fromDate, handleFromDateChange] = useState(null);
   const [toDate, handleToDateChange] = useState(null);
+  const [kanoter, setKanoter] = useState(false);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -127,6 +147,8 @@ export default () => {
       'email': event.target.email.value,
       'phone': event.target.phone.value,
       'organisation': event.target.organisation.value,
+      'antal': event.target.antal,
+      'kanoter': kanoter,
       'from': fromDate ? format(fromDate, 'yyyy-MM-dd') : '',
       'to': toDate ? format(toDate, 'yyyy-MM-dd') : '',
       'other': event.target.other.value,
@@ -146,7 +168,15 @@ export default () => {
       {formVisble && <p>Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så återkommer vi så snabbt som möjligt.</p>}
       {formError && <ErrorContainer>Något gick fel, försök att skicka förfrågan igen.</ErrorContainer>}
 
-      {formVisble && <BokningForm onSubmit={onSubmit} fromDate={fromDate} toDate={toDate} handleFromDateChange={handleFromDateChange} handleToDateChange={handleToDateChange} /> }
+      {formVisble && <BokningForm
+        onSubmit={onSubmit}
+        fromDate={fromDate}
+        toDate={toDate}
+        handleFromDateChange={handleFromDateChange}
+        handleToDateChange={handleToDateChange}
+        kanoter={kanoter}
+        setKanoter={setKanoter}
+        /> }
       {!formVisble && <p>Tack för din förfrågan, vi återkommer så snart vi har kollat om de önskade datumet är ledigt.</p>}
     </div>
   )
