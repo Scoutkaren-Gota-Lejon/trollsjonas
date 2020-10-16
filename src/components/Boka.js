@@ -147,7 +147,7 @@ export default () => {
       'email': event.target.email.value,
       'phone': event.target.phone.value,
       'organisation': event.target.organisation.value,
-      'antal': event.target.antal,
+      'antal': event.target.antal.value,
       'kanoter': kanoter,
       'from': fromDate ? format(fromDate, 'yyyy-MM-dd') : '',
       'to': toDate ? format(toDate, 'yyyy-MM-dd') : '',
