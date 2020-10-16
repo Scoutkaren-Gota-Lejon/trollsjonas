@@ -141,15 +141,13 @@ export default () => {
 
   return (
     <div>
-      <h2><a name="form"></a>Bokningsförfrågan</h2>
+      <h2><a name="form" id="form"></a>Bokningsförfrågan</h2>
 
       {formVisble && <p>Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så återkommer vi så snabbt som möjligt.</p>}
       {formError && <ErrorContainer>Något gick fel, försök att skicka förfrågan igen.</ErrorContainer>}
 
       {formVisble && <BokningForm onSubmit={onSubmit} fromDate={fromDate} toDate={toDate} handleFromDateChange={handleFromDateChange} handleToDateChange={handleToDateChange} /> }
       {!formVisble && <p>Tack för din förfrågan, vi återkommer så snart vi har kollat om de önskade datumet är ledigt.</p>}
-
-      <p>Det går även att boka genom att kontakta vår uthyrningssamordnare <br />Gert Andersson på <br />mobil: 0733-429732<br /> e-postadress: <a href="mailto:boka@gotalejon.org">boka@gotalejon.org</a></p>
     </div>
   )
 }
