@@ -5,6 +5,20 @@ import styled from "styled-components"
 
 const Container = styled.div`
   background-color: #EBF5E4;
+  position: relative;
+  width: 100%;
+
+  input[type=checkbox] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  label {
+    display: none;
+    cursor: pointer;
+    user-select: none;
+  }
 
   ul {
     margin: 0 auto;
@@ -33,6 +47,33 @@ const Container = styled.div`
     a:hover {
       background-color: #220e10;
       color: #fff;
+    }
+  }
+
+  @media (max-width: 44em) {
+    ul {
+      display:none;
+      height:100%;
+    }
+
+    label {
+      position: relative;
+      display: block;
+      width: 100%;
+      min-height: 2.25em;
+      padding: .45em;
+      font-size: 1.1em;
+      margin: 0;
+    }
+
+    input[type=checkbox]:checked ~ ul {
+      display:block;
+
+      > li {
+        width: 100%;
+        opacity: .8;
+        text-align: left;
+      }
     }
   }
 `
@@ -64,6 +105,8 @@ const sortFunc = (a, b) => {
 
   return (
   <Container>
+    <input type="checkbox" id="button" />
+    <label htmlFor="button">Meny</label>
     <ul
       style={{
         maxWidth: maxWidth,
