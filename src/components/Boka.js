@@ -165,6 +165,8 @@ export default () => {
     <div>
       <h2><a name="form" id="form"></a>Bokningsförfrågan</h2>
 
+      <p>Formuläret är tillfälligt avstängt på grund av tekniska problem, vänliga mail er Bokningsförfrågan till <a href="mailto: boka@gotalejon.org">boka@gotalejon.org</a>.</p>
+      {/*
       {formVisble && <p>Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så återkommer vi så snabbt som möjligt.</p>}
       {formError && <ErrorContainer>Något gick fel, försök att skicka förfrågan igen.</ErrorContainer>}
 
@@ -178,6 +180,7 @@ export default () => {
         setKanoter={setKanoter}
         /> }
       {!formVisble && <p>Tack för din förfrågan, vi återkommer så snart vi har kollat om de önskade datumet är ledigt.</p>}
+      */}
     </div>
   )
 }
