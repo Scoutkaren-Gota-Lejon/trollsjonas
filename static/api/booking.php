@@ -59,6 +59,8 @@ if (isset($_POST)) {
     //Recipients
     $mail->setFrom('boka@gotalejon.org', 'Bokningsförfrågan');
     $mail->addAddress($mailTo);               // Name is optional
+    $mail->addAddress("gert.andersson68@gmail.com");
+    $mail->addAddress("len.sjoberg@telia.com");
     if (!empty($jsonData->email)) {
       $mail->addReplyTo($jsonData->email);
     }
