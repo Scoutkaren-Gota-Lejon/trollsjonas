@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { makeServerPost } from "../api/utils"
+import { makeServerPost } from "../backend-api/utils"
 import styled from "styled-components"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -127,7 +127,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
   )
 }
 
-export default () => {
+const Boka = () => {
   const [formVisble, setFormVisible] = useState(true);
   const [formError, setFormError] = useState(false);
 
@@ -181,3 +181,5 @@ export default () => {
     </div>
   )
 }
+
+export default Boka;

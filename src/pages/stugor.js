@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import StugSection from "../components/StugSection"
 
 const storstuganDesc =
@@ -25,7 +25,7 @@ const hygienDesc =
   "Totalt finns det fyra vattentoaletter där en har ingång med ramp från utsidan." +
   "I anslutning till toaletterna finns det handfat med såväl varmt som kallt vatten."
 
-export default ({ data }) => {
+const Stugor = ({ data }) => {
   const seo = data.seo.frontmatter
 
   const title = seo.title
@@ -34,7 +34,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={title} keywords={keywords} description={description} />
+      <Seo title={title} keywords={keywords} description={description} />
       <h1>Stugorna</h1>
 
       <StugSection
@@ -67,6 +67,8 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export default Stugor;
 
 export const stugImage = graphql`
   fragment stugImage on File {

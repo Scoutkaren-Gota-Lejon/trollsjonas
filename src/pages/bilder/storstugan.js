@@ -2,7 +2,7 @@ import React from "react"
 import Bilder from "../../components/Bilder";
 import { graphql } from "gatsby"
 
-export default ({ data }) => {
+const Storstugan = ({ data }) => {
   return (
     <Bilder
       name="Storstugan"
@@ -10,6 +10,8 @@ export default ({ data }) => {
       caption={data.caption.edges} />
   );
 }
+
+export default Storstugan;
 
 export const query = graphql`
   query($galleryPath: String = "stugor/storstugan/*") {

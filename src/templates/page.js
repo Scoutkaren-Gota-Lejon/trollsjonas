@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Boka from "../components/Boka"
 import rehypeReact from "rehype-react"
 
@@ -10,7 +10,7 @@ const renderAst = new rehypeReact({
   components: { "booking-form": Boka },
 }).Compiler
 
-export default ({ data }) => {
+const Page = ({ data }) => {
   const post = data.markdownRemark
   const keywords = post.frontmatter.keywords ? post.frontmatter.keywords : []
   const description = post.frontmatter.description
@@ -18,7 +18,7 @@ export default ({ data }) => {
     : ""
   return (
     <Layout>
-      <SEO
+      <Seo
         title={post.frontmatter.title}
         keywords={keywords}
         description={description}
@@ -29,6 +29,8 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export default Page;
 
 export const query = graphql`
   query($slug: String!) {

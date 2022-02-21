@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Img from "gatsby-image"
 import "../components/bilder.css"
 
@@ -31,7 +31,7 @@ const galleries = [
   },
 ]
 
-export default ({ data }) => {
+const Bilder = ({ data }) => {
   const seo = data.seo.frontmatter
 
   const title = seo.title
@@ -40,7 +40,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={title} keywords={keywords} description={description} />
+      <Seo title={title} keywords={keywords} description={description} />
       <h1>Bilder</h1>
 
       {galleries.map(page => {
@@ -60,6 +60,8 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export default Bilder;
 
 export const query = graphql`
   query {

@@ -54,12 +54,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-material-ui`,
-      options: {
-        stylesProvider: {
-          injectFirst: true,
-        },
-      },
+      resolve: `gatsby-plugin-material-ui`
     },
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
