@@ -19,3 +19,7 @@
 .ReactGridGallery_tile-description {
   text-align: center
 }
+
+.gatsby-image-wrapper {
+  display: inline-block;
+}

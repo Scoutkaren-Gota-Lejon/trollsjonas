@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import "../components/bilder.css"
 
 const galleries = [
@@ -47,18 +47,15 @@ const Bilder = ({ data }) => {
         return (
           <div key={page.url} className="gallery-list">
             <Link className="gallery-link" to={`/bilder/${page.url}`}>
-              <Img
-                fixed={data[page.url].childImageSharp.fixed}
-                alt={page.name}
-              />{" "}
+              <GatsbyImage image={data[page.url].childImageSharp.gatsbyImageData} alt={page.name} />{" "}
               <br />
               {page.name}
             </Link>
           </div>
-        )
+        );
       })}
     </Layout>
-  )
+  );
 }
 
 export default Bilder;

@@ -16,8 +16,7 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
   }, {})
 
   const images = bilder.map(bild => {
-    const thumbnail = bild.node.childImageSharp.fixed
-    const image = bild.node.childImageSharp.fluid
+    const image = bild.node.childImageSharp.gatsbyImageData.images.fallback
 
     const caption = captions.hasOwnProperty(bild.node.id)
       ? captions[bild.node.id]
@@ -26,10 +25,10 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
     return {
       src: image.src,
       srcSet: image.srcSet,
-      nano: thumbnail.base64,
-      thumbnail: thumbnail.src,
-      thumbnailWidth: thumbnail.width,
-      thumbnailHeight: thumbnail.height,
+      nano: image.base64,
+      thumbnail: image.src,
+      thumbnailWidth: image.width,
+      thumbnailHeight: image.height,
       caption: caption,
       thumbnailCaption: caption,
       alt: caption,
@@ -66,22 +65,16 @@ Bilder.propTypes = {
 
 export default Bilder
 
-export const galleryImage = graphql`
-  fragment galleryImage on FileConnection {
-    edges {
-      node {
-        id
-        childImageSharp {
-          fluid(maxWidth: 1024) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-          fixed(height: 180, width: 190) {
-            ...GatsbyImageSharpFixed
-          }
-        }
+export const galleryImage = graphql`fragment galleryImage on FileConnection {
+  edges {
+    node {
+      id
+      childImageSharp {
+        gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
       }
     }
   }
+}
 `
 
 export const galleryCaption = graphql`

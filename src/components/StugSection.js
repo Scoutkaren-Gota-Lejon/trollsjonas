@@ -1,5 +1,5 @@
 import React from "react"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -7,7 +7,7 @@ const Container = styled.div`
   clear: both;
 `
 
-const StugImg = styled(Img)`
+const StugImg = styled(GatsbyImage)`
   float: right;
   margin-left: 10px;
   margin-bottom: 10px;
@@ -15,12 +15,12 @@ const StugImg = styled(Img)`
 
 const StugSection = ({ data, title, description, imageLink }) => {
   const picLink = `/bilder/${imageLink}`
-  const picSrc = data[imageLink].childImageSharp.fixed
+  const picSrc = data[imageLink].childImageSharp.gatsbyImageData
 
   return (
     <Container>
       <h3>{title}</h3>
-      <StugImg alt={title} fixed={picSrc} />
+      <StugImg alt={title} image={picSrc} />
       <p>{description}</p>
       <p>
         <Link to={picLink}>Fler bilder på stugan</Link>

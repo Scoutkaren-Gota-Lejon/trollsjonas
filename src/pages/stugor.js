@@ -70,14 +70,11 @@ const Stugor = ({ data }) => {
 
 export default Stugor;
 
-export const stugImage = graphql`
-  fragment stugImage on File {
-    childImageSharp {
-      fixed(height: 150) {
-        ...GatsbyImageSharpFixed
-      }
-    }
+export const stugImage = graphql`fragment stugImage on File {
+  childImageSharp {
+    gatsbyImageData(height: 150, layout: FIXED)
   }
+}
 `
 
 export const query = graphql`

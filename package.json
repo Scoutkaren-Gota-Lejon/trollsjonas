@@ -12,13 +12,12 @@
     "@material-ui/styles": "^4.11.4",
     "babel-plugin-styled-components": "^2.0.3",
     "date-fns": "^2.24.0",
-    "fetch-mock": "^9.11.0",
     "gatsby": "^4.7.2",
-    "gatsby-image": "^3.11.0",
     "gatsby-legacy-polyfills": "^2.7.0",
     "gatsby-plugin-catch-links": "^4.7.0",
     "gatsby-plugin-google-analytics": "^4.7.0",
     "gatsby-plugin-htaccess": "^1.4.0",
+    "gatsby-plugin-image": "^2.7.0",
     "gatsby-plugin-manifest": "^4.7.0",
     "gatsby-plugin-material-ui": "^4.1.0",
     "gatsby-plugin-offline": "^5.7.0",
@@ -45,7 +44,8 @@
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "fetch-mock": "^9.11.0"
   },
   "license": "MIT",
   "scripts": {
