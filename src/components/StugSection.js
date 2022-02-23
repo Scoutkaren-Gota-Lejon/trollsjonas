@@ -1,6 +1,6 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
-import styled from "styled-components"
+import styled from '@emotion/styled'
 import { Link } from "gatsby"
 
 const Container = styled.div`

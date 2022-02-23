@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import styled from "styled-components"
+import styled from '@emotion/styled'
 
 const Container = styled.div`
   background-color: #EBF5E4;

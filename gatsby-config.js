@@ -56,7 +56,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-material-ui`
     },
-    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,

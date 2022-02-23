@@ -28,7 +28,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-      <GlobalStyle/>
+      <GlobalStyle />
         <Header
           siteTitle={data.site.siteMetadata.title}
           maxWidth={data.site.siteMetadata.maxWidth}

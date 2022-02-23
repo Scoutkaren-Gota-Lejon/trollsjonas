@@ -1,23 +1,21 @@
 import React, { useState } from "react"
 import { makeServerPost } from "../backend-api/utils"
-import styled from "styled-components"
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import DateFnsUtils from '@date-io/date-fns';
+import styled from '@emotion/styled'
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import format from 'date-fns/format'
 import svLocale from "date-fns/locale/sv";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-import { Checkbox, FormControlLabel } from "@material-ui/core";
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import DatePicker from '@mui/lab/DatePicker';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { Checkbox, FormControlLabel } from "@mui/material";
 
 const ErrorContainer = styled.p`
   color: #ff0000;
 `
 
 const FormContainer = styled.form`
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   padding: 20px;
   border-radius: 10px;
   max-width: 500px;
@@ -55,7 +53,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
   };
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={svLocale}>
+    <LocalizationProvider dateAdapter={AdapterDateFns} locale={svLocale}>
     <FormContainer onSubmit={(event) => onSubmit(event)} noValidate autoComplete="off">
       <TextFieldCust label="Förening/Organisation" field="organisation" margin="none" />
       <TextFieldCust label="Namn" field="name" />
@@ -67,12 +65,13 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
         <VerticalAlignSpan>Datum:&nbsp;&nbsp;</VerticalAlignSpan>
 
         <DatePickerWrapper>
-          <KeyboardDatePicker
+        <DatePicker
             autoOk
             disablePast
             disableToolbar
             variant="inline"
-            format="yyyy-MM-dd"
+            mask="____-__-__"
+            inputFormat="yyyy-MM-dd"
             margin="none"
             label="Från"
             value={fromDate}
@@ -80,25 +79,22 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
             KeyboardButtonProps={{
               'aria-label': 'Välj från',
             }}
+            renderInput={(params) => <TextField {...params} />}
           />
         </DatePickerWrapper>
         <VerticalAlignSpan>&nbsp;&nbsp;--&nbsp;&nbsp;</VerticalAlignSpan>
         <DatePickerWrapper>
-          <KeyboardDatePicker
-            autoOk
-            disablePast
-            disableToolbar
-            minDate={fromDate}
-            variant="inline"
-            format="yyyy-MM-dd"
-            margin="none"
-            label="Till"
+        <DatePicker
+          autoOk
+          disablePast
+          disableToolbar
+          minDate={fromDate}
+          label="Till"
+          mask="____-__-__"
+          inputFormat="yyyy-MM-dd"
             value={toDate}
             onChange={handleToDateChange}
-            KeyboardButtonProps={{
-              'aria-label': 'Välj till',
-            }}
-            minDateMessage="Till kan inte vara innan från"
+            renderInput={(params) => <TextField {...params} />}
           />
         </DatePickerWrapper>
       </div>
@@ -123,7 +119,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
         Skicka förfrågan
       </Button>
     </FormContainer>
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   )
 }
 

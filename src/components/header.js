@@ -33,7 +33,6 @@ const Header = ({ siteTitle, maxWidth }) => {
         <GatsbyImage
           image={data.header.childImageSharp.gatsbyImageData}
           alt="header"
-          fadeIn={false}
           loading="eager"
           style={{
             position: "absolute",
