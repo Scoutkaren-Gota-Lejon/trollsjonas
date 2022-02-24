@@ -7,7 +7,7 @@ keywords:
 ---
 
 # Hyr friluftsgården Trollsjönäs
-Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte använder lägergården. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. 
+Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte använder lägergården. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. Friluftsgården hyrs inte ut till privatpersoner. 
 
 ## Priser
 ### Lägeranläggningen
@@ -20,7 +20,7 @@ Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkå
 
 **Obs! en övernattning = 2 dagar.**
 
-I Storstugans finns förutom 12 platser på sovloftet 2-4 sovplatser för ledare i ledarrummet. Dessa platser ingår i priset och minimidebiteringen.
+I Storstugans finns sovloft för 8-10 barn eller 6 vuxna, i ledarrummet finns två utdragbara bäddsoddor för 2-4 vuxna. I Gula stugan finns 4 sovplatser för barn eller vuxna. Dessa platser ingår i priset och minimidebiteringen.
 
 Tillgång till toaletter och tvättställ i hygienanläggningen ingår i alla uthyrningar. 
 
@@ -28,7 +28,9 @@ Kostnad för tältande hyresgäster tas ut efter överenskommelse.
 
 Scoutkårer erhåller rabatt med 20 % på ovanstående priser.
 
-Under vintermånaderna kostar det 15% extra pga ökade värmekostnader och slitage.
+Under vintermånaderna kostar det 15 % extra pga ökade värmekostnader och slitage.
+
+För övernattning finns inte lakan eller kuddar. Sovande i sovsäck skall använda medtaget underlakan.
 
 ### Kanoter
 Vid sjön finns kanotbrygga med säker i- och avstigning. Kanoter kan hyras som tillval.

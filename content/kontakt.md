@@ -9,8 +9,8 @@ keywords:
 # Kontakta oss
 * **Allmän information och bokning**: [boka@gotalejon.org](mailto:boka@gotalejon.org?subject=Bokningsförfrågan).
 * **Uthyrningssamordnare**: Gert Andersson, 0707-52 40 81.
-* **Stugfogde**: Lennart Sjöberg, 0303-966 20, 0707-513740.
-* **Stiftelsens ordförande**: Lars Gabrielsson, 0705-151786.
+* **Stugfogde**: Ulf Mellqvist, 0705-72 23 23.
+* **Stiftelsens ordförande**: Bengt Wackerberg, 0703-19 89 18.
 
 <booking-form></booking-form>
 

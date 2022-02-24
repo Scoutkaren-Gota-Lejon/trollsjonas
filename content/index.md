@@ -12,7 +12,7 @@ keywords:
 # Scout- och lägergård nära Göteborg 
 Trollsjönäs är Scoutkåren Göta Lejons friluftsgård som ligger i Vättlefjälls naturreservat vid sjön Trollsjön, 25 kilometer norr om Göteborg. 
 
-* Plats för 38 övernattande inomhus. 
+* Plats för 36 övernattande inomhus. 
 * Storstuga med stor samlingslokal och kök.
 * Kanoter, paddlar och flytvästar. 
 * Vindskydd med eldplats, 60 meter från Storstugan.
@@ -23,11 +23,11 @@ Trollsjönäs är Scoutkåren Göta Lejons friluftsgård som ligger i Vättlefj�
 * 20 000 kvm tomtmark.
 
 ## Lägergården går att hyra
-Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte nyttjar anläggningen. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. 
+Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte nyttjar anläggningen. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. Ej uthyrning till privatpersoner.
 
 Läs mer om att [hyra Trollsjönäs](/hyra/) eller gör en [bokningsförfrågan direkt](/kontakt/#form).
 
-Bland tidigare hyresgäster finns bland annat skolor, scoutkårer, syföreningar, ungdomsgårdar, företag, spelföreningar och yoga-retreats.
+Bland tidigare hyresgäster finns bland annat scoutkårer, skolor, ungdomsgårdar, företag och idrottsföreningar.
 
 ## Nära Göteborg
 Trollsjönäs ligger nära Göteborg: 

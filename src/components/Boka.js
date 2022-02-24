@@ -161,7 +161,7 @@ const Boka = () => {
     <div>
       <h2><a name="form" id="form"></a>Bokningsförfrågan</h2>
 
-      {formVisble && <p>Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så återkommer vi så snabbt som möjligt.</p>}
+      {formVisble && <p>Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så återkommer vi så snabbt som möjligt. OBS! Trollsjönäs hyrs inte ut till privatpersoner.</p>}
       {formError && <ErrorContainer>Något gick fel, försök att skicka förfrågan igen.</ErrorContainer>}
 
       {formVisble && <BokningForm

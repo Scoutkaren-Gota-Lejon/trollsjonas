@@ -8,8 +8,8 @@ const storstuganDesc =
   "Anläggningens största hus inrymmer kök, sällskapsutrymmen och sovplatser." +
   "Köket för självhushåll är utrustat med de vanligaste faciliteterna så som spis, diskbänk, diskmaskin, arbetsbänkar, kyl och frys, mikrovågsugn, arbetsredskap och porslin för 40 personer." +
   "I det större samlingsrummet finns en öppen vedspis, soffor och plats för cirka 40 personer." +
-  "Det intilliggande rummet har även det kamin och inrymmer 8-10 personer, alternativ 4 sovplatser." +
-  "På övervåningen finns ett sovloft där 12 personer får en god natts sömn i medhavd sovsäck på de befintliga madrasserna."
+  "Det intilliggande rummet har även det kamin och inrymmer 8-10 personer, alternativt 2-4 sovplatser i utdragbara bäddsoffor." +
+  "På övervåningen finns ett sovloft där 6 vuxna eller 8-10 barn får en god natts sömn i medhavd sovsäck på de befintliga madrasserna."
 
 const timmerhusDesc =
   "På Trollsjönäs har vi två likadana stugor som vi kallar för Timmerstugor." +
