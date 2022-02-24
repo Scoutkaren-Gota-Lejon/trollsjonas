@@ -23,7 +23,7 @@ const FormContainer = styled.form`
 
 const VerticalAlignSpan = styled.span`
   vertical-align: bottom;
-  padding-bottom: 7px;
+  padding-bottom: 10px;
   display: inline-block;
 `
 
@@ -79,7 +79,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
             KeyboardButtonProps={{
               'aria-label': 'Välj från',
             }}
-            renderInput={(params) => <TextField {...params} />}
+            renderInput={(params) => <TextField {...params} size="small" />}
           />
         </DatePickerWrapper>
         <VerticalAlignSpan>&nbsp;&nbsp;--&nbsp;&nbsp;</VerticalAlignSpan>
@@ -94,7 +94,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
           inputFormat="yyyy-MM-dd"
             value={toDate}
             onChange={handleToDateChange}
-            renderInput={(params) => <TextField {...params} />}
+            renderInput={(params) => <TextField {...params} size="small" />}
           />
         </DatePickerWrapper>
       </div>
@@ -112,7 +112,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
         label="Hyra kanoter"
       />
       </div>
-      <TextField label="Övrig info/fråga" name="other" multiline  fullWidth={true} margin="normal" />
+      <TextField label="Övrig info/fråga" name="other" multiline minRows={2} fullWidth={true} margin="normal" />
 
       <br /><br />
       <Button type="submit" variant="contained" color="primary">
