@@ -570,6 +570,15 @@ const GlobalStyle = () =>
       margin-left: 0;
     }
   }
+
+  .pricelink {
+    float: right;
+    margin-top: 5px;
+  }
+
+  .priceheading {
+    float: left;
+  }
   
   footer {
     clear: both;

@@ -10,7 +10,9 @@ keywords:
 Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte använder lägergården. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. Friluftsgården hyrs inte ut till privatpersoner. 
 
 ## Priser
-### Lägeranläggningen
+<h3 class="priceheading">Lägeranläggningen</h3>
+<a target="_blank" rel="noreferrer" class="pricelink" href="/prislista-hyra-trollsjonas.pdf">Se prislista</a>
+
 |         |            |   |
 | -------------            |:-----------:| -----:|
 | Storstugan + Gula stugan | 16 platser  | 1000 kr/dag  (minimidebitering) |

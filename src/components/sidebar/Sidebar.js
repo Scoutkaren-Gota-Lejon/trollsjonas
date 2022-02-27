@@ -32,7 +32,7 @@ const SideBar = () => {
           Gert Andersson på <br />
           mobil: 0707-52 40 81<br />
           e-postadress: <a href="mailto: boka@gotalejon.org">boka@gotalejon.org</a><br /><br />
-          <a href={informationsfolder}>Informationsfolder</a>
+          <a target="_blank" rel="noreferrer" href={informationsfolder}>Informationsfolder</a>
         </section>
 
         <section
@@ -45,7 +45,7 @@ const SideBar = () => {
           <h3>Här finns vi</h3>
           <GatsbyImage image={data.map.childImageSharp.gatsbyImageData} alt="här finns vi" />
           <br />
-          <small><a href="https://www.google.com/maps/d/edit?mid=zMXAajihALcI.kU_EyCTSzIV4">Visa på en större karta</a></small>
+          <small><a target="_blank" rel="noreferrer" href="https://www.google.com/maps/d/edit?mid=zMXAajihALcI.kU_EyCTSzIV4">Visa på en större karta</a></small>
         </section>
     </aside>
   );
