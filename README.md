@@ -1,10 +1,26 @@
-<h1 align="center">
-  Trollsjönäs
-</h1>
+#Trollsjönäs
+
+### Setup
+* node 16
+* npm install
+* Create static/api/settings.php
+
+```php
+<?php
+
+$SMTP_USERNAME = "";
+$SMTP_PASSWORD = "";
+```
+
+* npm start
+
+
+### Production build
+* npm run build
 
 [https://trollsjonas.gotalejon.org](https://trollsjonas.gotalejon.org)
 
-Created with Gatsby
+
 
 ## Quick start
 
