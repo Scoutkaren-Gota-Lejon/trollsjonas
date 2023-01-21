@@ -15,10 +15,10 @@ Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkå
 
 |         |            |   |
 | -------------            |:-----------:| -----:|
-| Storstugan + Gula stugan | 16 platser  | 1000 kr/dag  (minimidebitering) |
-| Röda stugan              | 4 platser   | 250 kr/dag |
-| Timmerhus Vita           | 8 platser   | 500 kr/dag |
-| Timmerhus Svarta         | 8 platser   | 500 kr/dag |
+| Storstugan + Gula stugan | 16 platser  | 1200 kr/dag  (minimidebitering) |
+| Röda stugan              | 4 platser   | 300 kr/dag |
+| Timmerhus Vita           | 8 platser   | 600 kr/dag |
+| Timmerhus Svarta         | 8 platser   | 600 kr/dag |
 
 **Obs! en övernattning = 2 dagar.**
 
