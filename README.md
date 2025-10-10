@@ -20,6 +20,14 @@ $SMTP_PASSWORD = "";
 
 [https://trollsjonas.gotalejon.org](https://trollsjonas.gotalejon.org)
 
+## Publicera ändringar 
+
+
+1. gör ändringen,
+2. Testa genom att starta med `npm start`
+3. Bygg koden med `npm run build`
+4. Ersätta innehållet i `trollsjonas.gotalejon.org/public_html/` på webbhotellet med innehållet i `public`
+
 
 
 ## Quick start
