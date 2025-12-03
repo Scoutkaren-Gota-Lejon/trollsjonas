@@ -12,7 +12,6 @@ require 'settings.php';
 
 $mailTo = "boka@gotalejon.org";
 $mailHeader = "Trollsjönäs: Bokning från hemsidan";
-$mailFrom = "Bokningsförfrågan <no-reply@gotalejon.org>";
 
 if (isset($_POST)) {
   // Takes raw data from the request
@@ -57,10 +56,9 @@ if (isset($_POST)) {
     $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('boka@gotalejon.org', 'Bokningsförfrågan');
-    // $mail->addAddress($mailTo);               // Name is optional
-    // $mail->addAddress("gert.andersson68@gmail.com");
-    $mail->addAddress("martin@hesslund.com");
+    $mail->setFrom('online@trollsjonas.gotalejon.org', 'Bokningsförfrågan');
+    $mail->addAddress($mailTo);               // Name is optional
+    $mail->addAddress("gert.andersson68@gmail.com");
     if (!empty($jsonData->email)) {
       $mail->addReplyTo($jsonData->email);
     }
