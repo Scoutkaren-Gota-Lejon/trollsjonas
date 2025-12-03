@@ -49,7 +49,7 @@ if (isset($_POST)) {
     $mail->Encoding = 'base64';
     $mail->SMTPDebug = SMTP::DEBUG_OFF;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->Host       = 'smtp-relay.brevo.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = $SMTP_USERNAME;                     // SMTP username
     $mail->Password   = $SMTP_PASSWORD;                               // SMTP password
@@ -58,9 +58,9 @@ if (isset($_POST)) {
 
     //Recipients
     $mail->setFrom('boka@gotalejon.org', 'Bokningsförfrågan');
-    $mail->addAddress($mailTo);               // Name is optional
-    $mail->addAddress("gert.andersson68@gmail.com");
-    $mail->addAddress("len.sjoberg@telia.com");
+    // $mail->addAddress($mailTo);               // Name is optional
+    // $mail->addAddress("gert.andersson68@gmail.com");
+    $mail->addAddress("martin@hesslund.com");
     if (!empty($jsonData->email)) {
       $mail->addReplyTo($jsonData->email);
     }

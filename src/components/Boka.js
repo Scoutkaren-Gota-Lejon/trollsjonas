@@ -7,7 +7,7 @@ import format from 'date-fns/format'
 import svLocale from "date-fns/locale/sv";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import DatePicker from '@mui/lab/DatePicker';
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { Checkbox, FormControlLabel } from "@mui/material";
 
 const ErrorContainer = styled.p`
