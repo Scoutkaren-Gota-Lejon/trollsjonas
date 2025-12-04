@@ -11,7 +11,6 @@ Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkå
 
 ## Priser
 <h3 class="priceheading">Lägeranläggningen</h3>
-<a target="_blank" rel="noreferrer" class="pricelink" href="/prislista-hyra-trollsjonas.pdf">Se prislista</a>
 
 |         |            |   |
 | -------------            |:-----------:| -----:|
@@ -44,8 +43,8 @@ Pris för fem kanoter med paddlar och flytvästar:
 Gör en bokningsförfrågan gernom att använda [bokningsformläret](/kontakt/#form).
 
 ## Hyresvillkor
-* [Hyresavtal lägergården Trollsjönäs](hyresavtal.pdf).
-* [Hyresavtal kanoter](hyresavtal-kanoter.pdf)
+* <a target="_blank" rel="noreferrer" class="pricelink" href="/hyresavtal.pdf">Hyresavtal lägergården Trollsjönäs</a>
+* <a target="_blank" rel="noreferrer" class="pricelink" href="/hyresavtal-kanoter.pdf">Hyresavtal kanoter</a>
 
 ## Mer information
 Kika gärna runt på sidan för att läsa på om t.ex. [stugorna](/stugor/) eller se [bilder på lägergården](/bilder/). 

@@ -571,11 +571,6 @@ const GlobalStyle = () =>
     }
   }
 
-  .pricelink {
-    float: right;
-    margin-top: 5px;
-  }
-
   .priceheading {
     float: left;
   }
