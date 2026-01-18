@@ -3,11 +3,12 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Boka from "../components/Boka"
+import PriceCalc from "../components/PriceCalc"
 import rehypeReact from "rehype-react"
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
-  components: { "booking-form": Boka },
+  components: { "booking-form": Boka, "price-calc": PriceCalc },
 }).Compiler
 
 const Page = ({ data }) => {

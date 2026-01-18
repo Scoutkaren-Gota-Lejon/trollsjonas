@@ -10,6 +10,27 @@ keywords:
 Trollsjönäs hyrs ut under hela året, på veckodagar och helger, när scoutkåren inte använder lägergården. Uthyrning sker i första hand till andra scoutkårer, ideella föreningar och skolor. Friluftsgården hyrs inte ut till privatpersoner. 
 
 ## Priser
+
+### Räkna ut pris
+
+<price-calc></price-calc>
+
+**Obs! en övernattning = 2 dagar.**
+
+<p>
+Under vintermånaderna kostar det 15 % extra pga ökade värmekostnader och slitage.
+</p>
+
+### Kanoter
+Vid sjön finns kanotbrygga med säker i- och avstigning. Kanoter kan hyras som tillval.
+
+Pris för fem kanoter med paddlar och flytvästar:
+* 1000 kr första dagen, efterföljande dagar 500 kr.
+
+## Bokningsförfrågan
+Gör en bokningsförfrågan gernom att använda [bokningsformläret](/kontakt/#form).
+
+
 <h3 class="priceheading">Lägeranläggningen</h3>
 
 |         |            |   |
@@ -32,15 +53,6 @@ Scoutkårer erhåller rabatt med 20 % på ovanstående priser.
 Under vintermånaderna kostar det 15 % extra pga ökade värmekostnader och slitage.
 
 För övernattning finns inte lakan eller kuddar. Sovande i sovsäck skall använda medtaget underlakan.
-
-### Kanoter
-Vid sjön finns kanotbrygga med säker i- och avstigning. Kanoter kan hyras som tillval.
-
-Pris för fem kanoter med paddlar och flytvästar:
-* 1000 kr första dagen, efterföljande dagar 500 kr.
-
-## Bokningsförfrågan
-Gör en bokningsförfrågan gernom att använda [bokningsformläret](/kontakt/#form).
 
 ## Hyresvillkor
 * <a target="_blank" rel="noreferrer" class="pricelink" href="/hyresavtal.pdf">Hyresavtal lägergården Trollsjönäs</a>
