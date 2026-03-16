@@ -3,11 +3,11 @@ import { makeServerPost } from "../backend-api/utils"
 import styled from '@emotion/styled'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import format from 'date-fns/format'
-import svLocale from "date-fns/locale/sv";
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import DatePicker from '@mui/lab/DatePicker';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { format } from 'date-fns'
+import { sv } from "date-fns/locale";
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Checkbox, FormControlLabel } from "@mui/material";
 
 const ErrorContainer = styled.p`
@@ -53,7 +53,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
   };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns} locale={svLocale}>
+    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={sv}>
     <FormContainer onSubmit={(event) => onSubmit(event)} noValidate autoComplete="off">
       <TextFieldCust label="Förening/Organisation" field="organisation" margin="none" />
       <TextFieldCust label="Namn" field="name" />
@@ -66,36 +66,25 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
 
         <DatePickerWrapper>
         <DatePicker
-            autoOk
             disablePast
-            disableToolbar
-            variant="inline"
-            mask="____-__-__"
-            inputFormat="yyyy-MM-dd"
-            margin="none"
+            format="yyyy-MM-dd"
             label="Från"
             value={fromDate}
             onChange={handleFromDateChange}
-            KeyboardButtonProps={{
-              'aria-label': 'Välj från',
-            }}
-            renderInput={(params) => <TextField {...params} size="small" />}
+            slotProps={{ textField: { size: "small" } }}
           />
         </DatePickerWrapper>
         <VerticalAlignSpan>&nbsp;&nbsp;--&nbsp;&nbsp;</VerticalAlignSpan>
         <DatePickerWrapper>
         <DatePicker
-          autoOk
           disablePast
-          disableToolbar
           minDate={fromDate}
           label="Till"
-          mask="____-__-__"
-          inputFormat="yyyy-MM-dd"
-            value={toDate}
-            onChange={handleToDateChange}
-            renderInput={(params) => <TextField {...params} size="small" />}
-          />
+          format="yyyy-MM-dd"
+          value={toDate}
+          onChange={handleToDateChange}
+          slotProps={{ textField: { size: "small" } }}
+        />
         </DatePickerWrapper>
       </div>
       <br />
