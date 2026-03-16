@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   trailingSlash: "always",
   siteMetadata: {
     maxWidth: 1100,
@@ -21,14 +21,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${import.meta.dirname}/src/images`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/content`,
+        path: `${import.meta.dirname}/content`,
       },
     },
     {
@@ -135,3 +135,5 @@ module.exports = {
     },
   ],
 }
+
+export default config

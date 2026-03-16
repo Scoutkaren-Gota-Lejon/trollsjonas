@@ -1,7 +1,7 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+import path from "path"
+import { createFilePath } from "gatsby-source-filesystem"
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+export const onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode, basePath: `pages` })
@@ -13,7 +13,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-exports.createPages = ({ graphql, actions }) => {
+export const createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
     {
@@ -37,8 +37,6 @@ exports.createPages = ({ graphql, actions }) => {
           path: node.fields.slug,
           component: path.resolve(`./src/templates/page.js`),
           context: {
-            // Data passed to context is available
-            // in page queries as GraphQL variables.
             slug: node.fields.slug,
           },
         })

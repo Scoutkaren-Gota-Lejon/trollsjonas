@@ -1,15 +1,17 @@
 import React from "react"
+import * as production from "react/jsx-runtime"
+import { toJsxRuntime } from "hast-util-to-jsx-runtime"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { SeoHead } from "../components/seo"
 import Boka from "../components/Boka"
 import PriceCalc from "../components/PriceCalc"
-import rehypeReact from "rehype-react"
 
-const renderAst = new rehypeReact({
-  createElement: React.createElement,
-  components: { "booking-form": Boka, "price-calc": PriceCalc },
-}).Compiler
+const renderAst = (tree) =>
+  toJsxRuntime(tree, {
+    ...production,
+    components: { "booking-form": Boka, "price-calc": PriceCalc },
+  })
 
 const Page = ({ data }) => {
   const post = data.markdownRemark
