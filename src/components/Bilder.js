@@ -1,11 +1,14 @@
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
 import Layout from "./layout"
 import { graphql, Link } from "gatsby"
 import { Gallery } from "react-grid-gallery"
+import Lightbox from "yet-another-react-lightbox"
+import "yet-another-react-lightbox/styles.css"
 import "./bilder.css"
 
 const Bilder = ({ name, ingress, bilder, caption }) => {
+  const [index, setIndex] = useState(-1);
   const captions = caption.reduce((obj, item) => {
     obj[item.node.fileName.id] = item.node.caption
     return obj
@@ -41,6 +44,13 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
         images={images}
         margin={5}
         enableImageSelection={false}
+        onClick={(index) => setIndex(index)}
+      />
+      <Lightbox
+        slides={images.map(img => ({ src: img.src, alt: img.alt, title: img.caption }))}
+        open={index >= 0}
+        index={index}
+        close={() => setIndex(-1)}
       />
     </Layout>
   )
