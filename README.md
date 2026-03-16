@@ -1,7 +1,7 @@
 #Trollsjönäs
 
 ### Setup
-* node 20
+* node 24
 * npm install
 * Create static/api/settings.php
 
