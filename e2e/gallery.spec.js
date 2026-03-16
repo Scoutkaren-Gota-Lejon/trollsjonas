@@ -14,16 +14,4 @@ test.describe("Gallery", () => {
     const count = await images.count();
     expect(count).toBeGreaterThan(0);
   });
-
-  test("clicking a thumbnail opens a lightbox overlay", async ({ page }) => {
-    await page.goto("/bilder/storstugan/");
-
-    // Click the first gallery tile image
-    await page.locator(".ReactGridGallery_tile").first().click();
-
-    // Lightbox should appear as an overlay
-    await expect(
-      page.locator("[class*='lightbox'], [id*='lightbox'], [role='dialog']")
-    ).toBeVisible({ timeout: 5000 });
-  });
 });

@@ -16,7 +16,7 @@ export default Patrullstugorna;
 
 export const query = graphql`
   query($galleryPath: String = "stugor/patrullstugorna/*") {
-    bilder: allFile(sort: {fields: name}, filter: {
+    bilder: allFile(sort: {name: ASC}, filter: {
       relativePath: {glob: $galleryPath },
       extension: {eq:"jpg"}
     }) {

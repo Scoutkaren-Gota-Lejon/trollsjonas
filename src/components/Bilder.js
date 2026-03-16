@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "./layout"
 import Seo from "./seo"
 import { graphql, Link } from "gatsby"
-import Gallery from "react-grid-gallery"
+import { Gallery } from "react-grid-gallery"
 import "./bilder.css"
 
 const Bilder = ({ name, ingress, bilder, caption }) => {
@@ -24,11 +24,9 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
 
     return {
       src: image.src,
-      srcSet: image.srcSet,
       nano: image.base64,
-      thumbnail: image.src,
-      thumbnailWidth: image.width,
-      thumbnailHeight: image.height,
+      width: image.width,
+      height: image.height,
       caption: caption,
       thumbnailCaption: caption,
       alt: caption,
@@ -49,8 +47,6 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
         images={images}
         margin={5}
         enableImageSelection={false}
-        backdropClosesModal={true}
-        imageCountSeparator=" av "
       />
     </Layout>
   )

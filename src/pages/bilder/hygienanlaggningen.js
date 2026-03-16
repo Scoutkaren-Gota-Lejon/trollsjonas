@@ -16,7 +16,7 @@ export default Hygienanlaggning;
 
 export const query = graphql`
   query($galleryPath: String = "stugor/hygienanlaggning/*") {
-    bilder: allFile(sort: {fields: name}, filter: {
+    bilder: allFile(sort: {name: ASC}, filter: {
       relativePath: {glob: $galleryPath },
       extension: {eq:"jpg"}
     }) {

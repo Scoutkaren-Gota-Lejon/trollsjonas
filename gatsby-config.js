@@ -1,4 +1,5 @@
 module.exports = {
+  trailingSlash: "always",
   siteMetadata: {
     maxWidth: 1100,
     title: `Trollsjönäs`,
@@ -44,17 +45,11 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
               maxWidth: 650,
             },
           },
         ],
       },
-    },
-    {
-      resolve: `gatsby-plugin-material-ui`
     },
     `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
@@ -65,16 +60,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-htaccess',
       options: {
-        //RewriteBase: '/custom/',
-        //https: true,
-        //www: true,
-        //SymLinksIfOwnerMatch: true,
-        //host: 'www.mydomain.com', // if 'www' is set to 'false', be sure to also remove it here!
-        //ErrorDocument: `
-        //  ErrorDocument 401 /error_pages/401.html
-        //  ErrorDocument 404 /error_pages/404.html
-        //  ErrorDocument 500 /error_pages/500.html
-        //`,
         redirect: [
           'RewriteRule ^priser/?$ /hyra [R=301,L,NE]',
         ],
@@ -90,7 +75,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`,
         icons: [
           {
             src: `/favicons/icon-48x48.png`,
@@ -137,19 +122,17 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: "UA-25532932-2",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true
+        trackingIds: ["UA-25532932-2"],
+        gtagConfig: {
+          anonymize_ip: true,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+        },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

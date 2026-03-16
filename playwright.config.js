@@ -22,5 +22,6 @@ module.exports = defineConfig({
     command: "npx gatsby serve",
     port: 9000,
     reuseExistingServer: true,
+    timeout: 60000,
   },
 });
