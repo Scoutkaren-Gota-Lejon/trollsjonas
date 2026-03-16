@@ -1,15 +1,11 @@
 import PropTypes from "prop-types"
 import React from "react"
 import Layout from "./layout"
-import Seo from "./seo"
 import { graphql, Link } from "gatsby"
 import { Gallery } from "react-grid-gallery"
 import "./bilder.css"
 
 const Bilder = ({ name, ingress, bilder, caption }) => {
-  const title = `Bilder - ${name}`
-  const keywords = ["stugor", "bilder", "hyra scoutstuga"]
-
   const captions = caption.reduce((obj, item) => {
     obj[item.node.fileName.id] = item.node.caption
     return obj
@@ -35,8 +31,6 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
 
   return (
     <Layout>
-      <Seo title={title} keywords={keywords} />
-
       <h1>
         <Link to="/bilder/">Bilder</Link> / {name}
       </h1>

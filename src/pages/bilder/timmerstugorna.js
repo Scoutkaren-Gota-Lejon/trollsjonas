@@ -1,6 +1,7 @@
 import React from "react"
 import Bilder from "../../components/Bilder";
 import { graphql } from "gatsby"
+import { SeoHead } from "../../components/seo"
 
 const Timmerstugor = ({ data }) => {
   return (
@@ -13,6 +14,10 @@ const Timmerstugor = ({ data }) => {
 }
 
 export default Timmerstugor;
+
+export function Head() {
+  return <SeoHead title="Bilder - Timmerhusen" keywords={["stugor", "bilder", "hyra scoutstuga"]} />
+}
 
 export const query = graphql`
   query($galleryPath: String = "stugor/timmerhusen/*") {
