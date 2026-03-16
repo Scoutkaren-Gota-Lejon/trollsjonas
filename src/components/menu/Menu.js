@@ -1,6 +1,5 @@
-import { Link } from "gatsby"
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import styled from '@emotion/styled'
 
 const Container = styled.div`
@@ -135,10 +134,6 @@ const sortFunc = (a, b) => {
     </ul>
   </Container>
 )
-}
-
-Menu.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Menu

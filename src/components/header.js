@@ -1,9 +1,9 @@
 import { Link, graphql, useStaticQuery } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import PropTypes from "prop-types"
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const Header = ({ siteTitle, maxWidth }) => {
+const Header = ({ siteTitle = "", maxWidth }) => {
   const data = useStaticQuery(
     graphql`{
   header: file(relativePath: {eq: "header.jpg"}) {
@@ -68,8 +68,5 @@ Header.propTypes = {
   maxWidth: PropTypes.number,
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
