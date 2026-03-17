@@ -1,10 +1,10 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
 
-import Header from "./header"
-import Menu from "./menu/Menu"
-import Sidebar from "./sidebar/Sidebar"
-import GlobalStyle from "./GlobalStyle"
+import Header from "./header";
+import Menu from "./menu/Menu";
+import Sidebar from "./sidebar/Sidebar";
+import GlobalStyle from "./GlobalStyle";
 
 const Layout = ({ children }: { children: React.ReactNode }) => (
   <StaticQuery
@@ -18,9 +18,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
-      <GlobalStyle />
+        <GlobalStyle />
         <Header
           siteTitle={data.site.siteMetadata.title}
           maxWidth={data.site.siteMetadata.maxWidth}
@@ -41,6 +41,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
       </>
     )}
   />
-)
+);
 
-export default Layout
+export default Layout;

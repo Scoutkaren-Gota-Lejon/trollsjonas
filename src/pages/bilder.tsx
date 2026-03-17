@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
-import { SeoHead } from "../components/seo"
+import React from "react";
+import { graphql, Link } from "gatsby";
+import Layout from "../components/layout";
+import { SeoHead } from "../components/seo";
 import { GatsbyImage } from "gatsby-plugin-image";
-import "../components/bilder.css"
+import "../components/bilder.css";
 
 const galleries = [
   {
@@ -29,18 +29,21 @@ const galleries = [
     url: "omradet",
     name: "Området",
   },
-]
+];
 
 const Bilder = ({ data }: { data: Record<string, any> }) => {
   return (
     <Layout>
       <h1>Bilder</h1>
 
-      {galleries.map(page => {
+      {galleries.map((page) => {
         return (
           <div key={page.url} className="gallery-list">
             <Link className="gallery-link" to={`/bilder/${page.url}`}>
-              <GatsbyImage image={data[page.url].childImageSharp.gatsbyImageData} alt={page.name} />{" "}
+              <GatsbyImage
+                image={data[page.url].childImageSharp.gatsbyImageData}
+                alt={page.name}
+              />{" "}
               <br />
               {page.name}
             </Link>
@@ -49,15 +52,17 @@ const Bilder = ({ data }: { data: Record<string, any> }) => {
       })}
     </Layout>
   );
-}
+};
 
 export default Bilder;
 
 export function Head({ data }: { data: Record<string, any> }) {
-  const seo = data.seo.frontmatter
-  const keywords = seo.keywords || []
-  const description = seo.description || ""
-  return <SeoHead title={seo.title} keywords={keywords} description={description} />
+  const seo = data.seo.frontmatter;
+  const keywords = seo.keywords || [];
+  const description = seo.description || "";
+  return (
+    <SeoHead title={seo.title} keywords={keywords} description={description} />
+  );
 }
 
 export const query = graphql`
@@ -92,4 +97,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

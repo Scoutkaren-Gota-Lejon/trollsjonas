@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 import Bilder from "../../components/Bilder";
-import { graphql } from "gatsby"
-import { SeoHead } from "../../components/seo"
+import { graphql } from "gatsby";
+import { SeoHead } from "../../components/seo";
 
 const Timmerstugor = ({ data }: { data: Record<string, any> }) => {
   return (
@@ -9,26 +9,34 @@ const Timmerstugor = ({ data }: { data: Record<string, any> }) => {
       name="Timmerhusen"
       ingress="Stugorna har 8 sovplatser vardera"
       bilder={data.bilder.edges}
-      caption={data.caption.edges} />
+      caption={data.caption.edges}
+    />
   );
-}
+};
 
 export default Timmerstugor;
 
 export function Head() {
-  return <SeoHead title="Bilder - Timmerhusen" keywords={["stugor", "bilder", "hyra scoutstuga"]} />
+  return (
+    <SeoHead
+      title="Bilder - Timmerhusen"
+      keywords={["stugor", "bilder", "hyra scoutstuga"]}
+    />
+  );
 }
 
 export const query = graphql`
-  query($galleryPath: String = "stugor/timmerhusen/*") {
-    bilder: allFile(sort: {name: ASC}, filter: {
-      relativePath: {glob: $galleryPath },
-      extension: {eq:"jpg"}
-    }) {
+  query ($galleryPath: String = "stugor/timmerhusen/*") {
+    bilder: allFile(
+      sort: { name: ASC }
+      filter: { relativePath: { glob: $galleryPath }, extension: { eq: "jpg" } }
+    ) {
       ...galleryImage
-    },
-    caption: allCaptionJson(filter:{fileName: {relativePath: {glob: $galleryPath }}}) {
+    }
+    caption: allCaptionJson(
+      filter: { fileName: { relativePath: { glob: $galleryPath } } }
+    ) {
       ...galleryCaption
     }
   }
-`
+`;

@@ -1,23 +1,22 @@
-import { Link, graphql, useStaticQuery } from "gatsby"
-import React from "react"
+import { Link, graphql, useStaticQuery } from "gatsby";
+import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 interface HeaderProps {
-  siteTitle?: string
-  maxWidth: number
+  siteTitle?: string;
+  maxWidth: number;
 }
 
 const Header = ({ siteTitle = "", maxWidth }: HeaderProps) => {
-  const data = useStaticQuery(
-    graphql`{
-  header: file(relativePath: {eq: "header.jpg"}) {
-    childImageSharp {
-      gatsbyImageData(width: 800, placeholder: NONE, layout: CONSTRAINED)
+  const data = useStaticQuery(graphql`
+    {
+      header: file(relativePath: { eq: "header.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(width: 800, placeholder: NONE, layout: CONSTRAINED)
+        }
+      }
     }
-  }
-}
-`
-  )
+  `);
 
   return (
     <header
@@ -44,7 +43,8 @@ const Header = ({ siteTitle = "", maxWidth }: HeaderProps) => {
             top: 0,
             width: "100%",
             height: "100%",
-          }} />
+          }}
+        />
         <h1
           style={{
             margin: 0,
@@ -65,6 +65,6 @@ const Header = ({ siteTitle = "", maxWidth }: HeaderProps) => {
       </div>
     </header>
   );
-}
+};
 
-export default Header
+export default Header;

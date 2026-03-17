@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styled from '@emotion/styled';
-import TextField from '@mui/material/TextField';
+import styled from "@emotion/styled";
+import TextField from "@mui/material/TextField";
 import { Checkbox, FormControlLabel } from "@mui/material";
 
 const MIN_PERSONS = 16;
@@ -20,16 +20,24 @@ const FormContainer = styled.form`
 `;
 
 interface TextFieldCustProps {
-  label: string
-  value: string
-  field: string
-  type?: string
-  fullWidth?: boolean
-  margin?: "none" | "normal" | "dense"
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  label: string;
+  value: string;
+  field: string;
+  type?: string;
+  fullWidth?: boolean;
+  margin?: "none" | "normal" | "dense";
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextFieldCust = ({label, value, field, type = 'text', fullWidth = true, margin = 'normal', onChange}: TextFieldCustProps) => {
+const TextFieldCust = ({
+  label,
+  value,
+  field,
+  type = "text",
+  fullWidth = true,
+  margin = "normal",
+  onChange,
+}: TextFieldCustProps) => {
   return (
     <TextField
       label={label}
@@ -39,8 +47,9 @@ const TextFieldCust = ({label, value, field, type = 'text', fullWidth = true, ma
       type={type}
       fullWidth={fullWidth}
       onChange={onChange}
-      margin={margin} />
-  )
+      margin={margin}
+    />
+  );
 };
 
 export default function PriceCalc() {
@@ -53,7 +62,9 @@ export default function PriceCalc() {
 
   useEffect(() => {
     if (days && persons) {
-      const priceOneDay = Math.max(MIN_PERSONS, persons) * (scouting ? PRICE_SCOUTING_DAY : PRICE_DAY);
+      const priceOneDay =
+        Math.max(MIN_PERSONS, persons) *
+        (scouting ? PRICE_SCOUTING_DAY : PRICE_DAY);
 
       setPrice(priceOneDay * days);
     } else {
@@ -91,18 +102,19 @@ export default function PriceCalc() {
       />
       <FormControlLabel
         control={
-        <Checkbox
-          checked={scouting}
-          onChange={() => {
-            setScouting((v) => !v);
-          }}
-        />}
+          <Checkbox
+            checked={scouting}
+            onChange={() => {
+              setScouting((v) => !v);
+            }}
+          />
+        }
         label="Scoutkår"
       />
 
-      <div style={{whiteSpace: "nowrap", fontSize: "20px"}}>
+      <div style={{ whiteSpace: "nowrap", fontSize: "20px" }}>
         Pris: {price} kr
       </div>
     </FormContainer>
   );
-};
+}
