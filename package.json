@@ -9,6 +9,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.9",
     "@mui/x-date-pickers": "^8.27.2",
+    "ajv": "^8.18.0",
     "date-fns": "^4.1.0",
     "gatsby": "^5.16.1",
     "gatsby-plugin-catch-links": "^5.16.0",
@@ -32,7 +33,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-grid-gallery": "^1.0.1",
+    "react-photo-album": "^3.5.1",
     "rehype-react": "^8.0.0",
     "yet-another-react-lightbox": "^3.29.1"
   },

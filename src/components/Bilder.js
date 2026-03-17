@@ -2,7 +2,8 @@ import PropTypes from "prop-types"
 import React, { useState } from "react"
 import Layout from "./layout"
 import { graphql, Link } from "gatsby"
-import { Gallery } from "react-grid-gallery"
+import { RowsPhotoAlbum } from "react-photo-album"
+import "react-photo-album/rows.css"
 import Lightbox from "yet-another-react-lightbox"
 import "yet-another-react-lightbox/styles.css"
 import "./bilder.css"
@@ -23,11 +24,8 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
 
     return {
       src: image.src,
-      nano: image.base64,
       width: image.width,
       height: image.height,
-      caption: caption,
-      thumbnailCaption: caption,
       alt: caption,
     }
   })
@@ -40,14 +38,31 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
 
       {ingress && <p>{ingress}</p>}
 
-      <Gallery
-        images={images}
-        margin={5}
-        enableImageSelection={false}
-        onClick={(index) => setIndex(index)}
+      <RowsPhotoAlbum
+        photos={images}
+        spacing={5}
+        onClick={({ index }) => setIndex(index)}
+        render={{
+          extras: (_, { photo }) =>
+            photo.alt ? (
+              <div style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                padding: "4px 8px",
+                background: "rgba(0, 0, 0, 0.5)",
+                color: "#fff",
+                fontSize: "13px",
+                textAlign: "center",
+              }}>
+                {photo.alt}
+              </div>
+            ) : null,
+        }}
       />
       <Lightbox
-        slides={images.map(img => ({ src: img.src, alt: img.alt, title: img.caption }))}
+        slides={images.map(img => ({ src: img.src, alt: img.alt, title: img.alt }))}
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
