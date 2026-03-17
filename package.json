@@ -46,6 +46,7 @@
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-v8": "^4.1.0",
     "fetch-mock": "^12.6.0",
     "jsdom": "^29.0.0",
     "prettier": "^3.8.1",
@@ -62,6 +63,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
   },
