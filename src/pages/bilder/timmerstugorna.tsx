@@ -3,7 +3,7 @@ import Bilder from "../../components/Bilder";
 import { graphql } from "gatsby"
 import { SeoHead } from "../../components/seo"
 
-const Timmerstugor = ({ data }) => {
+const Timmerstugor = ({ data }: { data: Record<string, any> }) => {
   return (
     <Bilder
       name="Timmerhusen"

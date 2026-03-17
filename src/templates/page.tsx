@@ -7,13 +7,13 @@ import { SeoHead } from "../components/seo"
 import Boka from "../components/Boka"
 import PriceCalc from "../components/PriceCalc"
 
-const renderAst = (tree) =>
+const renderAst = (tree: Parameters<typeof toJsxRuntime>[0]) =>
   toJsxRuntime(tree, {
     ...production,
-    components: { "booking-form": Boka, "price-calc": PriceCalc },
+    components: { "booking-form": Boka, "price-calc": PriceCalc } as Record<string, React.ComponentType>,
   })
 
-const Page = ({ data }) => {
+const Page = ({ data }: { data: Record<string, any> }) => {
   const post = data.markdownRemark
   return (
     <Layout>
@@ -26,7 +26,7 @@ const Page = ({ data }) => {
 
 export default Page;
 
-export function Head({ data }) {
+export function Head({ data }: { data: Record<string, any> }) {
   const post = data.markdownRemark
   const keywords = post.frontmatter.keywords || []
   const description = post.frontmatter.description || ""

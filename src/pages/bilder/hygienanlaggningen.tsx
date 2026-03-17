@@ -3,24 +3,24 @@ import Bilder from "../../components/Bilder";
 import { graphql } from "gatsby"
 import { SeoHead } from "../../components/seo"
 
-const Omradet = ({ data }) => {
+const Hygienanlaggning = ({ data }: { data: Record<string, any> }) => {
   return (
     <Bilder
-      name="Området"
-      ingress="Bilder från området "
+      name="Hygienanläggningen"
+      ingress="Bilder utanför och innuti hygienanläggningen. I huset finns det 4 st toaletter."
       bilder={data.bilder.edges}
       caption={data.caption.edges} />
   );
 }
 
-export default Omradet;
+export default Hygienanlaggning;
 
 export function Head() {
-  return <SeoHead title="Bilder - Området" keywords={["stugor", "bilder", "hyra scoutstuga"]} />
+  return <SeoHead title="Bilder - Hygienanläggningen" keywords={["stugor", "bilder", "hyra scoutstuga"]} />
 }
 
 export const query = graphql`
-  query($galleryPath: String = "stugor/omradet/*") {
+  query($galleryPath: String = "stugor/hygienanlaggning/*") {
     bilder: allFile(sort: {name: ASC}, filter: {
       relativePath: {glob: $galleryPath },
       extension: {eq:"jpg"}

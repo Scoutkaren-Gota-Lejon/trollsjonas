@@ -77,7 +77,20 @@ const Container = styled.div`
   }
 `
 
-const Menu = ({maxWidth}) => {
+interface MenuEdge {
+  node: {
+    frontmatter: {
+      title: string
+      menu: string | null
+      order: number
+    }
+    fields: {
+      slug: string
+    }
+  }
+}
+
+const Menu = ({maxWidth}: {maxWidth: number}) => {
   const data = useStaticQuery(
     graphql`
   query {
@@ -98,7 +111,7 @@ const Menu = ({maxWidth}) => {
   }
 `)
 
-const sortFunc = (a, b) => {
+const sortFunc = (a: MenuEdge, b: MenuEdge) => {
   return a.node.frontmatter.order - b.node.frontmatter.order;
 }
 
@@ -111,7 +124,7 @@ const sortFunc = (a, b) => {
         maxWidth: maxWidth,
       }}
     >
-      {data && data.allMarkdownRemark.edges.sort(sortFunc).map(menu => {
+      {data && data.allMarkdownRemark.edges.sort(sortFunc).map((menu: MenuEdge) => {
 
         return (
           <li key={menu.node.fields.slug}>
@@ -137,6 +150,3 @@ const sortFunc = (a, b) => {
 }
 
 export default Menu
-
-
-

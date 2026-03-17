@@ -32,7 +32,15 @@ const DatePickerWrapper = styled.div`
   display: inline-block;
 `
 
-const TextFieldCust = ({label, field, type = 'text', fullWidth = true, margin = 'normal'}) => {
+interface TextFieldCustProps {
+  label: string
+  field: string
+  type?: string
+  fullWidth?: boolean
+  margin?: "none" | "normal" | "dense"
+}
+
+const TextFieldCust = ({label, field, type = 'text', fullWidth = true, margin = 'normal'}: TextFieldCustProps) => {
   return (
     <>
       <TextField
@@ -46,9 +54,19 @@ const TextFieldCust = ({label, field, type = 'text', fullWidth = true, margin = 
   )
 }
 
-const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleToDateChange, kanoter, setKanoter}) => {
+interface BokningFormProps {
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  fromDate: Date | null
+  handleFromDateChange: (date: Date | null) => void
+  toDate: Date | null
+  handleToDateChange: (date: Date | null) => void
+  kanoter: boolean
+  setKanoter: (value: boolean) => void
+}
 
-  const handleChangeKanoter = (event) => {
+const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleToDateChange, kanoter, setKanoter}: BokningFormProps) => {
+
+  const handleChangeKanoter = (event: React.ChangeEvent<HTMLInputElement>) => {
     setKanoter(event.target.checked);
   };
 
@@ -78,7 +96,7 @@ const BokningForm = ({onSubmit, fromDate, handleFromDateChange, toDate, handleTo
         <DatePickerWrapper>
         <DatePicker
           disablePast
-          minDate={fromDate}
+          minDate={fromDate ?? undefined}
           label="Till"
           format="yyyy-MM-dd"
           value={toDate}
@@ -116,30 +134,32 @@ const Boka = () => {
   const [formVisble, setFormVisible] = useState(true);
   const [formError, setFormError] = useState(false);
 
-  const [fromDate, handleFromDateChange] = useState(null);
-  const [toDate, handleToDateChange] = useState(null);
+  const [fromDate, handleFromDateChange] = useState<Date | null>(null);
+  const [toDate, handleToDateChange] = useState<Date | null>(null);
   const [kanoter, setKanoter] = useState(false);
 
-  const onSubmit = (event) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormError(false);
+
+    const target = event.target as HTMLFormElement;
 
     // TODO: Validate input
 
     const body = {
       'booking': true,
-      'name': event.target.name.value,
-      'email': event.target.email.value,
-      'phone': event.target.phone.value,
-      'organisation': event.target.organisation.value,
-      'antal': event.target.antal.value,
+      'name': (target.elements.namedItem('name') as HTMLInputElement).value,
+      'email': (target.elements.namedItem('email') as HTMLInputElement).value,
+      'phone': (target.elements.namedItem('phone') as HTMLInputElement).value,
+      'organisation': (target.elements.namedItem('organisation') as HTMLInputElement).value,
+      'antal': (target.elements.namedItem('antal') as HTMLInputElement).value,
       'kanoter': kanoter,
       'from': fromDate ? format(fromDate, 'yyyy-MM-dd') : '',
       'to': toDate ? format(toDate, 'yyyy-MM-dd') : '',
-      'other': event.target.other.value,
+      'other': (target.elements.namedItem('other') as HTMLInputElement).value,
     };
 
-    makeServerPost('booking.php', body).then((resp) => {
+    makeServerPost('booking.php', body).then(() => {
       setFormVisible(false);
     }, () => {
       setFormError(true);
@@ -148,7 +168,7 @@ const Boka = () => {
 
   return (
     <div>
-      <h2><a name="form" id="form"></a>Bokningsförfrågan</h2>
+      <h2><a id="form"></a>Bokningsförfrågan</h2>
 
       {formVisble && <p>Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så återkommer vi så snabbt som möjligt. OBS! Trollsjönäs hyrs inte ut till privatpersoner.</p>}
       {formError && <ErrorContainer>Något gick fel, försök att skicka förfrågan igen.</ErrorContainer>}

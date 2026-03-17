@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import React, { useState } from "react"
 import Layout from "./layout"
 import { graphql, Link } from "gatsby"
@@ -8,9 +7,32 @@ import Lightbox from "yet-another-react-lightbox"
 import "yet-another-react-lightbox/styles.css"
 import "./bilder.css"
 
-const Bilder = ({ name, ingress, bilder, caption }) => {
+interface BilderProps {
+  name: string
+  ingress?: string
+  bilder: Array<{
+    node: {
+      id: string
+      childImageSharp: {
+        gatsbyImageData: {
+          images: {
+            fallback: { src: string; width: number; height: number }
+          }
+        }
+      }
+    }
+  }>
+  caption: Array<{
+    node: {
+      fileName: { id: string }
+      caption: string
+    }
+  }>
+}
+
+const Bilder = ({ name, ingress, bilder, caption }: BilderProps) => {
   const [index, setIndex] = useState(-1);
-  const captions = caption.reduce((obj, item) => {
+  const captions = caption.reduce((obj: Record<string, string>, item) => {
     obj[item.node.fileName.id] = item.node.caption
     return obj
   }, {})
@@ -18,7 +40,7 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
   const images = bilder.map(bild => {
     const image = bild.node.childImageSharp.gatsbyImageData.images.fallback
 
-    const caption = captions.hasOwnProperty(bild.node.id)
+    const caption = Object.prototype.hasOwnProperty.call(captions, bild.node.id)
       ? captions[bild.node.id]
       : undefined
 
@@ -69,13 +91,6 @@ const Bilder = ({ name, ingress, bilder, caption }) => {
       />
     </Layout>
   )
-}
-
-Bilder.propTypes = {
-  name: PropTypes.string.isRequired,
-  ingress: PropTypes.string,
-  bilder: PropTypes.array,
-  caption: PropTypes.array,
 }
 
 export default Bilder

@@ -1,4 +1,7 @@
-const config = {
+import type { GatsbyConfig } from "gatsby"
+import path from "path"
+
+const config: GatsbyConfig = {
   trailingSlash: "always",
   siteMetadata: {
     maxWidth: 1100,
@@ -21,14 +24,14 @@ const config = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${import.meta.dirname}/src/images`,
+        path: path.resolve(`./src/images`),
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${import.meta.dirname}/content`,
+        path: path.resolve(`./content`),
       },
     },
     {

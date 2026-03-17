@@ -1,5 +1,5 @@
 import React from "react"
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import styled from '@emotion/styled'
 import { Link } from "gatsby"
 
@@ -13,7 +13,14 @@ const StugImg = styled(GatsbyImage)`
   margin-bottom: 10px;
 `
 
-const StugSection = ({ data, title, description, imageLink }) => {
+interface StugSectionProps {
+  data: Record<string, { childImageSharp: { gatsbyImageData: IGatsbyImageData } }>
+  title: string
+  description: string
+  imageLink: string
+}
+
+const StugSection = ({ data, title, description, imageLink }: StugSectionProps) => {
   const picLink = `/bilder/${imageLink}`
   const picSrc = data[imageLink].childImageSharp.gatsbyImageData
 

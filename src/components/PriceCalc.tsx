@@ -19,7 +19,17 @@ const FormContainer = styled.form`
   align-items: center;
 `;
 
-const TextFieldCust = ({label, value, field, type = 'text', fullWidth = true, margin = 'normal', onChange}) => {
+interface TextFieldCustProps {
+  label: string
+  value: string
+  field: string
+  type?: string
+  fullWidth?: boolean
+  margin?: "none" | "normal" | "dense"
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+const TextFieldCust = ({label, value, field, type = 'text', fullWidth = true, margin = 'normal', onChange}: TextFieldCustProps) => {
   return (
     <TextField
       label={label}
@@ -34,10 +44,10 @@ const TextFieldCust = ({label, value, field, type = 'text', fullWidth = true, ma
 };
 
 export default function PriceCalc() {
-  const [persons, setPersons] = useState();
-  const [days, setDays] = useState();
+  const [persons, setPersons] = useState<number | undefined>();
+  const [days, setDays] = useState<number | undefined>();
   const [scouting, setScouting] = useState(false);
-  const [price, setPrice] = useState("-");
+  const [price, setPrice] = useState<string | number>("-");
 
   // TODO: Vintertillägg
 
@@ -53,10 +63,10 @@ export default function PriceCalc() {
 
   return (
     <FormContainer noValidate autoComplete="off">
-      <TextFieldCust 
-        label="Antal personer" 
-        field="count" 
-        value={persons ?? ""} 
+      <TextFieldCust
+        label="Antal personer"
+        field="count"
+        value={persons !== undefined ? String(persons) : ""}
         onChange={(e) => {
           const v = parseInt(e.target.value);
           if (isNaN(v)) {
@@ -64,12 +74,12 @@ export default function PriceCalc() {
           } else {
             setPersons(v);
           }
-        }} 
+        }}
       />
-      <TextFieldCust 
-        label="Antal dagar" 
-        field="days" 
-        value={days ?? ""} 
+      <TextFieldCust
+        label="Antal dagar"
+        field="days"
+        value={days !== undefined ? String(days) : ""}
         onChange={(e) => {
           const v = parseInt(e.target.value);
           if (isNaN(v)) {
@@ -77,20 +87,19 @@ export default function PriceCalc() {
           } else {
             setDays(v);
           }
-        }} 
+        }}
       />
-      <FormControlLabel 
+      <FormControlLabel
         control={
-        <Checkbox 
-          field="scouting" 
-          checked={scouting} 
+        <Checkbox
+          checked={scouting}
           onChange={() => {
             setScouting((v) => !v);
           }}
-        />} 
-        label="Scoutkår" 
+        />}
+        label="Scoutkår"
       />
-      
+
       <div style={{whiteSpace: "nowrap", fontSize: "20px"}}>
         Pris: {price} kr
       </div>

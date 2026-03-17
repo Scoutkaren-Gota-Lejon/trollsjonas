@@ -1,7 +1,15 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-export function SeoHead({ title, description, keywords, lang = "sv", children }) {
+interface SeoHeadProps {
+  title: string
+  description?: string
+  keywords?: string[]
+  lang?: string
+  children?: React.ReactNode
+}
+
+export function SeoHead({ title, description, keywords, lang = "sv", children }: SeoHeadProps) {
   const { site } = useStaticQuery(
     graphql`
       query {

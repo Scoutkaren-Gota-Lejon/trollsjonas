@@ -1,6 +1,21 @@
 const ROOT_URL = '/api/'
 
-const networkError = (err) => {
+interface ApiError {
+  statusCode: number
+  error: {
+    errorCode: string
+    message: unknown
+    logId: null
+  }
+}
+
+interface RequestConfig {
+  emptyBody?: boolean
+  nonJson?: boolean
+  pathComplete?: boolean
+}
+
+const networkError = (err: unknown): Promise<never> => {
   return Promise.reject({
     statusCode: -1,
     error: {
@@ -11,13 +26,13 @@ const networkError = (err) => {
   })
 }
 
-export const handleResponse = (config) => (response) => {
+export const handleResponse = (config?: RequestConfig) => (response: Response) => {
   if (!response.ok) {
     return response
       .json()
       .catch(() => {
         if (response.status === 404) {
-          const error = {
+          const error: ApiError = {
             statusCode: response.status,
             error: {
               errorCode: 'NOT_FOUND',
@@ -31,7 +46,7 @@ export const handleResponse = (config) => (response) => {
 
         // We should never get these unless response is mangled
         // Or API is not properly implemented
-        const error = {
+        const error: ApiError = {
           statusCode: response.status,
           error: {
             errorCode: 'UNKNOWN_INTERNAL_PROBLEM',
@@ -42,7 +57,7 @@ export const handleResponse = (config) => (response) => {
 
         throw error
       })
-      .then((errorJson) => {
+      .then((errorJson: unknown) => {
         const error = { statusCode: response.status, error: errorJson }
         throw error
       })
@@ -64,11 +79,11 @@ export const handleResponse = (config) => (response) => {
   return response.json()
 }
 
-export const buildUrlFromParams = (path, parameters) => {
-  let parameterList = []
+export const buildUrlFromParams = (path: string, parameters?: Record<string, string | null>) => {
+  const parameterList: string[] = []
   if (parameters) {
     Object.keys(parameters).forEach((key) => {
-      let value = parameters[key]
+      const value = parameters[key]
 
       if (value) {
         parameterList.push(`${key}=${value}`)
@@ -85,15 +100,15 @@ export const buildUrlFromParams = (path, parameters) => {
   return path + urlParameters
 }
 
-const internalRequest = (path, fetchConfig, config = {}) => {
-  let url = config.pathComplete ? `${path}` : `${ROOT_URL}${path}`
+const internalRequest = (path: string, fetchConfig: RequestInit, config: RequestConfig = {}) => {
+  const url = config.pathComplete ? `${path}` : `${ROOT_URL}${path}`
 
   return fetch(url, fetchConfig)
     .catch(networkError)
     .then(handleResponse(config))
 }
 
-const getJsonConfig = (method, body) => ({
+const getJsonConfig = (method: string, body: unknown): RequestInit => ({
   method,
   headers: {
     'Content-Type': 'application/json',
@@ -102,23 +117,23 @@ const getJsonConfig = (method, body) => ({
   body: JSON.stringify(body),
 })
 
-export const makeServerRequest = (path, config) => {
+export const makeServerRequest = (path: string, config?: RequestConfig) => {
   return internalRequest(path, {credentials: "same-origin"}, config)
 }
 
-export const makeServerPost = (path, body, config = {}) => {
+export const makeServerPost = (path: string, body: unknown, config: RequestConfig = {}) => {
   const fetchConfig = getJsonConfig('POST', body)
 
   return internalRequest(path, fetchConfig, config)
 }
 
-export const makeServerPut = (path, body, config = {}) => {
+export const makeServerPut = (path: string, body: unknown, config: RequestConfig = {}) => {
   const fetchConfig = getJsonConfig('PUT', body)
 
   return internalRequest(path, fetchConfig, config)
 }
 
-export const makeServerDelete = (path, body, config = {}) => {
+export const makeServerDelete = (path: string, body: unknown, config: RequestConfig = {}) => {
   const fetchConfig = getJsonConfig('DELETE', body)
 
   return internalRequest(path, fetchConfig, config)

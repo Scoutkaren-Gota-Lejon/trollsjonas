@@ -25,7 +25,7 @@ const hygienDesc =
   "Totalt finns det fyra vattentoaletter där en har ingång med ramp från utsidan." +
   "I anslutning till toaletterna finns det handfat med såväl varmt som kallt vatten."
 
-const Stugor = ({ data }) => {
+const Stugor = ({ data }: { data: Record<string, any> }) => {
   return (
     <Layout>
       <h1>Stugorna</h1>
@@ -63,7 +63,7 @@ const Stugor = ({ data }) => {
 
 export default Stugor;
 
-export function Head({ data }) {
+export function Head({ data }: { data: Record<string, any> }) {
   const seo = data.seo.frontmatter
   const keywords = seo.keywords || []
   const description = seo.description || ""

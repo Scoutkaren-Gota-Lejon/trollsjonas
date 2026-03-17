@@ -31,7 +31,7 @@ const galleries = [
   },
 ]
 
-const Bilder = ({ data }) => {
+const Bilder = ({ data }: { data: Record<string, any> }) => {
   return (
     <Layout>
       <h1>Bilder</h1>
@@ -53,7 +53,7 @@ const Bilder = ({ data }) => {
 
 export default Bilder;
 
-export function Head({ data }) {
+export function Head({ data }: { data: Record<string, any> }) {
   const seo = data.seo.frontmatter
   const keywords = seo.keywords || []
   const description = seo.description || ""
