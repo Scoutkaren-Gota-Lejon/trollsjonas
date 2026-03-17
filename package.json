@@ -58,7 +58,6 @@
     "typescript-eslint": "^8.57.1",
     "vitest": "^4.1.0"
   },
-  "license": "MIT",
   "scripts": {
     "clean": "gatsby clean",
     "build": "gatsby build",
