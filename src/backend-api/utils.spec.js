@@ -3,8 +3,12 @@ import fetchMock from 'fetch-mock'
 
 describe('api utils test', () => {
 
+  beforeEach(() => {
+    fetchMock.mockGlobal()
+  })
+
   afterEach(() => {
-    fetchMock.restore()
+    fetchMock.hardReset()
   })
 
   describe('buildUrlFromParams', () => {
@@ -64,16 +68,16 @@ describe('api utils test', () => {
 
     const methods = [ {
       method: 'makeServerRequestTest',
-      fetch: 'getOnce'
+      fetch: 'get'
     }, {
       method: 'makeServerPost',
-      fetch: 'postOnce'
+      fetch: 'post'
     }, {
       method: 'makeServerPut',
-      fetch: 'putOnce'
+      fetch: 'put'
     }, {
       method: 'makeServerDelete',
-      fetch: 'deleteOnce'
+      fetch: 'delete'
     }];
 
     utils.makeServerRequestTest = (path, body, config) => utils.makeServerRequest(path, config)
@@ -88,7 +92,7 @@ describe('api utils test', () => {
               name: 'test'
             },
             headers: { 'content-type': 'application/json' }
-          })
+          }, {repeat: 1})
 
           utils[method.method]('test', {}).then((response) => {
             expect(response.name).toEqual('test');
@@ -100,7 +104,7 @@ describe('api utils test', () => {
         it('success noBody', (done) => {
           fetchMock[method.fetch](path, {
             headers: { 'content-type': 'application/json' }
-          })
+          }, {repeat: 1})
 
           utils[method.method]('test', {}, {emptyBody: true}).then((response) => {
             expect(response).toEqual({});
@@ -112,7 +116,7 @@ describe('api utils test', () => {
         it('error - network problems', (done) => {
           fetchMock[method.fetch](path, {
             throws: {message: 'failed'}
-          })
+          }, {repeat: 1})
 
           utils[method.method]('test', {}).then().catch((response) => {
             const error = {
@@ -137,7 +141,7 @@ describe('api utils test', () => {
             },
             status: 500,
             headers: { 'content-type': 'application/json' }
-          })
+          }, {repeat: 1})
 
           utils[method.method]('test', {}).then().catch((response) => {
             expect(response.error).toEqual({name: 'failed'});
@@ -150,7 +154,7 @@ describe('api utils test', () => {
           fetchMock[method.fetch](path, {
             status: 500,
             headers: { 'content-type': 'application/json' }
-          })
+          }, {repeat: 1})
 
           utils[method.method]('test', {}).then().catch((response) => {
             expect(response.error).toEqual({
@@ -167,7 +171,7 @@ describe('api utils test', () => {
           fetchMock[method.fetch](path, {
             status: 404,
             headers: { 'content-type': 'application/json' }
-          })
+          }, {repeat: 1})
 
           utils[method.method]('test', {}).then().catch((response) => {
             expect(response.error).toEqual({
