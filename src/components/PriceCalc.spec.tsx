@@ -6,7 +6,7 @@ import PriceCalc from "./PriceCalc";
 // Mock emotion styled to render plain elements
 vi.mock("@emotion/styled", () => ({
   default: new Proxy((component: any) => component, {
-    get: (_target, tag) => (styles: any) => (props: any) =>
+    get: (_target, tag) => (_styles: any) => (props: any) =>
       React.createElement(tag as string, props),
   }),
 }));

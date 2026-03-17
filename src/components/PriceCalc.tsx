@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "@emotion/styled";
 import TextField from "@mui/material/TextField";
 import { Checkbox, FormControlLabel } from "@mui/material";
@@ -6,6 +6,7 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 const MIN_PERSONS = 16;
 const PRICE_DAY = 90;
 const PRICE_SCOUTING_DAY = 75;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ADDON_WINTER = 0.15;
 
 const FormContainer = styled.form`
@@ -56,20 +57,16 @@ export default function PriceCalc() {
   const [persons, setPersons] = useState<number | undefined>();
   const [days, setDays] = useState<number | undefined>();
   const [scouting, setScouting] = useState(false);
-  const [price, setPrice] = useState<string | number>("-");
-
   // TODO: Vintertillägg
 
-  useEffect(() => {
+  const price = useMemo(() => {
     if (days && persons) {
       const priceOneDay =
         Math.max(MIN_PERSONS, persons) *
         (scouting ? PRICE_SCOUTING_DAY : PRICE_DAY);
-
-      setPrice(priceOneDay * days);
-    } else {
-      setPrice("-");
+      return priceOneDay * days;
     }
+    return "-";
   }, [persons, days, scouting]);
 
   return (
