@@ -7,7 +7,7 @@ on:
     branches: [develop]
 
 jobs:
-  build:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,10 +23,43 @@ jobs:
 
       - run: npm test
 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Cache Gatsby build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            public
+          key: gatsby-${{ hashFiles('content/**', 'src/**') }}
+          restore-keys: gatsby-
+
       - run: npm run build
 
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ hashFiles('package-lock.json') }}
+
       - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
+
+      - name: Install Playwright system deps
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
 
       - name: Run e2e tests
         run: npx playwright test
@@ -37,7 +70,7 @@ jobs:
           path: public/
 
   deploy:
-    needs: build
+    needs: [lint-and-test, build]
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
