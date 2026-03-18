@@ -7,7 +7,7 @@ on:
     branches: [develop]
 
 jobs:
-  lint-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,18 +22,6 @@ jobs:
       - run: npm run lint
 
       - run: npm test
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-
-      - run: npm ci
 
       - name: Cache Gatsby build
         uses: actions/cache@v4
@@ -70,7 +58,7 @@ jobs:
           path: public/
 
   deploy:
-    needs: [lint-and-test, build]
+    needs: build
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
