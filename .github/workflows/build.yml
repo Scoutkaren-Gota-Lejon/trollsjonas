@@ -71,6 +71,7 @@ jobs:
 
       - name: Deploy via SFTP
         run: |
+          ls -l ./public/ \
           lftp -u "${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }}" \
             -e "set sftp:auto-confirm yes; mirror -R --parallel=10 --exclude api/settings.php ./public/ ./public_html/; quit" \
             sftp://${{ secrets.SFTP_HOST }}
