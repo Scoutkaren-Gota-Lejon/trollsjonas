@@ -6,7 +6,7 @@ updates:
       interval: weekly
 
   - package-ecosystem: composer
-    directory: /static/api
+    directory: /static/api/phpmailer
     schedule:
       interval: weekly
 
