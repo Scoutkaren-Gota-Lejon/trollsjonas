@@ -72,5 +72,5 @@ jobs:
       - name: Deploy via FTPS
         run: |
           lftp -u "${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }}" \
-            -e "set ftp:ssl-allow yes; set ftp:ssl-force yes; mirror -R --parallel=10 --exclude api/settings.php ./public/ ./public_tmp/; quit" \
+            -e "set ftp:ssl-allow yes; set ftp:ssl-force yes; mirror -R --verbose --parallel=10 --exclude api/settings.php ./public/ ./public_tmp/; quit" \
             ftps://${{ secrets.SFTP_HOST }}
