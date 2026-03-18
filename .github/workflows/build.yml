@@ -67,6 +67,8 @@ jobs:
           name: build
           path: public/
 
+      - run: sudo apt-get update && sudo apt-get install -y lftp
+
       - name: Deploy via FTPS
         run: |
           lftp -u "${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }}" \
