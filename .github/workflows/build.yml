@@ -67,13 +67,8 @@ jobs:
           name: build
           path: public/
 
-      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          protocol: ftps
-          local-dir: ./public/
-          server-dir: ./public_tmp/
-          exclude: |
-            api/settings.php
+      - name: Deploy via FTPS
+        run: |
+          lftp -u "${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }}" \
+            -e "set ftp:ssl-allow yes; set ftp:ssl-force yes; mirror -R --parallel=10 --exclude api/settings.php ./public/ ./public_tmp/; quit" \
+            ftps://${{ secrets.SFTP_HOST }}
