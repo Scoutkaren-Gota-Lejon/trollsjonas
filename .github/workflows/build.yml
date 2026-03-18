@@ -30,3 +30,29 @@ jobs:
 
       - name: Run e2e tests
         run: npx playwright test
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: public/
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: public/
+
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          protocol: sftp
+          local-dir: ./public/
+          server-dir: ./public_tmp/
+          exclude: |
+            api/settings.php
