@@ -5,9 +5,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+//Load Composer's autoloader (created by composer, not included with PHPMailer)
+require 'vendor/autoload.php';
+
 require 'settings.php';
 
 $mailTo = "boka@gotalejon.org";
@@ -48,7 +48,7 @@ if (isset($_POST)) {
     $mail->Encoding = 'base64';
     $mail->SMTPDebug = SMTP::DEBUG_OFF;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp-relay.brevo.com';                    // Set the SMTP server to send through
+    $mail->Host       = $SMTP_SERVER;                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
     $mail->Username   = $SMTP_USERNAME;                     // SMTP username
     $mail->Password   = $SMTP_PASSWORD;                               // SMTP password
@@ -57,8 +57,11 @@ if (isset($_POST)) {
 
     //Recipients
     $mail->setFrom('online@trollsjonas.gotalejon.org', 'Bokningsförfrågan');
-    $mail->addAddress($mailTo);               // Name is optional
-    $mail->addAddress("gert.andersson68@gmail.com");
+    
+    foreach ($SMTP_MAIL_TO as $mailTo) {
+      $mail->addAddress($mailTo);               // Name is optional
+    }
+
     if (!empty($jsonData->email)) {
       $mail->addReplyTo($jsonData->email);
     }

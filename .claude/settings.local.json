@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(npx playwright:*)",
+      "Bash(npm run:*)",
+      "Bash(npm view:*)",
+      "Bash(npm outdated:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Bash(npm uninstall:*)",
+      "WebSearch",
+      "Bash(npm ci:*)",
+      "Bash(git stash:*)",
+      "Bash(git checkout:*)",
+      "WebFetch(domain:www.wheresrhys.co.uk)",
+      "Bash(ls -la /Users/martin/Repos/leo/trollsjonas/*.js)",
+      "Bash(sort -k2)",
+      "Bash(npm start:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/)",
+      "Bash(npx gatsby:*)",
+      "Bash(npx vitest:*)",
+      "Bash(npm test:*)",
+      "Bash(ls .prettierrc*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx prettier:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}
