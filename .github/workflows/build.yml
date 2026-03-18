@@ -69,9 +69,9 @@ jobs:
 
       - run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Deploy via FTPS
+      - name: Deploy via SFTP
         run: |
           ls -la public/ | head -20
           lftp -u "${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }}" \
-            -e "set ftp:ssl-allow yes; set ftp:ssl-force yes; set ssl:verify-certificate no; set ftp:ssl-protect-data yes; debug 3; mirror -R --verbose --parallel=10 --exclude api/settings.php ./public/ ./public_tmp/; quit" \
-            ftps://${{ secrets.SFTP_HOST }}
+            -e "set sftp:auto-confirm yes; debug 3; mirror -R --verbose --parallel=10 --exclude api/settings.php ./public/ ./public_tmp/; quit" \
+            sftp://${{ secrets.SFTP_HOST }}
