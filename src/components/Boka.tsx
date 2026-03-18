@@ -38,6 +38,9 @@ interface TextFieldCustProps {
   type?: string;
   fullWidth?: boolean;
   margin?: "none" | "normal" | "dense";
+  error?: boolean;
+  helperText?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const TextFieldCust = ({
@@ -46,6 +49,9 @@ const TextFieldCust = ({
   type = "text",
   fullWidth = true,
   margin = "normal",
+  error,
+  helperText,
+  onChange,
 }: TextFieldCustProps) => {
   return (
     <>
@@ -56,6 +62,9 @@ const TextFieldCust = ({
         type={type}
         fullWidth={fullWidth}
         margin={margin}
+        error={error}
+        helperText={helperText}
+        onChange={onChange}
       />
     </>
   );
@@ -69,6 +78,8 @@ interface BokningFormProps {
   handleToDateChange: (date: Date | null) => void;
   kanoter: boolean;
   setKanoter: (value: boolean) => void;
+  emailError: string;
+  onEmailChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const BokningForm = ({
@@ -79,6 +90,8 @@ const BokningForm = ({
   handleToDateChange,
   kanoter,
   setKanoter,
+  emailError,
+  onEmailChange,
 }: BokningFormProps) => {
   const handleChangeKanoter = (event: React.ChangeEvent<HTMLInputElement>) => {
     setKanoter(event.target.checked);
@@ -97,7 +110,14 @@ const BokningForm = ({
           margin="none"
         />
         <TextFieldCust label="Namn" field="name" />
-        <TextFieldCust label="E-post" field="email" type="email" />
+        <TextFieldCust
+          label="E-post"
+          field="email"
+          type="email"
+          error={!!emailError}
+          helperText={emailError}
+          onChange={onEmailChange}
+        />
         <TextFieldCust label="Telefon" field="phone" type="telephone" />
         <TextFieldCust label="Antal personer" field="antal" />
         <br />
@@ -164,18 +184,34 @@ const BokningForm = ({
 const Boka = () => {
   const [formVisble, setFormVisible] = useState(true);
   const [formError, setFormError] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   const [fromDate, handleFromDateChange] = useState<Date | null>(null);
   const [toDate, handleToDateChange] = useState<Date | null>(null);
   const [kanoter, setKanoter] = useState(false);
 
+  const isValidEmail = (email: string): boolean =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const onEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (emailError && isValidEmail(event.target.value)) {
+      setEmailError("");
+    }
+  };
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormError(false);
+    setEmailError("");
 
     const target = event.target as HTMLFormElement;
 
-    // TODO: Validate input
+    const email = (target.elements.namedItem("email") as HTMLInputElement)
+      .value;
+    if (!isValidEmail(email)) {
+      setEmailError("Ange en giltig e-postadress");
+      return;
+    }
 
     const body = {
       booking: true,
@@ -230,6 +266,8 @@ const Boka = () => {
           handleToDateChange={handleToDateChange}
           kanoter={kanoter}
           setKanoter={setKanoter}
+          emailError={emailError}
+          onEmailChange={onEmailChange}
         />
       )}
       {!formVisble && (

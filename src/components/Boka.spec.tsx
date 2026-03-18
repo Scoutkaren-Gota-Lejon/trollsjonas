@@ -78,8 +78,51 @@ describe("Boka", () => {
 
     render(<Boka />);
 
+    await user.type(screen.getByLabelText("E-post"), "test@test.se");
     await user.click(screen.getByRole("button", { name: "Skicka förfrågan" }));
 
     expect(await screen.findByText(/Något gick fel/)).toBeInTheDocument();
+  });
+
+  it("shows error for invalid email and does not submit", async () => {
+    const user = userEvent.setup();
+
+    render(<Boka />);
+
+    await user.type(screen.getByLabelText("E-post"), "not-an-email");
+    await user.click(screen.getByRole("button", { name: "Skicka förfrågan" }));
+
+    expect(screen.getByText("Ange en giltig e-postadress")).toBeInTheDocument();
+    expect(makeServerPost).not.toHaveBeenCalled();
+  });
+
+  it("shows error for empty email and does not submit", async () => {
+    const user = userEvent.setup();
+
+    render(<Boka />);
+
+    await user.click(screen.getByRole("button", { name: "Skicka förfrågan" }));
+
+    expect(screen.getByText("Ange en giltig e-postadress")).toBeInTheDocument();
+    expect(makeServerPost).not.toHaveBeenCalled();
+  });
+
+  it("clears email error when user types a valid email", async () => {
+    const user = userEvent.setup();
+
+    render(<Boka />);
+
+    // Submit with invalid email to trigger error
+    await user.type(screen.getByLabelText("E-post"), "bad");
+    await user.click(screen.getByRole("button", { name: "Skicka förfrågan" }));
+    expect(screen.getByText("Ange en giltig e-postadress")).toBeInTheDocument();
+
+    // Clear and type valid email — error should clear without resubmitting
+    await user.clear(screen.getByLabelText("E-post"));
+    await user.type(screen.getByLabelText("E-post"), "valid@example.com");
+
+    expect(
+      screen.queryByText("Ange en giltig e-postadress"),
+    ).not.toBeInTheDocument();
   });
 });
