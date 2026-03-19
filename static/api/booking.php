@@ -62,6 +62,10 @@ if (isset($_POST)) {
       $mail->addAddress($mailTo);               // Name is optional
     }
 
+    foreach ($SMTP_MAIL_BCC as $mailTo) {
+      $mail->addBCC($mailTo);
+    }
+
     if (!empty($jsonData->email)) {
       $mail->addReplyTo($jsonData->email);
     }

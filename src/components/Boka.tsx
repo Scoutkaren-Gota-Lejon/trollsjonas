@@ -8,7 +8,7 @@ import { sv } from "date-fns/locale";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { Alert, Checkbox, FormControlLabel } from "@mui/material";
 
 const ErrorContainer = styled.p`
   color: #ff0000;
@@ -271,10 +271,10 @@ const Boka = () => {
         />
       )}
       {!formVisble && (
-        <p>
-          Tack för din förfrågan, vi återkommer så snart vi har kollat om de
+        <Alert severity="success" variant="filled" sx={{ mt: 2, mb: 4, maxWidth: 500 }}>
+          Tack för din förfrågan! Vi återkommer så snart vi har kollat om de
           önskade datumet är ledigt.
-        </p>
+        </Alert>
       )}
     </div>
   );
