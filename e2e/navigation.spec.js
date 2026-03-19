@@ -51,7 +51,7 @@ test.describe("Navigation", () => {
     await expect(menuLink).toBeHidden();
 
     // Click the menu toggle label
-    await page.locator("label[for='button']").click();
+    await page.locator("label[for='menu-button']").click();
 
     // Menu links should now be visible
     await expect(menuLink).toBeVisible();
