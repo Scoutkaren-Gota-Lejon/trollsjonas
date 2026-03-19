@@ -34,7 +34,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
             paddingTop: 0,
           }}
         >
-          <main className="main-container">{children}</main>
+          <main className="main-container">
+            {children}
+            <div className="clear" />
+          </main>
           <Sidebar />
           <footer></footer>
         </div>

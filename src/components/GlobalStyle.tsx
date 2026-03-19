@@ -609,6 +609,11 @@ const GlobalStyle = () => (
         max-width: 650px;
         width: 100%;
         float: left;
+        margin-bottom: 32px;
+      }
+
+      .clear {
+        clear: both;
       }
 
       .sidebar-container {
@@ -621,7 +626,8 @@ const GlobalStyle = () => (
         .main-container {
           max-width: 100%;
           float: none;
-          margin: auto;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .sidebar-container {
