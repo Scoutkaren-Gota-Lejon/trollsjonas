@@ -17,6 +17,8 @@ const Container = styled.div`
     display: none;
     cursor: pointer;
     user-select: none;
+    align-items: center;
+    gap: 4px;
   }
 
   ul {
@@ -49,7 +51,7 @@ const Container = styled.div`
     }
   }
 
-  @media (max-width: 44em) {
+  @media (max-width: 70em) {
     ul {
       display: none;
       height: 100%;
@@ -57,7 +59,7 @@ const Container = styled.div`
 
     label {
       position: relative;
-      display: block;
+      display: flex;
       width: 100%;
       min-height: 2.25em;
       padding: 0.45em;
@@ -116,8 +118,19 @@ const Menu = ({ maxWidth }: { maxWidth: number }) => {
 
   return (
     <Container>
-      <input type="checkbox" id="button" />
-      <label htmlFor="button">Meny</label>
+      <input type="checkbox" id="menu-button" />
+      <label htmlFor="menu-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+        Meny
+      </label>
       <ul
         style={{
           maxWidth: maxWidth,
