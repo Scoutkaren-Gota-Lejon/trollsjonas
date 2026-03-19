@@ -274,10 +274,10 @@ const Boka = () => {
         <Alert
           severity="success"
           variant="filled"
-          sx={{ mt: 2, mb: 4, maxWidth: 500 }}
+          sx={{ mt: 2, mb: 4, maxWidth: 550 }}
         >
-          Tack för din förfrågan! Vi återkommer så snart vi har kollat om de
-          önskade datumet är ledigt.
+          Tack för din förfrågan! <br />
+          Vi återkommer så snart vi har kollat om de önskade datumen är lediga.
         </Alert>
       )}
     </div>
