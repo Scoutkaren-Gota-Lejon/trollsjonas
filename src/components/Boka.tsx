@@ -271,7 +271,11 @@ const Boka = () => {
         />
       )}
       {!formVisble && (
-        <Alert severity="success" variant="filled" sx={{ mt: 2, mb: 4, maxWidth: 500 }}>
+        <Alert
+          severity="success"
+          variant="filled"
+          sx={{ mt: 2, mb: 4, maxWidth: 500 }}
+        >
           Tack för din förfrågan! Vi återkommer så snart vi har kollat om de
           önskade datumet är ledigt.
         </Alert>
