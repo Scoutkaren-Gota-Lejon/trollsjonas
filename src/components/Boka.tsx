@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { makeServerPost } from "../backend-api/utils";
 import styled from "@emotion/styled";
 import TextField from "@mui/material/TextField";
@@ -208,7 +208,7 @@ const Boka = () => {
   const [fromDate, handleFromDateChange] = useState<Date | null>(null);
   const [toDate, handleToDateChange] = useState<Date | null>(null);
   const [kanoter, setKanoter] = useState(false);
-  const loadTimeRef = useRef(Date.now());
+  const [loadTime] = useState(() => Date.now());
 
   const isValidEmail = (email: string): boolean =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -247,7 +247,7 @@ const Boka = () => {
       to: toDate ? format(toDate, "yyyy-MM-dd") : "",
       other: (target.elements.namedItem("other") as HTMLInputElement).value,
       website: (target.elements.namedItem("website") as HTMLInputElement).value,
-      elapsed_ms: Date.now() - loadTimeRef.current,
+      elapsed_ms: Date.now() - loadTime,
     };
 
     makeServerPost("booking.php", body).then(
