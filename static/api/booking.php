@@ -20,6 +20,19 @@ if (isset($_POST)) {
   // Converts it into a PHP object
   $jsonData = json_decode($jsonInput);
 
+  // Spam protection: honeypot field + minimum fill time.
+  // Bots typically fill all fields (including the hidden "website" field) and
+  // submit much faster than a human can fill the form. Return a fake success
+  // so spammers don't retry or probe for the rejection reason.
+  $honeypot = isset($jsonData->website) ? trim((string)$jsonData->website) : '';
+  $elapsedMs = isset($jsonData->elapsed_ms) ? (int)$jsonData->elapsed_ms : 0;
+
+  if ($honeypot !== '' || $elapsedMs < 3000) {
+    header('Content-Type: application/json');
+    echo json_encode(array('sent' => true, 'msg' => ''));
+    return;
+  }
+
   $message = "Bokningsförfrågan från hemsidan. \r\n \r\n" .
   "Organisation: " . $jsonData->organisation . "\r\n" .
   "Namn: " . $jsonData->name . "\r\n" .
