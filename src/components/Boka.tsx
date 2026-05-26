@@ -32,6 +32,15 @@ const DatePickerWrapper = styled.div`
   display: inline-block;
 `;
 
+const HoneypotWrapper = styled.div`
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+`;
+
 interface TextFieldCustProps {
   label: string;
   field: string;
@@ -171,6 +180,16 @@ const BokningForm = ({
           margin="normal"
         />
 
+        <HoneypotWrapper aria-hidden="true">
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            defaultValue=""
+          />
+        </HoneypotWrapper>
+
         <br />
         <br />
         <Button type="submit" variant="contained" color="primary">
@@ -189,6 +208,7 @@ const Boka = () => {
   const [fromDate, handleFromDateChange] = useState<Date | null>(null);
   const [toDate, handleToDateChange] = useState<Date | null>(null);
   const [kanoter, setKanoter] = useState(false);
+  const [loadTime] = useState(() => Date.now());
 
   const isValidEmail = (email: string): boolean =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -226,6 +246,8 @@ const Boka = () => {
       from: fromDate ? format(fromDate, "yyyy-MM-dd") : "",
       to: toDate ? format(toDate, "yyyy-MM-dd") : "",
       other: (target.elements.namedItem("other") as HTMLInputElement).value,
+      website: (target.elements.namedItem("website") as HTMLInputElement).value,
+      elapsed_ms: Date.now() - loadTime,
     };
 
     makeServerPost("booking.php", body).then(
