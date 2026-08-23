@@ -10,7 +10,7 @@ keywords:
 * **Allmän information och bokning**: [boka@gotalejon.org](mailto:boka@gotalejon.org?subject=Bokningsförfrågan).
 * **Uthyrningssamordnare**: Gert Andersson, 0707-52 40 81.
 * **Stugfogde**: Ulf Mellqvist, 0705-72 23 23.
-* **Stiftelsens ordförande**: Bengt Wackerberg, 0703-19 89 18.
+* **Scoutkårens ordförande**: Erik Bäck, 070-761 26 77.
 
 <booking-form></booking-form>
 
