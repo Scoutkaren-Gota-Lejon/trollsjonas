@@ -1,219 +1,32 @@
 import React, { useState } from "react";
-import { makeServerPost } from "../backend-api/utils";
-import styled from "@emotion/styled";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import { format } from "date-fns";
-import { sv } from "date-fns/locale";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { Alert, Checkbox, FormControlLabel } from "@mui/material";
+import { makeServerPost } from "../backend-api/utils";
+import TextField from "./form/TextField";
+import Checkbox from "./form/Checkbox";
+import DateField from "./form/DateField";
 
-const ErrorContainer = styled.p`
-  color: #ff0000;
-`;
-
-const FormContainer = styled.form`
-  border: 0px solid #ccc;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-`;
-
-const VerticalAlignSpan = styled.span`
-  vertical-align: bottom;
-  padding-bottom: 10px;
-  display: inline-block;
-`;
-
-const DatePickerWrapper = styled.div`
-  width: 150px;
-  display: inline-block;
-`;
-
-const HoneypotWrapper = styled.div`
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-`;
-
-interface TextFieldCustProps {
-  label: string;
-  field: string;
-  type?: string;
-  fullWidth?: boolean;
-  margin?: "none" | "normal" | "dense";
-  error?: boolean;
-  helperText?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const TextFieldCust = ({
-  label,
-  field,
-  type = "text",
-  fullWidth = true,
-  margin = "normal",
-  error,
-  helperText,
-  onChange,
-}: TextFieldCustProps) => {
-  return (
-    <>
-      <TextField
-        label={label}
-        placeholder={label}
-        name={field}
-        type={type}
-        fullWidth={fullWidth}
-        margin={margin}
-        error={error}
-        helperText={helperText}
-        onChange={onChange}
-      />
-    </>
-  );
+const startOfToday = () => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return today;
 };
 
-interface BokningFormProps {
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  fromDate: Date | null;
-  handleFromDateChange: (date: Date | null) => void;
-  toDate: Date | null;
-  handleToDateChange: (date: Date | null) => void;
-  kanoter: boolean;
-  setKanoter: (value: boolean) => void;
-  emailError: string;
-  onEmailChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const BokningForm = ({
-  onSubmit,
-  fromDate,
-  handleFromDateChange,
-  toDate,
-  handleToDateChange,
-  kanoter,
-  setKanoter,
-  emailError,
-  onEmailChange,
-}: BokningFormProps) => {
-  const handleChangeKanoter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setKanoter(event.target.checked);
-  };
-
-  return (
-    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={sv}>
-      <FormContainer
-        onSubmit={(event) => onSubmit(event)}
-        noValidate
-        autoComplete="off"
-      >
-        <TextFieldCust
-          label="Förening/Organisation"
-          field="organisation"
-          margin="none"
-        />
-        <TextFieldCust label="Namn" field="name" />
-        <TextFieldCust
-          label="E-post"
-          field="email"
-          type="email"
-          error={!!emailError}
-          helperText={emailError}
-          onChange={onEmailChange}
-        />
-        <TextFieldCust label="Telefon" field="phone" type="telephone" />
-        <TextFieldCust label="Antal personer" field="antal" />
-        <br />
-        <br />
-        <div>
-          <VerticalAlignSpan>Datum:&nbsp;&nbsp;</VerticalAlignSpan>
-
-          <DatePickerWrapper>
-            <DatePicker
-              disablePast
-              format="yyyy-MM-dd"
-              label="Från"
-              value={fromDate}
-              onChange={handleFromDateChange}
-              slotProps={{ textField: { size: "small" } }}
-            />
-          </DatePickerWrapper>
-          <VerticalAlignSpan>&nbsp;&nbsp;--&nbsp;&nbsp;</VerticalAlignSpan>
-          <DatePickerWrapper>
-            <DatePicker
-              disablePast
-              minDate={fromDate ?? undefined}
-              label="Till"
-              format="yyyy-MM-dd"
-              value={toDate}
-              onChange={handleToDateChange}
-              slotProps={{ textField: { size: "small" } }}
-            />
-          </DatePickerWrapper>
-        </div>
-        <br />
-        <div>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={kanoter}
-                onChange={handleChangeKanoter}
-                name="kanoter"
-                color="primary"
-              />
-            }
-            label="Hyra kanoter"
-          />
-        </div>
-        <TextField
-          label="Övrig info/fråga"
-          name="other"
-          multiline
-          minRows={2}
-          fullWidth={true}
-          margin="normal"
-        />
-
-        <HoneypotWrapper aria-hidden="true">
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            defaultValue=""
-          />
-        </HoneypotWrapper>
-
-        <br />
-        <br />
-        <Button type="submit" variant="contained" color="primary">
-          Skicka förfrågan
-        </Button>
-      </FormContainer>
-    </LocalizationProvider>
-  );
-};
+const isValidEmail = (email: string): boolean =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const Boka = () => {
-  const [formVisble, setFormVisible] = useState(true);
+  const [formVisible, setFormVisible] = useState(true);
   const [formError, setFormError] = useState(false);
   const [emailError, setEmailError] = useState("");
 
-  const [fromDate, handleFromDateChange] = useState<Date | null>(null);
-  const [toDate, handleToDateChange] = useState<Date | null>(null);
+  const [fromDate, setFromDate] = useState<Date | null>(null);
+  const [toDate, setToDate] = useState<Date | null>(null);
   const [kanoter, setKanoter] = useState(false);
   const [loadTime] = useState(() => Date.now());
 
-  const isValidEmail = (email: string): boolean =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const onEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onEmailChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     if (emailError && isValidEmail(event.target.value)) {
       setEmailError("");
     }
@@ -224,29 +37,27 @@ const Boka = () => {
     setFormError(false);
     setEmailError("");
 
-    const target = event.target as HTMLFormElement;
+    const form = event.target as HTMLFormElement;
+    const field = (name: string) =>
+      (form.elements.namedItem(name) as HTMLInputElement).value;
 
-    const email = (target.elements.namedItem("email") as HTMLInputElement)
-      .value;
-    if (!isValidEmail(email)) {
+    if (!isValidEmail(field("email"))) {
       setEmailError("Ange en giltig e-postadress");
       return;
     }
 
     const body = {
       booking: true,
-      name: (target.elements.namedItem("name") as HTMLInputElement).value,
-      email: (target.elements.namedItem("email") as HTMLInputElement).value,
-      phone: (target.elements.namedItem("phone") as HTMLInputElement).value,
-      organisation: (
-        target.elements.namedItem("organisation") as HTMLInputElement
-      ).value,
-      antal: (target.elements.namedItem("antal") as HTMLInputElement).value,
+      name: field("name"),
+      email: field("email"),
+      phone: field("phone"),
+      organisation: field("organisation"),
+      antal: field("antal"),
       kanoter: kanoter,
       from: fromDate ? format(fromDate, "yyyy-MM-dd") : "",
       to: toDate ? format(toDate, "yyyy-MM-dd") : "",
-      other: (target.elements.namedItem("other") as HTMLInputElement).value,
-      website: (target.elements.namedItem("website") as HTMLInputElement).value,
+      other: field("other"),
+      website: field("website"),
       elapsed_ms: Date.now() - loadTime,
     };
 
@@ -266,7 +77,7 @@ const Boka = () => {
         <a id="form"></a>Bokningsförfrågan
       </h2>
 
-      {formVisble && (
+      {formVisible && (
         <p>
           Enklast att göra en Bokningsförfrågan är att fylla i formuläret, så
           återkommer vi så snabbt som möjligt. OBS! Trollsjönäs hyrs inte ut
@@ -274,33 +85,98 @@ const Boka = () => {
         </p>
       )}
       {formError && (
-        <ErrorContainer>
+        <p className="text-[#ff0000]">
           Något gick fel, försök att skicka förfrågan igen.
-        </ErrorContainer>
+        </p>
       )}
 
-      {formVisble && (
-        <BokningForm
+      {formVisible && (
+        <form
           onSubmit={onSubmit}
-          fromDate={fromDate}
-          toDate={toDate}
-          handleFromDateChange={handleFromDateChange}
-          handleToDateChange={handleToDateChange}
-          kanoter={kanoter}
-          setKanoter={setKanoter}
-          emailError={emailError}
-          onEmailChange={onEmailChange}
-        />
+          noValidate
+          autoComplete="off"
+          className="flex max-w-[500px] flex-col gap-4"
+        >
+          <TextField label="Förening/Organisation" name="organisation" />
+          <TextField label="Namn" name="name" />
+          <TextField
+            label="E-post"
+            name="email"
+            type="email"
+            error={emailError}
+            onChange={onEmailChange}
+          />
+          <TextField label="Telefon" name="phone" type="tel" />
+          <TextField label="Antal personer" name="antal" />
+
+          <fieldset className="m-0 border-0 p-0">
+            <legend className="mb-1 text-sm font-medium text-neutral-700">
+              Datum
+            </legend>
+            <div className="flex items-end gap-3">
+              <DateField
+                label="Från"
+                name="from"
+                value={fromDate}
+                onChange={setFromDate}
+                minDate={startOfToday()}
+              />
+              <span className="pb-2">--</span>
+              <DateField
+                label="Till"
+                name="to"
+                value={toDate}
+                onChange={setToDate}
+                minDate={fromDate ?? startOfToday()}
+              />
+            </div>
+          </fieldset>
+
+          <Checkbox
+            label="Hyra kanoter"
+            name="kanoter"
+            checked={kanoter}
+            onChange={setKanoter}
+          />
+
+          <TextField label="Övrig info/fråga" name="other" multiline rows={2} />
+
+          {/* Honeypot — bots fill this, humans never see it. Paired with the
+              elapsed_ms timing check in the payload. */}
+          <div
+            aria-hidden="true"
+            className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden"
+          >
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              defaultValue=""
+            />
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="cursor-pointer rounded bg-[#bc360a] px-5 py-2.5 font-medium
+                uppercase tracking-wide text-white transition-colors
+                hover:bg-[#ea9629] focus:outline-none focus:ring-2
+                focus:ring-[#bc360a] focus:ring-offset-2"
+            >
+              Skicka förfrågan
+            </button>
+          </div>
+        </form>
       )}
-      {!formVisble && (
-        <Alert
-          severity="success"
-          variant="filled"
-          sx={{ mt: 2, mb: 4, maxWidth: 550 }}
+      {!formVisible && (
+        <div
+          role="alert"
+          className="mt-2 mb-8 max-w-[550px] rounded bg-green-700 px-4 py-3 text-white"
         >
           Tack för din förfrågan! <br />
           Vi återkommer så snart vi har kollat om de önskade datumen är lediga.
-        </Alert>
+        </div>
       )}
     </div>
   );

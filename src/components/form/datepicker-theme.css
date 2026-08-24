@@ -1,0 +1,57 @@
+/*
+ * Repaints react-datepicker's default blue (#216ba5) in the site accent, and
+ * squares off the input wrapper so the two date fields sit side by side in the
+ * booking form. Imported after the library stylesheet in DateField.tsx, so
+ * these win on order at equal specificity.
+ */
+
+.react-datepicker-wrapper {
+  display: inline-block;
+  width: auto;
+}
+
+.react-datepicker {
+  font-family: inherit;
+  border-color: #cbd0cb;
+}
+
+.react-datepicker__header {
+  background-color: #ebf5e4;
+  border-bottom-color: #cbd0cb;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: #141412;
+}
+
+.react-datepicker__day:hover {
+  background-color: #ebf5e4;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--selected:hover {
+  background-color: #bc360a;
+  color: #fff;
+}
+
+.react-datepicker__day--today {
+  font-weight: bold;
+}
+
+.react-datepicker__day--disabled,
+.react-datepicker__day--disabled:hover {
+  color: #b0b0b0;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #6b6b6b;
+}
+
+.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+  border-color: #bc360a;
+}

@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import mapImage from "../images/map.png";
+---
+
+<aside class="sidebar-container">
+  <section>
+    <h3>Hyra Trollsjönäs</h3>
+    Det går att använda <a href="/kontakt/#form">bokningsformuläret</a> för att hyra
+    Trollsjönäs eller kontakta vår uthyrningssamordnare <br />
+    Gert Andersson på <br />
+    mobil: 0707-52 40 81
+    <br />
+    e-postadress: <a href="mailto:boka@gotalejon.org">boka@gotalejon.org</a>
+    <br />
+    <br />
+    <a target="_blank" rel="noreferrer" href="/informationsfolder.pdf">
+      Informationsfolder
+    </a>
+  </section>
+
+  <section class="spaced">
+    <h3>Här finns vi</h3>
+    <Image src={mapImage} width={270} height={375} alt="här finns vi" />
+    <small>
+      <a
+        target="_blank"
+        rel="noreferrer"
+        href="https://www.google.com/maps/d/edit?mid=zMXAajihALcI.kU_EyCTSzIV4"
+      >
+        Visa på en större karta
+      </a>
+    </small>
+  </section>
+</aside>
+
+<style>
+  section {
+    background: rgba(235, 245, 228, 0.7);
+    padding: 15px;
+  }
+
+  section.spaced {
+    margin-top: 20px;
+  }
+
+  /* The image is display:block under Tailwind's preflight, so the caption
+     already starts on its own line — the global img margin would just add a
+     gap on top of that. */
+  section img {
+    margin-bottom: 4px;
+  }
+</style>

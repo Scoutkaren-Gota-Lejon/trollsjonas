@@ -1,68 +1,33 @@
-import React, { useState } from "react";
-import Layout from "./layout";
-import { graphql, Link } from "gatsby";
+import { useState } from "react";
 import { RowsPhotoAlbum } from "react-photo-album";
-import "react-photo-album/rows.css";
 import Lightbox from "yet-another-react-lightbox";
+import "react-photo-album/rows.css";
 import "yet-another-react-lightbox/styles.css";
-import "./bilder.css";
 
-interface BilderProps {
-  name: string;
-  ingress?: string;
-  bilder: Array<{
-    node: {
-      id: string;
-      childImageSharp: {
-        gatsbyImageData: {
-          images: {
-            fallback: { src: string; width: number; height: number };
-          };
-        };
-      };
-    };
-  }>;
-  caption: Array<{
-    node: {
-      fileName: { id: string };
-      caption: string;
-    };
-  }>;
+export interface GalleryPhoto {
+  src: string;
+  width: number;
+  height: number;
+  alt?: string;
 }
 
-const Bilder = ({ name, ingress, bilder, caption }: BilderProps) => {
+/**
+ * Gallery island. Image optimization and caption lookup now happen at build
+ * time in bilder/[gallery].astro — this component only owns lightbox state,
+ * which is the sole reason it stays React.
+ */
+const Bilder = ({ photos }: { photos: GalleryPhoto[] }) => {
   const [index, setIndex] = useState(-1);
-  const captions = caption.reduce((obj: Record<string, string>, item) => {
-    obj[item.node.fileName.id] = item.node.caption;
-    return obj;
-  }, {});
-
-  const images = bilder.map((bild) => {
-    const image = bild.node.childImageSharp.gatsbyImageData.images.fallback;
-
-    const caption = Object.prototype.hasOwnProperty.call(captions, bild.node.id)
-      ? captions[bild.node.id]
-      : undefined;
-
-    return {
-      src: image.src,
-      width: image.width,
-      height: image.height,
-      alt: caption,
-    };
-  });
 
   return (
-    <Layout>
-      <h1>
-        <Link to="/bilder/">Bilder</Link> / {name}
-      </h1>
-
-      {ingress && <p>{ingress}</p>}
-
+    <>
       <RowsPhotoAlbum
-        photos={images}
+        photos={photos}
         spacing={5}
+        // Without this the album measures its container on the client and
+        // server-renders nothing, so gallery images would need JS to appear.
+        // 650px is the .main-container max-width; the client re-measures.
+        defaultContainerWidth={650}
         onClick={({ index }) => setIndex(index)}
         render={{
           extras: (_, { photo }) =>
@@ -86,43 +51,17 @@ const Bilder = ({ name, ingress, bilder, caption }: BilderProps) => {
         }}
       />
       <Lightbox
-        slides={images.map((img) => ({
-          src: img.src,
-          alt: img.alt,
-          title: img.alt,
+        slides={photos.map((photo) => ({
+          src: photo.src,
+          alt: photo.alt,
+          title: photo.alt,
         }))}
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
       />
-    </Layout>
+    </>
   );
 };
 
 export default Bilder;
-
-export const galleryImage = graphql`
-  fragment galleryImage on FileConnection {
-    edges {
-      node {
-        id
-        childImageSharp {
-          gatsbyImageData(placeholder: NONE, layout: FULL_WIDTH)
-        }
-      }
-    }
-  }
-`;
-
-export const galleryCaption = graphql`
-  fragment galleryCaption on CaptionJsonConnection {
-    edges {
-      node {
-        fileName {
-          id
-        }
-        caption
-      }
-    }
-  }
-`;

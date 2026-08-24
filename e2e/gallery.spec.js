@@ -17,6 +17,10 @@ test.describe("Gallery", () => {
 
   test("clicking a thumbnail opens a lightbox overlay", async ({ page }) => {
     await page.goto("/bilder/storstugan/");
+    // The album is server-rendered, so thumbnails are clickable before the
+    // island hydrates and the click would be dropped. Astro removes the bare
+    // `ssr` attribute once hydration completes.
+    await page.locator("astro-island:not([ssr])").first().waitFor();
     await page.locator("[class*='react-photo-album'] img").first().click();
     await expect(page.getByRole("dialog", { name: "Lightbox" })).toBeVisible({ timeout: 5000 });
   });

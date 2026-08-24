@@ -1,28 +1,6 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Boka from "./Boka";
-
-vi.mock("@emotion/styled", () => ({
-  default: new Proxy((component: any) => component, {
-    get: (_target, tag) => (_styles: any) => (props: any) =>
-      React.createElement(tag as string, props),
-  }),
-}));
-
-vi.mock("@mui/x-date-pickers/AdapterDateFns", () => ({
-  AdapterDateFns: class {},
-}));
-
-vi.mock("@mui/x-date-pickers/LocalizationProvider", () => ({
-  LocalizationProvider: ({ children }: any) =>
-    React.createElement(React.Fragment, null, children),
-}));
-
-vi.mock("@mui/x-date-pickers/DatePicker", () => ({
-  DatePicker: () =>
-    React.createElement("input", { "data-testid": "datepicker" }),
-}));
 
 vi.mock("../backend-api/utils", () => ({
   makeServerPost: vi.fn(),

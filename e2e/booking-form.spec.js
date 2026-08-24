@@ -71,6 +71,61 @@ test.describe("Booking Form", () => {
     ).toBeVisible();
   });
 
+  test("dates can be typed and reach the payload", async ({ page }) => {
+    let capturedBody;
+    await page.route("**/api/booking.php", (route) => {
+      capturedBody = JSON.parse(route.request().postData());
+      route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ success: true }),
+      });
+    });
+
+    await page.fill('input[name="organisation"]', "Testförening");
+    await page.fill('input[name="name"]', "Test Testsson");
+    await page.fill('input[name="email"]', "test@example.com");
+
+    // Typed directly rather than picked from the calendar.
+    await page.fill('input[name="from"]', "2030-06-15");
+    await page.fill('input[name="to"]', "2030-06-20");
+    await page.locator('input[name="antal"]').click();
+
+    await page.getByRole("button", { name: "Skicka förfrågan" }).click();
+
+    await expect(
+      page.locator("text=Tack för din förfrågan")
+    ).toBeVisible({ timeout: 10000 });
+
+    expect(capturedBody.from).toBe("2030-06-15");
+    expect(capturedBody.to).toBe("2030-06-20");
+  });
+
+  // react-datepicker's default middleware is flip + offset + arrow, none of
+  // which constrain the cross axis, so the calendar used to hang off the edge
+  // of the viewport. DateField adds shift + size to keep it on screen.
+  for (const width of [1024, 414, 375, 320]) {
+    test(`calendar stays on screen at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/kontakt/");
+
+      for (const name of ["from", "to"]) {
+        await page.locator(`input[name="${name}"]`).click();
+        const calendar = page.locator(".react-datepicker").first();
+        await calendar.waitFor({ state: "visible" });
+
+        const box = await calendar.boundingBox();
+        expect(box.x, `${name} clears the left edge`).toBeGreaterThanOrEqual(0);
+        expect(
+          box.x + box.width,
+          `${name} clears the right edge`
+        ).toBeLessThanOrEqual(width);
+
+        await page.keyboard.press("Escape");
+      }
+    });
+  }
+
   test("submitted payload contains expected keys", async ({ page }) => {
     let capturedBody;
 

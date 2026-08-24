@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import storstugan from "../../images/stugor/storstugan.jpg";
+import timmerhus from "../../images/stugor/timmerhus.jpg";
+import patrullstuga from "../../images/stugor/patrullstuga.jpg";
+import hygienanlaggning from "../../images/stugor/hygienanlaggning.jpg";
+import omradet from "../../images/stugor/omradet.jpg";
+
+// Thumbnail filenames match neither the gallery slug nor the image folder, so
+// they are paired explicitly here. Order matches the former bilder.tsx.
+const entries = [
+  { slug: "storstugan", name: "Storstugan", image: storstugan },
+  { slug: "patrullstugorna", name: "Patrullstugorna", image: patrullstuga },
+  { slug: "timmerstugorna", name: "Timmerhusen", image: timmerhus },
+  {
+    slug: "hygienanlaggningen",
+    name: "Hygienanläggningen",
+    image: hygienanlaggning,
+  },
+  { slug: "omradet", name: "Området", image: omradet },
+];
+
+const seo = await getEntry("pages", "bilder");
+---
+
+<Layout
+  title={seo!.data.title}
+  description={seo!.data.description}
+  keywords={seo!.data.keywords}
+>
+  <h1>Bilder</h1>
+
+  {
+    entries.map((entry) => (
+      <div class="gallery-list">
+        <a class="gallery-link" href={`/bilder/${entry.slug}/`}>
+          <Image src={entry.image} height={150} alt={entry.name} />
+          <br />
+          {entry.name}
+        </a>
+      </div>
+    ))
+  }
+  <div class="clear"></div>
+</Layout>

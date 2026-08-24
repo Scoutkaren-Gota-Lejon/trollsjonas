@@ -18,10 +18,6 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
   ],
-  webServer: {
-    command: "npx gatsby serve",
-    port: 9000,
-    reuseExistingServer: true,
-    timeout: 60000,
-  },
+  globalSetup: "./e2e/global-setup.js",
+  globalTeardown: "./e2e/global-teardown.js",
 });
