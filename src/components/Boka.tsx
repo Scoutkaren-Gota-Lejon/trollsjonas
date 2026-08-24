@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
 import { makeServerPost } from "../backend-api/utils";
 import TextField from "./form/TextField";
 import Checkbox from "./form/Checkbox";
 import DateField from "./form/DateField";
 
-const startOfToday = () => {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return today;
-};
+/** Local-time ISO date, matching the format a native date input uses. */
+const toISODate = (date: Date): string =>
+  [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    String(date.getDate()).padStart(2, "0"),
+  ].join("-");
 
 const isValidEmail = (email: string): boolean =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -19,10 +20,11 @@ const Boka = () => {
   const [formError, setFormError] = useState(false);
   const [emailError, setEmailError] = useState("");
 
-  const [fromDate, setFromDate] = useState<Date | null>(null);
-  const [toDate, setToDate] = useState<Date | null>(null);
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
   const [kanoter, setKanoter] = useState(false);
   const [loadTime] = useState(() => Date.now());
+  const [today] = useState(() => toISODate(new Date()));
 
   const onEmailChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -54,8 +56,8 @@ const Boka = () => {
       organisation: field("organisation"),
       antal: field("antal"),
       kanoter: kanoter,
-      from: fromDate ? format(fromDate, "yyyy-MM-dd") : "",
-      to: toDate ? format(toDate, "yyyy-MM-dd") : "",
+      from: fromDate,
+      to: toDate,
       other: field("other"),
       website: field("website"),
       elapsed_ms: Date.now() - loadTime,
@@ -119,7 +121,7 @@ const Boka = () => {
                 name="from"
                 value={fromDate}
                 onChange={setFromDate}
-                minDate={startOfToday()}
+                min={today}
               />
               <span className="pb-2">--</span>
               <DateField
@@ -127,7 +129,7 @@ const Boka = () => {
                 name="to"
                 value={toDate}
                 onChange={setToDate}
-                minDate={fromDate ?? startOfToday()}
+                min={fromDate || today}
               />
             </div>
           </fieldset>

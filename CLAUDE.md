@@ -29,7 +29,7 @@ Requires Node 24.
 
 **Backend:** A PHP API under `public/api/` handles the booking form email (via PHPMailer). Requires `public/api/settings.php` with SMTP credentials for local development; it is gitignored, excluded from the deploy mirror, and denied by `public/.htaccess`.
 
-**Styling:** Tailwind v4 (via `@tailwindcss/vite`) for components, plus `src/styles/global.css` for base typography. Markdown content is styled with element selectors rather than Tailwind's `prose`, to preserve the original typographic scale. Form inputs and the date picker are local components in `src/components/form/` (react-day-picker for the calendar).
+**Styling:** Tailwind v4 (via `@tailwindcss/vite`) for components, plus `src/styles/global.css` for base typography. Markdown content is styled with element selectors rather than Tailwind's `prose`, to preserve the original typographic scale. Form inputs are local components in `src/components/form/`; dates use a native `<input type="date">`, so the browser provides the calendar, keyboard entry and locale-appropriate display.
 
 **Image galleries:** `src/pages/bilder/[gallery].astro` serves all five galleries. It globs `src/images/stugor/*/*.jpg` once, optimizes via `getImage()`, and reads captions from the adjacent `caption.json` (matched on image basename). Gallery URL slugs deliberately differ from their folder names — the mapping lives in `src/galleries.ts` and must not be changed without breaking existing URLs.
 
