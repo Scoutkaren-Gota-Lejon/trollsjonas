@@ -18,6 +18,10 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
   ],
-  globalSetup: "./e2e/global-setup.js",
-  globalTeardown: "./e2e/global-teardown.js",
+  webServer: {
+    command: "node e2e/static-server.js",
+    port: 9000,
+    reuseExistingServer: !process.env.CI,
+    timeout: 60000,
+  },
 });

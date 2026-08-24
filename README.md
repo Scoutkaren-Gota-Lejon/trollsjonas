@@ -25,7 +25,7 @@ $SMTP_PASSWORD = "";
 | --- | --- |
 | `npm start` / `npm run dev` | Utvecklingsserver |
 | `npm run build` | Produktionsbygge till `dist/` |
-| `npm run serve` | Förhandsvisa bygget (bakgrundsprocess, stoppa med `npx astro preview stop`) |
+| `npm run serve` | Förhandsvisa bygget (kör i bakgrunden på macOS — stoppa med `npx astro preview stop`) |
 | `npm run lint` | ESLint + Prettier-kontroll |
 | `npm run typecheck` | `astro check` |
 | `npm test` | Enhetstester (Vitest) |

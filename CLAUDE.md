@@ -10,7 +10,7 @@ Trollsjönäs is an Astro 7 website for a scout camp/cabin rental facility near 
 
 - **Dev server:** `npm start` (runs on http://localhost:4321)
 - **Build:** `npm run build` (outputs to `dist/`)
-- **Preview:** `npm run serve` (daemonizes; stop with `npx astro preview stop`)
+- **Preview:** `npm run serve` (daemonizes on macOS, foreground on Linux; stop with `npx astro preview stop`)
 - **Clean:** `npm run clean` (removes `dist/` and `.astro/`)
 - **Format:** `npm run format` (prettier on src/**/*.{ts,tsx,astro})
 - **Lint:** `npm run lint` (eslint + prettier --check)
@@ -34,6 +34,8 @@ Requires Node 24.
 **Image galleries:** `src/pages/bilder/[gallery].astro` serves all five galleries. It globs `src/images/stugor/*/*.jpg` once, optimizes via `getImage()`, and reads captions from the adjacent `caption.json` (matched on image basename). Gallery URL slugs deliberately differ from their folder names — the mapping lives in `src/galleries.ts` and must not be changed without breaking existing URLs.
 
 **Deployment:** `dist/` is mirrored to Apache shared hosting over SFTP by `.github/workflows/build.yml` on push to `develop`. Output must stay fully static — no adapter, no Node server. `public/.htaccess` carries redirects, caching, and compression rules.
+
+**E2E server:** Playwright serves `dist/` with `e2e/static-server.js`, not `astro preview` — the latter daemonizes on macOS but stays in the foreground on Linux, so it hangs CI as a `webServer.command`. The static server reproduces the two behaviours the specs rely on: directory URLs resolve to `index.html`, and unknown paths return `404.html` with a real 404 status.
 
 **API utilities:** `src/backend-api/utils.ts` provides fetch wrappers (`makeServerPost`, `makeServerRequest`, etc.) used by the booking form.
 
