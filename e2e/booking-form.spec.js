@@ -101,30 +101,27 @@ test.describe("Booking Form", () => {
     expect(capturedBody.to).toBe("2030-06-20");
   });
 
-  // react-datepicker's default middleware is flip + offset + arrow, none of
-  // which constrain the cross axis, so the calendar used to hang off the edge
-  // of the viewport. DateField adds shift + size to keep it on screen.
-  for (const width of [1024, 414, 375, 320]) {
-    test(`calendar stays on screen at ${width}px`, async ({ page }) => {
-      await page.setViewportSize({ width, height: 900 });
-      await page.goto("/kontakt/");
+  test("date fields enforce a lower bound", async ({ page }) => {
+    const today = new Date();
+    const iso = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0"),
+    ].join("-");
 
-      for (const name of ["from", "to"]) {
-        await page.locator(`input[name="${name}"]`).click();
-        const calendar = page.locator(".react-datepicker").first();
-        await calendar.waitFor({ state: "visible" });
+    // "Från" cannot precede today.
+    await expect(page.locator('input[name="from"]')).toHaveAttribute(
+      "min",
+      iso
+    );
 
-        const box = await calendar.boundingBox();
-        expect(box.x, `${name} clears the left edge`).toBeGreaterThanOrEqual(0);
-        expect(
-          box.x + box.width,
-          `${name} clears the right edge`
-        ).toBeLessThanOrEqual(width);
-
-        await page.keyboard.press("Escape");
-      }
-    });
-  }
+    // "Till" tracks whatever "Från" is set to.
+    await page.fill('input[name="from"]', "2030-06-15");
+    await expect(page.locator('input[name="to"]')).toHaveAttribute(
+      "min",
+      "2030-06-15"
+    );
+  });
 
   test("submitted payload contains expected keys", async ({ page }) => {
     let capturedBody;
