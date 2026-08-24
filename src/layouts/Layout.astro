@@ -1,0 +1,72 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Menu from "../components/Menu.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Seo from "../components/Seo.astro";
+import { MAX_WIDTH, GA_TRACKING_ID } from "../consts";
+
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string[];
+}
+
+const { title, description, keywords } = Astro.props;
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/favicons/icon-48x48.png" />
+    <link rel="apple-touch-icon" href="/favicons/icon-192x192.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#663399" />
+    <Seo title={title} description={description} keywords={keywords} />
+    {
+      /* Replaces gatsby-plugin-google-gtag, preserving its respectDNT option. */
+    }
+    <script is:inline define:vars={{ GA_TRACKING_ID }}>
+      if (
+        navigator.doNotTrack !== "1" &&
+        window.doNotTrack !== "1" &&
+        navigator.msDoNotTrack !== "1"
+      ) {
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(...args) {
+          window.dataLayer.push(args);
+        }
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", GA_TRACKING_ID, { anonymize_ip: true });
+      }
+    </script>
+  </head>
+  <body>
+    <Header />
+    <Menu />
+    <div class="page" style={`max-width: ${MAX_WIDTH}px`}>
+      <main class="main-container">
+        <slot />
+        <div class="clear"></div>
+      </main>
+      <Sidebar />
+      <footer></footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  .page {
+    margin: 1.45rem auto 0;
+    padding: 0 1.0875rem 1.45rem;
+    padding-top: 0;
+  }
+</style>

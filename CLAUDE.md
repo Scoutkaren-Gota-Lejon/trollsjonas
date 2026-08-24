@@ -4,31 +4,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Trollsjönäs is a Gatsby 5 website for a scout camp/cabin rental facility near Gothenburg, Sweden. The site is in Swedish. It is hosted at https://trollsjonas.gotalejon.org.
+Trollsjönäs is an Astro 7 website for a scout camp/cabin rental facility near Gothenburg, Sweden. The site is in Swedish. It is hosted at https://trollsjonas.gotalejon.org.
 
 ## Commands
 
-- **Dev server:** `npm start` (runs on http://localhost:8000, GraphiQL at http://localhost:8000/___graphql)
-- **Build:** `npm run build`
-- **Clean:** `npm run clean` (clears Gatsby cache)
-- **Format:** `npm run format` (prettier on src/**/*.{ts,tsx})
-- **Typecheck:** `npm run typecheck` (runs tsc --noEmit)
+- **Dev server:** `npm start` (runs on http://localhost:4321)
+- **Build:** `npm run build` (outputs to `dist/`)
+- **Preview:** `npm run serve` (daemonizes on macOS, foreground on Linux; stop with `npx astro preview stop`)
+- **Clean:** `npm run clean` (removes `dist/` and `.astro/`)
+- **Format:** `npm run format` (prettier on src/**/*.{ts,tsx,astro})
+- **Lint:** `npm run lint` (eslint + prettier --check)
+- **Typecheck:** `npm run typecheck` (runs astro check)
 
 Requires Node 24.
 
 ## Architecture
 
-**Content-driven pages:** Markdown files in `content/` are transformed into pages via `gatsby-node.ts` using the `src/templates/page.tsx` template. Each markdown file's frontmatter controls title, menu order, keywords, and SEO description. The `onlyurl` frontmatter flag prevents page generation (used for menu-only links).
+**Content-driven pages:** Markdown/MDX files in `content/` are loaded by the `pages` content collection (`src/content.config.ts`) and rendered by `src/pages/[...slug].astro`. Each file's frontmatter controls title, menu order, keywords, and SEO description. The `onlyurl` flag excludes an entry from page generation while keeping its menu label and SEO data — used by `bilder.md` and `stugor.md`, whose routes are hand-authored.
 
-**Custom components in Markdown:** The `hast-util-to-jsx-runtime` library maps HTML tags in rendered markdown to React components:
-- `<booking-form>` → `Boka.tsx` (booking inquiry form, POSTs to `/api/booking.php`)
-- `<price-calc>` → `PriceCalc.tsx` (client-side price calculator)
+**Interactive islands:** Only three components ship JavaScript; every other page is zero-JS. Pages embedding one are `.mdx` and import it directly:
+- `content/kontakt.mdx` → `Boka.tsx` (booking inquiry form, POSTs to `/api/booking.php`)
+- `content/hyra.mdx` → `PriceCalc.tsx` (client-side price calculator)
+- `bilder/[gallery].astro` → `Bilder.tsx` (photo album + lightbox; owns lightbox state only, images are resolved at build time)
 
-**Backend:** A PHP API under `static/api/` handles the booking form email (via PHPMailer). Requires `static/api/settings.php` with SMTP credentials for local development.
+**Backend:** A PHP API under `public/api/` handles the booking form email (via PHPMailer). Requires `public/api/settings.php` with SMTP credentials for local development; it is gitignored, excluded from the deploy mirror, and denied by `public/.htaccess`.
 
-**Styling:** Emotion (CSS-in-JS) + MUI v7 components. Global styles in `GlobalStyle.tsx`.
+**Styling:** Tailwind v4 (via `@tailwindcss/vite`) for components, plus `src/styles/global.css` for base typography. Markdown content is styled with element selectors rather than Tailwind's `prose`, to preserve the original typographic scale. Form inputs and the date picker are local components in `src/components/form/` (react-day-picker for the calendar).
 
-**Image galleries:** `src/pages/bilder/` pages use `react-photo-album` with image data sourced via GraphQL from `src/images/stugor/*/caption.json` files.
+**Image galleries:** `src/pages/bilder/[gallery].astro` serves all five galleries. It globs `src/images/stugor/*/*.jpg` once, optimizes via `getImage()`, and reads captions from the adjacent `caption.json` (matched on image basename). Gallery URL slugs deliberately differ from their folder names — the mapping lives in `src/galleries.ts` and must not be changed without breaking existing URLs.
+
+**Deployment:** `dist/` is mirrored to Apache shared hosting over SFTP by `.github/workflows/build.yml` on push to `develop`. Output must stay fully static — no adapter, no Node server. `public/.htaccess` carries redirects, caching, and compression rules.
+
+**E2E server:** Playwright serves `dist/` with `e2e/static-server.js`, not `astro preview` — the latter daemonizes on macOS but stays in the foreground on Linux, so it hangs CI as a `webServer.command`. The static server reproduces the two behaviours the specs rely on: directory URLs resolve to `index.html`, and unknown paths return `404.html` with a real 404 status.
 
 **API utilities:** `src/backend-api/utils.ts` provides fetch wrappers (`makeServerPost`, `makeServerRequest`, etc.) used by the booking form.
 

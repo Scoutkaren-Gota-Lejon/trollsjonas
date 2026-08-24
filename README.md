@@ -1,9 +1,14 @@
-#Trollsjönäs
+# Trollsjönäs
+
+Astro-webbplats för Scoutkåren Göta Lejons friluftsgård Trollsjönäs.
+
+[https://trollsjonas.gotalejon.org](https://trollsjonas.gotalejon.org)
 
 ### Setup
+
 * node 24
-* npm install
-* Create static/api/settings.php
+* `npm install`
+* Skapa `public/api/settings.php` (gitignorerad):
 
 ```php
 <?php
@@ -12,45 +17,39 @@ $SMTP_USERNAME = "";
 $SMTP_PASSWORD = "";
 ```
 
-* npm start
+* `npm start` — utvecklingsserver på http://localhost:4321
 
+### Kommandon
 
-### Production build
-* npm run build
+| Kommando | Gör |
+| --- | --- |
+| `npm start` / `npm run dev` | Utvecklingsserver |
+| `npm run build` | Produktionsbygge till `dist/` |
+| `npm run serve` | Förhandsvisa bygget (kör i bakgrunden på macOS — stoppa med `npx astro preview stop`) |
+| `npm run lint` | ESLint + Prettier-kontroll |
+| `npm run typecheck` | `astro check` |
+| `npm test` | Enhetstester (Vitest) |
+| `npm run test:e2e` | E2E-tester (Playwright) |
+| `npm run clean` | Rensa `dist/` och `.astro/` |
 
-[https://trollsjonas.gotalejon.org](https://trollsjonas.gotalejon.org)
+## Publicera ändringar
 
-## Publicera ändringar 
+Push till `develop` bygger och deployar automatiskt via GitHub Actions
+(`.github/workflows/build.yml`), som speglar `dist/` till
+`trollsjonas.gotalejon.org/public_html/` över SFTP.
 
+Manuellt, om det behövs:
 
-1. gör ändringen,
-2. Testa genom att starta med `npm start`
-3. Bygg koden med `npm run build`
-4. Ersätta innehållet i `trollsjonas.gotalejon.org/public_html/` på webbhotellet med innehållet i `public`
+1. Gör ändringen.
+2. Testa med `npm start`.
+3. Bygg med `npm run build`.
+4. Ersätt innehållet i `trollsjonas.gotalejon.org/public_html/` på webbhotellet
+   med innehållet i `dist/` — utom `api/settings.php`, som bara finns på servern.
 
+## Struktur
 
-
-## Quick start
-
-1.  **Checkout the code.**
-
-    ```sh
-    git clone git@github.com:kesse/trollsjonas.git
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```sh
-    cd trollsjonas/
-    gatsby develop
-    ```
-
-1.  **Open the source code and start editing!**
-
-    Your site is now running at `http://localhost:8000`!
-
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-
-    Open the `trollsjonas` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+* `content/` — sidinnehåll som Markdown/MDX, en fil per sida
+* `src/pages/` — routing; `[...slug].astro` genererar sidorna från `content/`
+* `src/components/` — `.astro` för statiskt, `.tsx` för de tre interaktiva öarna
+* `src/images/` — bilder, optimeras vid bygget av `astro:assets`
+* `public/` — filer som kopieras rakt igenom, inklusive PHP-API:t under `api/`

@@ -19,9 +19,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npx gatsby serve",
+    command: "node e2e/static-server.js",
     port: 9000,
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
     timeout: 60000,
   },
 });

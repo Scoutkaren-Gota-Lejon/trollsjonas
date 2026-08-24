@@ -1,15 +1,6 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import PriceCalc from "./PriceCalc";
-
-// Mock emotion styled to render plain elements
-vi.mock("@emotion/styled", () => ({
-  default: new Proxy((component: any) => component, {
-    get: (_target, tag) => (_styles: any) => (props: any) =>
-      React.createElement(tag as string, props),
-  }),
-}));
 
 describe("PriceCalc", () => {
   it("shows dash with no input", () => {

@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  /** Gallery slug this cabin links through to. */
+  gallery: string;
+}
+
+const { title, description, image, gallery } = Astro.props;
+---
+
+<div class="stug-section">
+  <h3>{title}</h3>
+  <Image src={image} height={150} alt={title} class="stug-image" />
+  <p>{description}</p>
+  <p><a href={`/bilder/${gallery}/`}>Fler bilder på stugan</a></p>
+</div>
+
+<style>
+  .stug-section {
+    clear: both;
+  }
+
+  .stug-image {
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+</style>

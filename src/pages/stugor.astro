@@ -1,0 +1,66 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import StugSection from "../components/StugSection.astro";
+import storstugan from "../images/stugor/storstugan.jpg";
+import timmerhus from "../images/stugor/timmerhus.jpg";
+import patrullstuga from "../images/stugor/patrullstuga.jpg";
+import hygienanlaggning from "../images/stugor/hygienanlaggning.jpg";
+
+const storstuganDesc =
+  "Anläggningens största hus inrymmer kök, sällskapsutrymmen och sovplatser." +
+  "Köket för självhushåll är utrustat med de vanligaste faciliteterna så som spis, diskbänk, diskmaskin, arbetsbänkar, kyl och frys, mikrovågsugn, arbetsredskap och porslin för 40 personer." +
+  "I det större samlingsrummet finns en öppen vedspis, soffor och plats för cirka 40 personer." +
+  "Det intilliggande rummet har även det kamin och inrymmer 8-10 personer, alternativt 2-4 sovplatser i utdragbara bäddsoffor." +
+  "På övervåningen finns ett sovloft där 6 vuxna eller 8-10 barn får en god natts sömn i medhavd sovsäck på de befintliga madrasserna.";
+
+const timmerhusDesc =
+  "På Trollsjönäs har vi två likadana stugor som vi kallar för Timmerstugor." +
+  "Stugorna har två våningar varav det ena inrymmer sovplatser och det andra ett mindre sällskapsrum." +
+  "I varje stuga kan 8 personer sova i egna sovsäckar på de befintliga madrasserna.";
+
+const patrullDesc =
+  "Dessa stugor är våra minsta och har plats för 4 sovande personer vardera." +
+  "Sängarna är av två-våningsmodell och har fasta madrasser att sova på.";
+
+const hygienDesc =
+  "Denna byggnad inrymmer alla toaletter som finns på Trollsjönäs." +
+  "Totalt finns det fyra vattentoaletter där en har ingång med ramp från utsidan." +
+  "I anslutning till toaletterna finns det handfat med såväl varmt som kallt vatten.";
+
+// SEO comes from the `onlyurl` content entry, as it did via GraphQL before.
+const seo = await getEntry("pages", "stugor");
+---
+
+<Layout
+  title={seo!.data.title}
+  description={seo!.data.description}
+  keywords={seo!.data.keywords}
+>
+  <h1>Stugorna</h1>
+
+  <StugSection
+    title="Storstugan"
+    gallery="storstugan"
+    image={storstugan}
+    description={storstuganDesc}
+  />
+  <StugSection
+    title="Timmerstugorna"
+    gallery="timmerstugorna"
+    image={timmerhus}
+    description={timmerhusDesc}
+  />
+  <StugSection
+    title="Patrullstugorna"
+    gallery="patrullstugorna"
+    image={patrullstuga}
+    description={patrullDesc}
+  />
+  <StugSection
+    title="Hygienanläggningen"
+    gallery="hygienanlaggningen"
+    image={hygienanlaggning}
+    description={hygienDesc}
+  />
+</Layout>

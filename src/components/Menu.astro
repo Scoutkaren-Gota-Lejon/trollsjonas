@@ -1,0 +1,134 @@
+---
+import { getCollection } from "astro:content";
+import { MAX_WIDTH } from "../consts";
+
+// Replaces the `allMarkdownRemark` useStaticQuery in the former Menu.tsx.
+// `onlyurl` entries are intentionally included — they exist to provide menu
+// labels for the hand-authored /bilder/ and /stugor/ routes.
+const items = (await getCollection("pages"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => ({
+    href: entry.id === "index" ? "/" : `/${entry.id}/`,
+    label: entry.data.menu ?? entry.data.title,
+  }));
+
+const { pathname } = Astro.url;
+
+// Mirrors Gatsby's activeClassName + partiallyActive={slug !== "/"}.
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<nav>
+  <input type="checkbox" id="menu-button" />
+  <label for="menu-button">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+    </svg>
+    Meny
+  </label>
+  <ul style={`max-width: ${MAX_WIDTH}px`}>
+    {
+      items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class={isActive(item.href) ? "active" : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+    <li><a href="https://gotalejon.org">Scoutkåren Göta Lejon</a></li>
+  </ul>
+</nav>
+
+<style>
+  /* Ported from the Emotion `Container` in the former menu/Menu.tsx.
+     The hamburger is pure CSS (checkbox sibling selector) — no JS island. */
+  nav {
+    background-color: #ebf5e4;
+    position: relative;
+    width: 100%;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  label {
+    display: none;
+    cursor: pointer;
+    user-select: none;
+    align-items: center;
+    gap: 4px;
+  }
+
+  ul {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  li a {
+    color: #141412;
+    display: block;
+    font-size: 15px;
+    line-height: 1;
+    padding: 15px 15px;
+    text-decoration: none;
+  }
+
+  li a.active {
+    color: #bc360a;
+    font-style: italic;
+  }
+
+  li:hover > a,
+  li a:hover {
+    background-color: #220e10;
+    color: #fff;
+  }
+
+  @media (max-width: 70em) {
+    ul {
+      display: none;
+      height: 100%;
+    }
+
+    label {
+      position: relative;
+      display: flex;
+      width: 100%;
+      min-height: 2.25em;
+      padding: 0.45em;
+      font-size: 1.1em;
+      margin: 0;
+    }
+
+    input[type="checkbox"]:checked ~ ul {
+      display: block;
+    }
+
+    input[type="checkbox"]:checked ~ ul > li {
+      width: 100%;
+      opacity: 0.8;
+      text-align: left;
+    }
+  }
+</style>

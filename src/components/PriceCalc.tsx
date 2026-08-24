@@ -1,63 +1,16 @@
-import React, { useMemo, useState } from "react";
-import styled from "@emotion/styled";
-import TextField from "@mui/material/TextField";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { useMemo, useState } from "react";
+import TextField from "./form/TextField";
+import Checkbox from "./form/Checkbox";
 
 const MIN_PERSONS = 16;
 const PRICE_DAY = 90;
 const PRICE_SCOUTING_DAY = 75;
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const ADDON_WINTER = 0.15;
-
-const FormContainer = styled.form`
-  @media (max-width: 600px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  max-width: 700px;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-`;
-
-interface TextFieldCustProps {
-  label: string;
-  value: string;
-  field: string;
-  type?: string;
-  fullWidth?: boolean;
-  margin?: "none" | "normal" | "dense";
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const TextFieldCust = ({
-  label,
-  value,
-  field,
-  type = "text",
-  fullWidth = true,
-  margin = "normal",
-  onChange,
-}: TextFieldCustProps) => {
-  return (
-    <TextField
-      label={label}
-      value={value}
-      placeholder={label}
-      name={field}
-      type={type}
-      fullWidth={fullWidth}
-      onChange={onChange}
-      margin={margin}
-    />
-  );
-};
 
 export default function PriceCalc() {
   const [persons, setPersons] = useState<number | undefined>();
   const [days, setDays] = useState<number | undefined>();
   const [scouting, setScouting] = useState(false);
-  // TODO: Vintertillägg
+  // TODO: Vintertillägg (15 % under vintermånaderna)
 
   const price = useMemo(() => {
     if (days && persons) {
@@ -69,49 +22,39 @@ export default function PriceCalc() {
     return "-";
   }, [persons, days, scouting]);
 
-  return (
-    <FormContainer noValidate autoComplete="off">
-      <TextFieldCust
-        label="Antal personer"
-        field="count"
-        value={persons !== undefined ? String(persons) : ""}
-        onChange={(e) => {
-          const v = parseInt(e.target.value);
-          if (isNaN(v)) {
-            setPersons(undefined);
-          } else {
-            setPersons(v);
-          }
-        }}
-      />
-      <TextFieldCust
-        label="Antal dagar"
-        field="days"
-        value={days !== undefined ? String(days) : ""}
-        onChange={(e) => {
-          const v = parseInt(e.target.value);
-          if (isNaN(v)) {
-            setDays(undefined);
-          } else {
-            setDays(v);
-          }
-        }}
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={scouting}
-            onChange={() => {
-              setScouting((v) => !v);
-            }}
-          />
-        }
-        label="Scoutkår"
-      />
+  const parse = (raw: string) => {
+    const parsed = parseInt(raw);
+    return isNaN(parsed) ? undefined : parsed;
+  };
 
-      <div style={{ whiteSpace: "nowrap", fontSize: "20px" }}>
-        Pris: {price} kr
+  return (
+    <form
+      noValidate
+      autoComplete="off"
+      className="flex max-w-[700px] flex-col items-start gap-4 sm:flex-row sm:items-end"
+    >
+      <TextField
+        label="Antal personer"
+        name="count"
+        value={persons !== undefined ? String(persons) : ""}
+        onChange={(event) => setPersons(parse(event.target.value))}
+      />
+      <TextField
+        label="Antal dagar"
+        name="days"
+        value={days !== undefined ? String(days) : ""}
+        onChange={(event) => setDays(parse(event.target.value))}
+      />
+      <div className="shrink-0 sm:pb-2">
+        <Checkbox
+          label="Scoutkår"
+          name="scouting"
+          checked={scouting}
+          onChange={setScouting}
+        />
       </div>
-    </FormContainer>
+
+      <div className="whitespace-nowrap text-xl sm:pb-2">Pris: {price} kr</div>
+    </form>
   );
 }

@@ -1,0 +1,309 @@
+@import "@fontsource-variable/roboto";
+@import "tailwindcss";
+
+/*
+ * Ported from the former GlobalStyle.tsx (Emotion). That file was ~650 lines of
+ * normalize.css plus typography.js output; Tailwind's preflight covers the
+ * normalize half, so only the site's own visual identity is reproduced here.
+ * Markdown content is styled via element selectors rather than Tailwind's
+ * `prose` class, to keep the rendered pages visually identical to the Gatsby
+ * build (`prose` uses a different scale, measure, and link treatment).
+ */
+
+@theme {
+  --font-sans: "Roboto Variable", Roboto, sans-serif;
+}
+
+:root {
+  --rhythm: 1.45rem;
+  --heading-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --link: #bc360a;
+  --link-hover: #ea9629;
+  --menu-bg: #ebf5e4;
+  --menu-hover-bg: #220e10;
+  --rule: hsla(0, 0%, 0%, 0.12);
+}
+
+html {
+  font-family: "Roboto Variable", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  color: hsla(0, 0%, 0%, 0.8);
+  font-weight: normal;
+  word-wrap: break-word;
+  font-kerning: normal;
+  font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+h1 a {
+  color: hsla(0, 0%, 0%, 0.8);
+}
+
+/* Vertical rhythm — every block element shares one bottom margin. */
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+pre,
+table,
+fieldset,
+form,
+noscript,
+iframe,
+address,
+img {
+  margin: 0 0 var(--rhythm);
+  padding: 0;
+}
+
+blockquote {
+  margin: 0 var(--rhythm) var(--rhythm);
+  padding: 0;
+}
+
+hr {
+  margin: 0 0 calc(var(--rhythm) - 1px);
+  padding: 0;
+  border: none;
+  height: 1px;
+  background: hsla(0, 0%, 0%, 0.2);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-style: none;
+}
+
+ul,
+ol {
+  margin-left: var(--rhythm);
+  list-style-position: outside;
+}
+
+/* Tailwind's preflight resets `list-style: none` on every list, so content
+   lists need their markers restored. The nav in Menu.astro re-hides its own
+   via a scoped rule, which outranks these. */
+ul {
+  list-style-type: disc;
+  list-style-image: none;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-bottom: calc(var(--rhythm) / 2);
+  padding-left: 0;
+}
+
+li > ol,
+li > ul {
+  margin-left: var(--rhythm);
+  margin-top: calc(var(--rhythm) / 2);
+  margin-bottom: calc(var(--rhythm) / 2);
+}
+
+li > p {
+  margin-bottom: calc(var(--rhythm) / 2);
+}
+
+blockquote *:last-child,
+li *:last-child,
+p *:last-child {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 var(--rhythm);
+  padding: 0;
+  color: inherit;
+  font-family: var(--heading-font);
+  font-weight: bold;
+  line-height: 1.1;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+h2 {
+  font-size: 1.62671rem;
+}
+h3 {
+  font-size: 1.38316rem;
+  margin-bottom: 0.45rem;
+}
+h4 {
+  font-size: 1rem;
+}
+h5 {
+  font-size: 0.85028rem;
+}
+h6 {
+  font-size: 0.78405rem;
+}
+
+b,
+strong,
+dt,
+th {
+  font-weight: bold;
+}
+
+/* Tables — used by the price list in content/hyra.mdx. */
+table {
+  font-size: 1rem;
+  line-height: var(--rhythm);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead {
+  text-align: left;
+}
+
+td,
+th {
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  font-feature-settings: "tnum";
+  padding: 0.725rem 0.96667rem calc(0.725rem - 1px);
+}
+
+th:first-of-type,
+td:first-of-type {
+  padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+
+tt,
+code {
+  background-color: hsla(0, 0%, 0%, 0.04);
+  border-radius: 3px;
+  font-family: "SFMono-Regular", Consolas, "Roboto Mono", Menlo, Courier,
+    monospace;
+  font-size: 0.85rem;
+  line-height: var(--rhythm);
+  padding: 0.2em 0;
+}
+
+pre {
+  font-size: 0.85rem;
+  line-height: 1.42;
+  background: hsla(0, 0%, 0%, 0.04);
+  border-radius: 3px;
+  overflow: auto;
+  padding: var(--rhythm);
+}
+
+pre code {
+  background: none;
+  line-height: 1.42;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+  cursor: help;
+  text-decoration: none;
+}
+
+small {
+  font-size: 80%;
+}
+
+/* Layout — main column floats left of a fixed sidebar, stacking under 950px. */
+.main-container {
+  max-width: 650px;
+  width: 100%;
+  float: left;
+  margin-bottom: 32px;
+}
+
+.sidebar-container {
+  margin-left: 20px;
+  float: right;
+  width: 300px;
+}
+
+.clear {
+  clear: both;
+}
+
+footer {
+  clear: both;
+  height: 50px;
+}
+
+.priceheading {
+  float: left;
+}
+
+@media only screen and (max-width: 950px) {
+  .main-container {
+    max-width: 100%;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sidebar-container {
+    clear: both;
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Gallery index — ported from the former src/components/bilder.css. */
+.gallery-list {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Tailwind's preflight makes images `display: block`, which ignores the
+   parent's text-align and pushes the following <br> onto its own line box.
+   The Gatsby build centred these via `.gatsby-image-wrapper { display:
+   inline-block }`; that wrapper no longer exists, so the image itself takes it. */
+.gallery-list img {
+  display: inline-block;
+  margin-bottom: 0;
+}

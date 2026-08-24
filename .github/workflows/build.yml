@@ -46,7 +46,7 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: build
-          path: public/
+          path: dist/
 
   deploy:
     needs: build
@@ -56,12 +56,12 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: build
-          path: public/
+          path: dist/
 
       - run: sudo apt-get update && sudo apt-get install -y lftp
 
       - name: Deploy via SFTP
         run: |
           lftp -u "${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }}" \
-            -e "set sftp:auto-confirm yes; mirror -R --delete --parallel=10 --exclude api/settings.php ./public/ ./public_html/; quit" \
+            -e "set sftp:auto-confirm yes; mirror -R --delete --parallel=10 --exclude api/settings.php ./dist/ ./public_html/; quit" \
             sftp://${{ secrets.SFTP_HOST }}
