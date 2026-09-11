@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "Martin Hesslund",
   "dependencies": {
-    "@astrojs/mdx": "^7.0.8",
+    "@astrojs/mdx": "^8.0.1",
     "@astrojs/react": "^6.0.5",
     "@astrojs/sitemap": "^3.7.4",
     "@floating-ui/react": "^0.27.20",
