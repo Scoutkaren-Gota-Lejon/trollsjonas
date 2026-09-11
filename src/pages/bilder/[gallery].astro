@@ -72,6 +72,8 @@ const photos: GalleryPhoto[] = await Promise.all(
   title={`Bilder - ${gallery.name}`}
   keywords={["stugor", "bilder", "hyra scoutstuga"]}
 >
-  <h1><a href="/bilder/">Bilder</a> / {gallery.name}</h1>
+  <h1>
+    <a href="/bilder/">Bilder</a> / {gallery.name}
+  </h1>
   <Bilder photos={photos} client:load />
 </Layout>

@@ -26,9 +26,7 @@ const { title, description, keywords } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#663399" />
     <Seo title={title} description={description} keywords={keywords} />
-    {
-      /* Replaces gatsby-plugin-google-gtag, preserving its respectDNT option. */
-    }
+    {/* Replaces gatsby-plugin-google-gtag, preserving its respectDNT option. */}
     <script is:inline define:vars={{ GA_TRACKING_ID }}>
       if (
         navigator.doNotTrack !== "1" &&
