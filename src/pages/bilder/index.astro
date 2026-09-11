@@ -32,16 +32,14 @@ const seo = await getEntry("pages", "bilder");
 >
   <h1>Bilder</h1>
 
-  {
-    entries.map((entry) => (
-      <div class="gallery-list">
-        <a class="gallery-link" href={`/bilder/${entry.slug}/`}>
-          <Image src={entry.image} height={150} alt={entry.name} />
-          <br />
-          {entry.name}
-        </a>
-      </div>
-    ))
-  }
+  {entries.map((entry) => (
+    <div class="gallery-list">
+      <a class="gallery-link" href={`/bilder/${entry.slug}/`}>
+        <Image src={entry.image} height={150} alt={entry.name} />
+        <br />
+        {entry.name}
+      </a>
+    </div>
+  ))}
   <div class="clear"></div>
 </Layout>

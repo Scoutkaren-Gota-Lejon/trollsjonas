@@ -34,19 +34,16 @@ const isActive = (href: string) =>
     Meny
   </label>
   <ul style={`max-width: ${MAX_WIDTH}px`}>
-    {
-      items.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class={isActive(item.href) ? "active" : undefined}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))
-    }
-    <li><a href="https://gotalejon.org">Scoutkåren Göta Lejon</a></li>
+    {items.map((item) => (
+      <li>
+        <a href={item.href} class={isActive(item.href) ? "active" : undefined}>
+          {item.label}
+        </a>
+      </li>
+    ))}
+    <li>
+      <a href="https://gotalejon.org">Scoutkåren Göta Lejon</a>
+    </li>
   </ul>
 </nav>
 

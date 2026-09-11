@@ -16,7 +16,9 @@ const { title, description, image, gallery } = Astro.props;
   <h3>{title}</h3>
   <Image src={image} height={150} alt={title} class="stug-image" />
   <p>{description}</p>
-  <p><a href={`/bilder/${gallery}/`}>Fler bilder på stugan</a></p>
+  <p>
+    <a href={`/bilder/${gallery}/`}>Fler bilder på stugan</a>
+  </p>
 </div>
 
 <style>
